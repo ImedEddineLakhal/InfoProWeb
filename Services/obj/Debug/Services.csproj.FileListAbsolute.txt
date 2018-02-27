@@ -1,0 +1,5 @@
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Services\bin\Debug\Services.dll
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Services\bin\Debug\Services.pdb
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Services\obj\Debug\Services.dll
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Services\obj\Debug\Services.pdb

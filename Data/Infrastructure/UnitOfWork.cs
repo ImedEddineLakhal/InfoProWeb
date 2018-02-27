@@ -1,5 +1,4 @@
-﻿using ClassLibrary1.Repository;
-using Data;
+﻿using Data;
 using Data.Repository;
 using MyReports.Data.Infrastructure;
 using System;

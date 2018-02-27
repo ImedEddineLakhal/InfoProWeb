@@ -1,1 +1,12 @@
 c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\DynamicsRPH.exe.config
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\DynamicsRPH.exe
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\DynamicsRPH.pdb
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\Domain.dll
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\EntityFramework.dll
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\Domain.pdb
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\EntityFramework.xml
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\obj\Debug\DynamicsRPH.csprojResolveAssemblyReference.cache
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\obj\Debug\DynamicsRPH.exe
+c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\obj\Debug\DynamicsRPH.pdb
