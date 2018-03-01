@@ -9,67 +9,67 @@ namespace Domain.Entity
 {
    public class Indicateur
     {
-        private int IdIndicateur { get; set; }
-        private int agent { get; set; }
+        public int Id { get; set; }
+        public int agent { get; set; }
 
-        private int CA { get; set; }  //NOMBRE DE contact argumenté
+        public int CA { get; set; }  //NOMBRE DE contact argumenté
 
-        private int accord { get; set; } // nombre des accords
+        public int accord { get; set; } // nombre des accords
 
-        private int CNA { get; set; } // nombre des contacts non argumenté
+        public int CNA { get; set; } // nombre des contacts non argumenté
 
-        private int totAboutis { get; set; }
+        public int totAboutis { get; set; }
 
-        private float tempsLog { get; set; }
+        public float tempsLog { get; set; }
 
-        private float tempsComm { get; set; }
+        public float tempsComm { get; set; }
 
-        private float tempsAtt { get; set; }
+        public float tempsAtt { get; set; }
 
-        private float tempsACW { get; set; } //temps ACW tems d'appel
+        public float tempsACW { get; set; } //temps ACW tems d'appel
 
-        private float tempsPausePerso { get; set; }
-        private float tempsPreview { get; set; }
+        public float tempsPausePerso { get; set; }
+        public float tempsPreview { get; set; }
 
-        private float tempsPauseBrief { get; set; }
+        public float tempsPauseBrief { get; set; }
 
-        private int responsable { get; set; } // a revoir
+        public int responsable { get; set; } // a revoir
 
-        private DateTime date { get; set; } // a revoir
+        public DateTime date { get; set; } // a revoir
 
-        private int semaine { get; set; } // a revoir
+        public int semaine { get; set; } // a revoir
 
-        private String mois { get; set; } // a revoir
-        private float tempsAcwHebdo { get; set; } // a revoir
+        public String mois { get; set; } // a revoir
+        public float tempsAcwHebdo { get; set; } // a revoir
 
-        private float tempsAcwmensuel{ get; set; } // a revoir
+        public float tempsAcwmensuel{ get; set; } // a revoir
 
-        private float tempsAtthebdo { get; set; } // a revoir
-        private float tempsAttmensuel { get; set; } // a revoir
+        public float tempsAtthebdo { get; set; } // a revoir
+        public float tempsAttmensuel { get; set; } // a revoir
 
-        private float tempsPauseBriefHebdo { get; set; } // a revoir
+        public float tempsPauseBriefHebdo { get; set; } // a revoir
 
-        private float tempsPauseBriefMensuel{ get; set; } // a revoir
+        public float tempsPauseBriefMensuel{ get; set; } // a revoir
 
-        private float tempsPausePersoHebdo { get; set; } // a revoir
+        public float tempsPausePersoHebdo { get; set; } // a revoir
 
-        private float tempsPausePersoMensuel { get; set; } // a revoir
+        public float tempsPausePersoMensuel { get; set; } // a revoir
 
 
-        private float tempsPrievewHebdo{ get; set; } // a revoir
+        public float tempsPrievewHebdo{ get; set; } // a revoir
 
-        private float tempsPrievewMensuel { get; set; } // a revoir
+        public float tempsPrievewMensuel { get; set; } // a revoir
 
-        private int appelEmis { get; set; }
+        public int appelEmis { get; set; }
 
-        private float tvente { get; set; }
+        public float tvente { get; set; }
 
-        private float tventeHebdo { get; set; }
-        private float tventeMensuel { get; set; }
+        public float tventeHebdo { get; set; }
+        public float tventeMensuel { get; set; }
 
-        private float tAbs { get; set; }
-        private float tAbsHebdo { get; set; }
-        private float tAbsMensuel { get; set; }
+        public float tAbs { get; set; }
+        public float tAbsHebdo { get; set; }
+        public float tAbsMensuel { get; set; }
 
 
         public int? employeeId { get; set; }
@@ -77,10 +77,10 @@ namespace Domain.Entity
         [ForeignKey("employeeId")]
         public virtual Employee employee { get; set; }
 
-        public int? alerteId { get; set; }
+        //public int? alerteId { get; set; }
 
-        [ForeignKey("alerteId")]
-        public virtual Alerte alerte { get; set; }
+        //[ForeignKey("alerteId")]
+        //public virtual Alerte alerte { get; set; }
 
         public int? titreId { get; set; }
 

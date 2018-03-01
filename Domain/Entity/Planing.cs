@@ -8,15 +8,15 @@ namespace Domain.Entity
 {
     public class Planing
     {
-        private int IdPlaning { get; set; }
+        public int Id { get; set; }
 
-        private DateTime date { get; set; }
+        public DateTime date { get; set; }
 
-        private DateTime heureArrivee { get; set; } // int dans la conception de départ
+        public DateTime heureArrivee { get; set; } // int dans la conception de départ
 
-        private DateTime dateDepart { get; set; }
+        public DateTime dateDepart { get; set; }
 
-        private int duree { get; set; }  // a revoir
+        public int duree { get; set; }  // a revoir
 
  
 

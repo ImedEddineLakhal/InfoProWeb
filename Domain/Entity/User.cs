@@ -9,17 +9,17 @@ namespace Domain.Entity
 {
     public class User
     {
-        private int IdPersonne { get; set; }
-        private String login { get; set; }
+        public int Id { get; set; }
+        public String login { get; set; }
 
-        private String password { get; set; }
+        public String password { get; set; }
 
-        private String nom { get; set; }
-        private String prenom { get; set; }
+        public String nom { get; set; }
+        public String prenom { get; set; }
 
-        private String role { get; set; }
+        public String role { get; set; }
 
-        private String responsable { get; set; }
+        public String responsable { get; set; }
 
        
 

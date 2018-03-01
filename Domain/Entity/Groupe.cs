@@ -8,10 +8,10 @@ namespace Domain.Entity
 {
    public class Groupe
     {
-        private int IdGroupe { get; set; }
-        private String nom { get; set; }
+        public int Id { get; set; }
+        public String nom { get; set; }
 
-        private String responsable { get; set; }
+        public String responsable { get; set; }
 
         public virtual ICollection<Employee> employees { get; set; }
 

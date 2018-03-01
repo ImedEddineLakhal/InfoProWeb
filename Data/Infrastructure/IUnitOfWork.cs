@@ -12,6 +12,18 @@ namespace MyReports.Data.Infrastructure
         //IRepositoryBaseAsynch<T> getRepository<T>() where T : class;
        // IContratRepository ContratRepository { get; }
 
+        IAlerteRepository AlerteRepository { get; }
+        IUserRepository UserRepository { get; }
+
+        IIndicateurRepository IndicateurRepository { get; }
+        IPlaningRepository PlaningRepository { get; }
+
+        ITitreRepository TitreRepository { get; }
+
+        IEmployeeRepository EmployeeRepository { get; }
+
+        IGroupeRepository GroupeRepository { get; }
+
         void CommitAsync();
         void Commit();
 

@@ -88,3 +88,7 @@ c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\MVCWEB\bin\Mi
 c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\MVCWEB\obj\Debug\MVCWEB.csprojResolveAssemblyReference.cache
 c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\MVCWEB\obj\Debug\MVCWEB.dll
 c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\MVCWEB\obj\Debug\MVCWEB.pdb
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\MVCWEB\bin\Data.dll
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\MVCWEB\bin\Services.dll
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\MVCWEB\bin\Data.pdb
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\MVCWEB\bin\Services.pdb

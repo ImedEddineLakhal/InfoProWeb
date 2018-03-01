@@ -9,18 +9,18 @@ namespace Domain.Entity
 {
    public class Alerte
     {
-        public int IdAlerte { get; set; }
+        public int Id { get; set; }
 
-        private String titreAlerte { get; set; }
+        public String titreAlerte { get; set; }
 
-        private String description { get; set; }
+        public String description { get; set; }
 
-        private DateTime dateCreation { get; set; }
-        private String etatAlerte { get; set; }
+        public DateTime dateCreation { get; set; }
+        public String etatAlerte { get; set; }
 
-        private String reponseAlerte { get; set; }
+        public String reponseAlerte { get; set; }
 
-        private DateTime dateReponse { get; set; }
+        public DateTime dateReponse { get; set; }
 
         public int? indicateurId { get; set; }
 

@@ -10,3 +10,7 @@ c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\b
 c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\obj\Debug\DynamicsRPH.csprojResolveAssemblyReference.cache
 c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\obj\Debug\DynamicsRPH.exe
 c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\obj\Debug\DynamicsRPH.pdb
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\Data.dll
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\Data.pdb
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\nunit.framework.dll
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\nunit.framework.xml

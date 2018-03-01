@@ -1,4 +1,5 @@
 ﻿using Data.CustumConvention;
+using Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,10 +16,17 @@ namespace Data
             //Database.SetInitializer<MyAlfrescoContext>(new MyAlfrescoContextInitialiazor());
 
         }
+          public DbSet<Alerte> alertes { get; set; }
 
-       // public DbSet<Contrat> Contrats { get; set; }
-   
+        public DbSet<Employee> employees { get; set; }
 
+        public DbSet<User> users { get; set; }
+        public DbSet<Planing> planings { get; set; }
+
+        public DbSet<Titre> titres { get; set; }
+        public DbSet<Indicateur> indicateurs { get; set; }
+
+        public DbSet<Groupe> groupes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

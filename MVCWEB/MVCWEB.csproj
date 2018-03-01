@@ -206,8 +206,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AlerteController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\GroupeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PlaningController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -220,6 +224,40 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Template1\css\sb-admin.css" />
+    <Content Include="Content\Template1\css\sb-admin.min.css" />
+    <Content Include="Content\Template1\js\sb-admin-charts.js" />
+    <Content Include="Content\Template1\js\sb-admin-charts.min.js" />
+    <Content Include="Content\Template1\js\sb-admin-datatables.js" />
+    <Content Include="Content\Template1\js\sb-admin-datatables.min.js" />
+    <Content Include="Content\Template1\js\sb-admin.js" />
+    <Content Include="Content\Template1\js\sb-admin.min.js" />
+    <Content Include="Content\Template1\vendor\bootstrap\css\bootstrap-grid.css" />
+    <Content Include="Content\Template1\vendor\bootstrap\css\bootstrap-grid.min.css" />
+    <Content Include="Content\Template1\vendor\bootstrap\css\bootstrap-reboot.css" />
+    <Content Include="Content\Template1\vendor\bootstrap\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\Template1\vendor\bootstrap\css\bootstrap.css" />
+    <Content Include="Content\Template1\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Template1\vendor\bootstrap\js\bootstrap.bundle.js" />
+    <Content Include="Content\Template1\vendor\bootstrap\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\Template1\vendor\bootstrap\js\bootstrap.js" />
+    <Content Include="Content\Template1\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Template1\vendor\chart.js\Chart.bundle.js" />
+    <Content Include="Content\Template1\vendor\chart.js\Chart.bundle.min.js" />
+    <Content Include="Content\Template1\vendor\chart.js\Chart.js" />
+    <Content Include="Content\Template1\vendor\chart.js\Chart.min.js" />
+    <Content Include="Content\Template1\vendor\datatables\dataTables.bootstrap4.css" />
+    <Content Include="Content\Template1\vendor\datatables\dataTables.bootstrap4.js" />
+    <Content Include="Content\Template1\vendor\datatables\jquery.dataTables.js" />
+    <Content Include="Content\Template1\vendor\font-awesome\css\font-awesome.css" />
+    <Content Include="Content\Template1\vendor\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\Template1\vendor\jquery-easing\jquery.easing.compatibility.js" />
+    <Content Include="Content\Template1\vendor\jquery-easing\jquery.easing.js" />
+    <Content Include="Content\Template1\vendor\jquery-easing\jquery.easing.min.js" />
+    <Content Include="Content\Template1\vendor\jquery\jquery.js" />
+    <Content Include="Content\Template1\vendor\jquery\jquery.min.js" />
+    <Content Include="Content\Template1\vendor\jquery\jquery.slim.js" />
+    <Content Include="Content\Template1\vendor\jquery\jquery.slim.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -230,6 +268,79 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\Template1\pug\blank.pug" />
+    <Content Include="Content\Template1\pug\cards.pug" />
+    <Content Include="Content\Template1\pug\charts.pug" />
+    <Content Include="Content\Template1\pug\forgot-password.pug" />
+    <Content Include="Content\Template1\pug\includes\css\core.pug" />
+    <Content Include="Content\Template1\pug\includes\css\custom.pug" />
+    <Content Include="Content\Template1\pug\includes\footer.pug" />
+    <Content Include="Content\Template1\pug\includes\js\core.pug" />
+    <Content Include="Content\Template1\pug\includes\js\custom.pug" />
+    <Content Include="Content\Template1\pug\includes\modals\logout.pug" />
+    <Content Include="Content\Template1\pug\includes\navbar.pug" />
+    <Content Include="Content\Template1\pug\includes\scroll-to-top.pug" />
+    <Content Include="Content\Template1\pug\index.pug" />
+    <Content Include="Content\Template1\pug\login.pug" />
+    <Content Include="Content\Template1\pug\navbar.pug" />
+    <Content Include="Content\Template1\pug\register.pug" />
+    <Content Include="Content\Template1\pug\tables.pug" />
+    <Content Include="Content\Template1\scss\navbar\_navbar_colors.scss" />
+    <Content Include="Content\Template1\scss\navbar\_navbar_fixed.scss" />
+    <Content Include="Content\Template1\scss\navbar\_navbar_global.scss" />
+    <Content Include="Content\Template1\scss\navbar\_navbar_static.scss" />
+    <Content Include="Content\Template1\scss\navbar\_navbar_toggle.scss" />
+    <Content Include="Content\Template1\scss\sb-admin.scss" />
+    <Content Include="Content\Template1\scss\_cards.scss" />
+    <Content Include="Content\Template1\scss\_footer.scss" />
+    <Content Include="Content\Template1\scss\_global.scss" />
+    <Content Include="Content\Template1\scss\_login.scss" />
+    <Content Include="Content\Template1\scss\_mixins.scss" />
+    <Content Include="Content\Template1\scss\_utilities.scss" />
+    <Content Include="Content\Template1\scss\_variables.scss" />
+    <Content Include="Content\Template1\vendor\bootstrap\css\bootstrap.css.map" />
+    <Content Include="Content\Template1\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\Template1\vendor\bootstrap\js\bootstrap.bundle.js.map" />
+    <Content Include="Content\Template1\vendor\bootstrap\js\bootstrap.bundle.min.js.map" />
+    <Content Include="Content\Template1\vendor\bootstrap\js\bootstrap.js.map" />
+    <Content Include="Content\Template1\vendor\bootstrap\js\bootstrap.min.js.map" />
+    <Content Include="Content\Template1\vendor\font-awesome\css\font-awesome.css.map" />
+    <Content Include="Content\Template1\vendor\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Template1\vendor\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Template1\vendor\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Template1\vendor\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Template1\vendor\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Template1\vendor\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\animated.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\core.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\fixed-width.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\font-awesome.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\icons.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\larger.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\list.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\mixins.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\path.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\screen-reader.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\stacked.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\less\variables.less" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_animated.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_core.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_icons.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_larger.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_list.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_mixins.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_path.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_stacked.scss" />
+    <Content Include="Content\Template1\vendor\font-awesome\scss\_variables.scss" />
+    <Content Include="Content\Template1\vendor\jquery\jquery.min.map" />
+    <Content Include="Content\Template1\vendor\jquery\jquery.slim.min.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -276,9 +387,26 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_layout_admin.cshtml" />
+    <Content Include="Views\Employee\Index.cshtml" />
+    <Content Include="Views\Employee\Create.cshtml" />
+    <Content Include="Views\Employee\Edit.cshtml" />
+    <Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Employee\Details.cshtml" />
+    <Content Include="Views\Alerte\Index.cshtml" />
+    <Content Include="Views\Alerte\Create.cshtml" />
+    <Content Include="Views\Alerte\Edit.cshtml" />
+    <Content Include="Views\Alerte\Delete.cshtml" />
+    <Content Include="Views\Alerte\Details.cshtml" />
+    <Content Include="Views\Groupe\Index.cshtml" />
+    <Content Include="Views\Groupe\Edit.cshtml" />
+    <Content Include="Views\Groupe\Delete.cshtml" />
+    <Content Include="Views\Groupe\Details.cshtml" />
+    <Content Include="Views\Groupe\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Planing\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -290,9 +418,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Data\Data.csproj">
+      <Project>{fab3405e-02c7-49f0-ad39-71e1fbf37359}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{524f4d45-8ffb-4ee0-90a4-79aad9f59aee}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{75d1f994-c2d7-4412-abc3-c459b01bdc17}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

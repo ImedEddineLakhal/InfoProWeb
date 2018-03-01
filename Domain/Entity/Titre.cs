@@ -8,7 +8,7 @@ namespace Domain.Entity
 {
    public class Titre
     {
-        private int IdTitre { get; set; }
+        public int Id{ get; set; }
 
         public String libelle { get; set; }
 

@@ -10,3 +10,7 @@ c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\bin\Debu
 c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.dll
 c:\users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.pdb
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.first.resources
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.csproj.GenerateResource.Cache
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.second.resources
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.third.resources

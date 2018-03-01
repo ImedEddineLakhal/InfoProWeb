@@ -59,6 +59,19 @@
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201802280926069_first.cs" />
+    <Compile Include="Migrations\201802280926069_first.Designer.cs">
+      <DependentUpon>201802280926069_first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802280936069_second.cs" />
+    <Compile Include="Migrations\201802280936069_second.Designer.cs">
+      <DependentUpon>201802280936069_second.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802280943049_third.cs" />
+    <Compile Include="Migrations\201802280943049_third.Designer.cs">
+      <DependentUpon>201802280943049_third.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportContext.cs" />
     <Compile Include="ReportContextInitializor.cs" />
@@ -86,6 +99,17 @@
       <Project>{524f4d45-8ffb-4ee0-90a4-79aad9f59aee}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802280926069_first.resx">
+      <DependentUpon>201802280926069_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802280936069_second.resx">
+      <DependentUpon>201802280936069_second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802280943049_third.resx">
+      <DependentUpon>201802280943049_third.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
