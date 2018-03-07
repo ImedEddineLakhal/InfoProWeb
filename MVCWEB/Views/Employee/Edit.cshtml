@@ -1,6 +1,5 @@
-﻿
-@section test{
-@model Domain.Entity.Employee
+﻿@section test{
+@model MVCWEB.Models.EmployeeViewModel
 
 @{
     ViewBag.Title = "Edit";
@@ -12,7 +11,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Employee</h4>
         <hr />
@@ -20,18 +19,34 @@
         @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.login, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IdHermes, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.login, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.login, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.IdHermes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IdHermes, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.userName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.pseudoName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pseudoName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.pseudoName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Activite, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Activite, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Activite, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -43,9 +58,25 @@
             </div>
         </div>
 
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.userId, "userId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("userId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.userId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.utilisateurs, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" >
+                @Html.DropDownList("utilisateur", Model.utilisateurs, htmlAttributes: new { @class = "form-control" })
+                  @Html.ValidationMessageFor(model => model.utilisateurs, "", new { @class = "text-danger" })
+
+                @*@Html.DropDownList("SelectedItem", Model.listItems, "-----Select----")*@
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </div>
     </div>
@@ -55,4 +86,4 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-    }
+}

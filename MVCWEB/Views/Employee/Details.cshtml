@@ -1,30 +1,54 @@
 ﻿@section test{
-@model Domain.Entity.Employee
+@model MVCWEB.Models.EmployeeViewModel
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h4>Details Employee</h4>
-
+<h2>Details</h2>
 
 <div>
+    <h4>Employee</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.login)
+            @Html.DisplayNameFor(model => model.user.login)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.login)
+            @Html.DisplayFor(model => model.user.login)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.password)
+            @Html.DisplayNameFor(model => model.IdHermes)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.password)
+            @Html.DisplayFor(model => model.IdHermes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pseudoName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pseudoName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Activite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Activite)
         </dd>
 
         <dt>

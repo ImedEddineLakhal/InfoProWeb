@@ -19,12 +19,11 @@ namespace MVCWEB.Controllers
 
             service = new GroupeService();
         }
-        public ActionResult Index(String search, FormCollection form)
+        public ActionResult Index(String search, FormCollection form,int? CallsToMake)
         {
             var groupes = service.GetAll();
             List<Groupe> fVM = new List<Groupe>();
-            //string type = form["test"].ToString();
-            //int numVal = Int32.Parse(type);
+           //int numVal = Int32.Parse(type);
 
             foreach (var item in groupes)
             {
@@ -141,6 +140,30 @@ namespace MVCWEB.Controllers
             catch
             {
                 return View();
+            }
+        }
+        [HttpGet]
+        public ActionResult FindGroupe(int? Id)
+        {
+            Groupe item = service.getById(Id);
+
+
+            //var a = new EmployeeViewModel();
+            //a.Id = item.Id;
+            //a.userName = item.userName;
+            //a.pseudoName = item.pseudoName;
+            //a.IdAD = (int)item.userId;
+            //a.IdHermes = item.IdHermes;
+            //a.Activite = item.Activite;
+            //a.role = item.role;
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_AlerteDeSuppression", item);
+            }
+
+            else
+            {
+                return View(item);
             }
         }
     }

@@ -1,0 +1,450 @@
+﻿@section test{
+    @model IEnumerable<Domain.Entity.Indicateur>
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h4>Liste des Indicateurs Pour Admin</h4>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <div class="table-responsive">
+        <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+            @using (Html.BeginForm())
+            {
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="dataTables_length" id="dataTable_length">
+                            <label>
+                                Show
+                                <select name="dataTable_length" aria-controls="dataTable" class="form-control form-control-sm" value="10">
+                                    <option name="test" value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> entries
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div id="dataTable_filter" class="dataTables_filter">
+                            <label>
+                                Search:
+                                @Html.TextBox("search", null, new { id = "search", @class = "form-control form-control-sm" })
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-sm-12">
+                    </br>
+
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <tr>
+                            
+                            <th>
+                                @Html.DisplayNameFor(model => model.titre.libelle)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.agent)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CA)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.accord)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CNA)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.totAboutis)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsLog)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsComm)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsAtt)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsACW)
+                            </th>
+                           
+                            
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                              
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.titre.libelle)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.agent)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CA)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.accord)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CNA)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.totAboutis)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsLog)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsComm)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsAtt)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsACW)
+                                </td>
+                                
+                                <td>
+                                    @using (Html.BeginForm("Edit", "Indicateur", new { id = item.Id }, FormMethod.Get, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Editer" class="btn btn-primary" />
+                                            </div>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("Details", "Indicateur", new { id = item.Id }, FormMethod.Get, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Details" class="btn btn-warning" />
+                                            </div>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("Delete", "Indicateur", new { id = item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Delete" class="btn btn-danger" />
+                                            </div>
+                                        </div>
+                                    }
+                                </td>
+
+                            </tr>
+                        }
+
+                    </table>
+                    <br />
+                    <table class="table table-striped table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsPausePerso)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsPreview)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsPauseBrief)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.responsable)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.date)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.semaine)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.mois)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsAcwHebdo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsAcwmensuel)
+                            </th>
+                           
+                           
+                            
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsPausePerso)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsPreview)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsPauseBrief)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.responsable)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.semaine)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.mois)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsAcwHebdo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsAcwmensuel)
+                                </td>
+                               
+                               
+                                <td>
+                                    @using (Html.BeginForm("Edit", "Indicateur", new { id = item.Id }, FormMethod.Get, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Editer" class="btn btn-primary" />
+                                            </div>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("Details", "Indicateur", new { id = item.Id }, FormMethod.Get, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Details" class="btn btn-warning" />
+                                            </div>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("Delete", "Indicateur", new { id = item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Delete" class="btn btn-danger" />
+                                            </div>
+                                        </div>
+                                    }
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                    <br />
+                    <table class="table table-bordered" id="dataTable3" width="100%" cellspacing="0">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsAtthebdo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsAttmensuel)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsPauseBriefHebdo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsPauseBriefMensuel)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsPausePersoHebdo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsPausePersoMensuel)
+                            </th>
+                            
+                           
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsAtthebdo)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsAttmensuel)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsPauseBriefHebdo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsPauseBriefMensuel)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsPausePersoHebdo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsPausePersoMensuel)
+                                </td>
+                               
+                            <td>
+                              @using (Html.BeginForm("Edit", "Indicateur", new { id = item.Id }, FormMethod.Get, new { enctype = "multipart/form-data" }))
+                              {
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Editer" class="btn btn-primary" />
+                                    </div>
+                                </div>
+                              }
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("Details", "Indicateur", new { id = item.Id }, FormMethod.Get, new { enctype = "multipart/form-data" }))
+                                {
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Details" class="btn btn-warning" />
+                                        </div>
+                                    </div>
+                                }
+                            </td>
+                                <td>
+                                    @using (Html.BeginForm("Delete", "Indicateur", new { id = item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Delete" class="btn btn-danger" />
+                                            </div>
+                                        </div>
+                                    }
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                    <br />
+                    <table class="table table-striped table-bordered" id="dataTable4" width="100%" cellspacing="0">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsPrievewHebdo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tempsPrievewMensuel)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.appelEmis)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tvente)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tventeHebdo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tventeMensuel)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tAbs)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tAbsHebdo)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.tAbsMensuel)
+                            </th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsPrievewHebdo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tempsPrievewMensuel)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.appelEmis)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tvente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tventeHebdo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tventeMensuel)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tAbs)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tAbsHebdo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.tAbsMensuel)
+                                </td>
+                                @*<td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                </td>*@
+                                <td>
+                       @using (Html.BeginForm("Edit", "Indicateur",new { id = item.Id },FormMethod.Get, new { enctype = "multipart/form-data" }))
+                       {
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <input type="submit" value="Editer" class="btn btn-primary" />
+                                        </div>
+                                    </div>
+                       }
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("Details", "Indicateur", new { id = item.Id }, FormMethod.Get, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Details" class="btn btn-warning" />
+                                            </div>
+                                        </div>
+                                    }
+                                </td>
+                                <td>
+                                    @using (Html.BeginForm("Delete", "Indicateur", new { id = item.Id }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                    {
+                                        <div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Delete" class="btn btn-danger" />
+                                            </div>
+                                        </div>
+                                    }
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </br>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-5">
+            <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div>
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,12 @@ namespace Domain.Entity
 
         public String description { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime dateCreation { get; set; }
         public String etatAlerte { get; set; }
 
         public String reponseAlerte { get; set; }
-
+        [DataType(DataType.Date)]
         public DateTime dateReponse { get; set; }
 
         public int? indicateurId { get; set; }

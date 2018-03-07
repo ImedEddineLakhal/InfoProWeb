@@ -16,5 +16,24 @@ namespace Data.Repository
         {
 
         }
+        ReportContext context = new ReportContext();
+        public User getByLogin(string login)
+        {
+
+            var user = context.users.FirstOrDefault(a => a.login == login);
+
+
+            if (user != null)
+            {
+
+                return user;
+            }
+
+
+            else
+            {
+                return null;
+            }
+            }
     }
 }

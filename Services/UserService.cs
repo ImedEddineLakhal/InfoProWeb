@@ -46,9 +46,9 @@ namespace Services
             return uow.UserRepository.GetAll();
         }
 
-        public User getById(string champ)
+        public User getBylogin(string login)
         {
-            throw new NotImplementedException();
+            return uow.UserRepository.getByLogin(login);
         }
 
         public User getById(int? id)

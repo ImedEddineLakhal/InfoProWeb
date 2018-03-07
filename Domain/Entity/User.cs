@@ -10,18 +10,23 @@ namespace Domain.Entity
     public class User
     {
         public int Id { get; set; }
-        public String login { get; set; }
+        public string login { get; set; }
 
-        public String password { get; set; }
+        //public String password { get; set; }
 
-        public String nom { get; set; }
-        public String prenom { get; set; }
+        public string nomPrenom { get; set; }
+        //public String prenom { get; set; }
 
-        public String role { get; set; }
+        public string role { get; set; }
 
-        public String responsable { get; set; }
+        public DateTime logEntree { get; set; }
+        public DateTime logSortie { get; set; }
 
-       
+        //public String responsable { get; set; }
+
+        public virtual ICollection<Groupe> groupes { get; set; }
+
+
 
 
     }

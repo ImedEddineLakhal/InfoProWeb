@@ -144,5 +144,29 @@ namespace MVCWEB.Controllers
                 return View();
             }
         }
+        [HttpGet]
+        public ActionResult FindPlaning(int? Id)
+        {
+            Planing item = service.getById(Id);
+
+
+            //var a = new EmployeeViewModel();
+            //a.Id = item.Id;
+            //a.userName = item.userName;
+            //a.pseudoName = item.pseudoName;
+            //a.IdAD = (int)item.userId;
+            //a.IdHermes = item.IdHermes;
+            //a.Activite = item.Activite;
+            //a.role = item.role;
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_AlerteDeSuppression", item);
+            }
+
+            else
+            {
+                return View(item);
+            }
+        }
     }
 }

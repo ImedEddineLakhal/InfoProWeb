@@ -16,7 +16,7 @@ namespace Services
         void SaveChange();
         User findUserBy(String champ);
         User getById(int? id);
-        User getById(String champ);
+        User getBylogin(String champ);
         IEnumerable<User> GetAll();
 
         void Dispose();

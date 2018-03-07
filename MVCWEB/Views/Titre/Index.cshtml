@@ -1,0 +1,25 @@
+﻿@section test{
+    <html>
+<body>
+    <div class="row">
+
+        <div class="row">
+            <div class="col-lg-6">
+                @using (Html.BeginForm("Create", "Titre", FormMethod.Post))
+                {
+                    <input id="Submit1" type="submit" value="Creer Titre" class="btn-outline-secondary btn-lg active" style="width: 195px; height: 50px " />
+                }
+            </div>
+            <div class="col-lg-6">
+                @using (Html.BeginForm("List", "Titre", FormMethod.Post))
+                {
+                    <input id="Submit1" type="submit" value="Lister Titres" class="btn-outline-secondary btn-lg active" style="width: 195px; height: 50px " />
+                }
+            </div>
+
+        </div>
+        </div>
+</body>
+</html>
+
+}
