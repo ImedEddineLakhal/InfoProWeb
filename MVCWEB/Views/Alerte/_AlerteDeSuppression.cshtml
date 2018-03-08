@@ -12,6 +12,7 @@
             <div class="modal-body">
                 <p> Vouez étes sure de supprimer l'alerte  @Html.DisplayFor(modelItem => modelItem.description)</p>
             </div>
+            @*<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>*@
             @using (Html.BeginForm("Delete", "Alerte", new { id = Model.Id }, FormMethod.Get, new { enctype = "multipart/form-data" }))
             {
                 <div class="form-group">

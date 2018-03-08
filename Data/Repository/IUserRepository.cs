@@ -11,6 +11,7 @@ namespace Data.Repository
     public interface IUserRepository: IRepositoryBase<User>
     {
          User getByLogin(string login) ;
+         List<User> getByLoginList(string login);
 
     }
 }

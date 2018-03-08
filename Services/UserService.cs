@@ -61,5 +61,14 @@ namespace Services
         {
             uow.Commit();
         }
+
+        public User getByTempSortie(string login)
+        {
+            List<User> users = uow.UserRepository.getByLoginList(login);
+            var user =dbfactory.DataContext.users.FirstOrDefault(a=>a.logSortie==null);
+            return user;
+
+
+        }
     }
 }

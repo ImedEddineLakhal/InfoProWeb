@@ -79,6 +79,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -207,6 +208,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlerteController.cs" />
+    <Compile Include="Controllers\AuthentificationController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GroupeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -224,6 +226,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TestIndicateur.cs" />
+    <Compile Include="Models\UserAuthentif.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -443,6 +446,8 @@
     <Content Include="Views\TestIndicateur\Index.cshtml" />
     <Content Include="Views\TestIndicateur\Mensuel.cshtml" />
     <Content Include="Views\TestIndicateur\Trimestriel.cshtml" />
+    <Content Include="Views\Authentification\Connect.cshtml" />
+    <Content Include="Views\Authentification\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

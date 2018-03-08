@@ -35,5 +35,28 @@ namespace Data.Repository
                 return null;
             }
             }
+        public List<User> getByLoginList(string login) {
+            var usersquery = context.users.Where(a => a.login == login);
+
+            List<User> users = new List<User>();
+
+            if (usersquery != null)
+            {
+                foreach (User item in usersquery) {
+
+                    users.Add(item);
+                }
+
+                return users;
+            }
+
+
+            else
+            {
+                return null;
+            }
+
+        }
+        
     }
 }

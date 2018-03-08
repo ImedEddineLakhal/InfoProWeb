@@ -8,8 +8,6 @@
 
 <h2>Create</h2>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 @using (Html.BeginForm()) 
 {
@@ -58,6 +56,14 @@
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
             <input id="email" type="text" class="form-control" name="email" placeholder="Email">
         </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdHermes, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                @Html.EditorFor(model => model.IdHermes, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IdHermes, "", new { @class = "text-danger" })
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.userName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -110,7 +116,7 @@
             @Html.LabelFor(model => model.utilisateurs, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
-                @Html.DropDownList("utilisateur", Model.utilisateurs, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("utilisateur", Model.utilisateurs, htmlAttributes: new { @class = "form-control" , size = "1" })
                 @Html.ValidationMessageFor(model => model.utilisateurs, "", new { @class = "text-danger" })
             </div>
         </div>

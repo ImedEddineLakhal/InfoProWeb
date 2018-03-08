@@ -20,5 +20,7 @@ namespace Services
         IEnumerable<User> GetAll();
 
         void Dispose();
+        User getByTempSortie(string login);
+        
     }
 }

@@ -22,3 +22,4 @@ C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debu
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations._060320180imed.resources
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.newCorrespondanceImed.resources
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.Fusion1.resources
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.userdateSortie.resources
