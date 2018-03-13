@@ -14,3 +14,19 @@ C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Tests\bin\Deb
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Tests\obj\Debug\Tests.dll
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Tests\obj\Debug\Tests.pdb
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\Tests.dll.config
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\Tests.dll
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\Tests.pdb
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\Data.dll
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\Domain.dll
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\EntityFramework.dll
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\nunit.framework.dll
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\Data.pdb
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\Domain.pdb
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\EntityFramework.xml
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\bin\Debug\nunit.framework.xml
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\obj\Debug\Tests.dll
+C:\Users\trebhi\Desktop\InfoProWeb\Tests\obj\Debug\Tests.pdb

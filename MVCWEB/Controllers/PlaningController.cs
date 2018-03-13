@@ -21,6 +21,7 @@ namespace MVCWEB.Controllers
         }
         public ActionResult Index(String search, FormCollection form)
         {
+            string value = (string)Session["loginIndex"];
             var planings = service.GetAll();
             List<Planing> fVM = new List<Planing>();
             //string type = form["test"].ToString();
@@ -37,7 +38,16 @@ namespace MVCWEB.Controllers
 
 
             //}
-            return View(fVM);   //fVM.Take(10)
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                return View(fVM);   //fVM.Take(10)
+            }
         }
 
         // GET: Employee/Details/5

@@ -24,6 +24,7 @@ namespace MVCWEB.Controllers
         }
         public ActionResult Index(String search, FormCollection form,int? CallsToMake)
         {
+            string value = (string)Session["loginIndex"];
             var employees = service.GetAll();
             User user = new User();
             List<EmployeeViewModel> fVM = new List<EmployeeViewModel>();
@@ -69,7 +70,16 @@ namespace MVCWEB.Controllers
                 fVM = fVM.Where(p => p.userName.ToLower().Contains(search.ToLower())).ToList<EmployeeViewModel>();
 
             }
-            return View(fVM);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                return View(fVM);   //fVM.Take(10)
+            }
         }
         [HttpGet]
         public ActionResult RefreshTable(String search, FormCollection form, int? CallsToMake)

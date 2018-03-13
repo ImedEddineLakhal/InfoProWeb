@@ -27,9 +27,9 @@ namespace MVCWEB.Models
         public int? userId { get; set; }
 
         [ForeignKey("userId")]
-        public virtual User user { get; set; }
+        public virtual UserAuthentif user { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<UserAuthentif> Users { get; set; }
 
         public List<SelectListItem> utilisateurs = new List<SelectListItem>();
 

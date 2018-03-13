@@ -71,37 +71,13 @@
     <Compile Include="Migrations\201802280943049_third.Designer.cs">
       <DependentUpon>201802280943049_third.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803050928457_useremp.cs" />
-    <Compile Include="Migrations\201803050928457_useremp.Designer.cs">
-      <DependentUpon>201803050928457_useremp.cs</DependentUpon>
+    <Compile Include="Migrations\201803080733113_fusion.cs" />
+    <Compile Include="Migrations\201803080733113_fusion.Designer.cs">
+      <DependentUpon>201803080733113_fusion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803050944326_employeenew.cs" />
-    <Compile Include="Migrations\201803050944326_employeenew.Designer.cs">
-      <DependentUpon>201803050944326_employeenew.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803051614433_imednew.cs" />
-    <Compile Include="Migrations\201803051614433_imednew.Designer.cs">
-      <DependentUpon>201803051614433_imednew.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803060759182_date.cs" />
-    <Compile Include="Migrations\201803060759182_date.Designer.cs">
-      <DependentUpon>201803060759182_date.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803060858083_06032018.cs" />
-    <Compile Include="Migrations\201803060858083_06032018.Designer.cs">
-      <DependentUpon>201803060858083_06032018.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803060911337_060320180imed.cs" />
-    <Compile Include="Migrations\201803060911337_060320180imed.Designer.cs">
-      <DependentUpon>201803060911337_060320180imed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803061347542_newCorrespondanceImed.cs" />
-    <Compile Include="Migrations\201803061347542_newCorrespondanceImed.Designer.cs">
-      <DependentUpon>201803061347542_newCorrespondanceImed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803071406176_Fusion1.cs" />
-    <Compile Include="Migrations\201803071406176_Fusion1.Designer.cs">
-      <DependentUpon>201803071406176_Fusion1.cs</DependentUpon>
+    <Compile Include="Migrations\201803091553100_fixing error.cs" />
+    <Compile Include="Migrations\201803091553100_fixing error.Designer.cs">
+      <DependentUpon>201803091553100_fixing error.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,29 +118,11 @@
     <EmbeddedResource Include="Migrations\201802280943049_third.resx">
       <DependentUpon>201802280943049_third.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803050928457_useremp.resx">
-      <DependentUpon>201803050928457_useremp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803080733113_fusion.resx">
+      <DependentUpon>201803080733113_fusion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803050944326_employeenew.resx">
-      <DependentUpon>201803050944326_employeenew.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803051614433_imednew.resx">
-      <DependentUpon>201803051614433_imednew.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803060759182_date.resx">
-      <DependentUpon>201803060759182_date.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803060858083_06032018.resx">
-      <DependentUpon>201803060858083_06032018.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803060911337_060320180imed.resx">
-      <DependentUpon>201803060911337_060320180imed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803061347542_newCorrespondanceImed.resx">
-      <DependentUpon>201803061347542_newCorrespondanceImed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803071406176_Fusion1.resx">
-      <DependentUpon>201803071406176_Fusion1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803091553100_fixing error.resx">
+      <DependentUpon>201803091553100_fixing error.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

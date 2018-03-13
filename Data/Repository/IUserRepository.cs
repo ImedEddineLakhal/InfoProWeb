@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace Data.Repository
 {
-    public interface IUserRepository: IRepositoryBase<User>
+    public interface IUserRepository : IRepositoryBase<User>
     {
-         User getByLogin(string login) ;
+        User getByLogin(string login);
+        List<User> getByLoginList(string login);
 
     }
 }

@@ -22,3 +22,21 @@ C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debu
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations._060320180imed.resources
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.newCorrespondanceImed.resources
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.Fusion1.resources
+C:\Users\trebhi\Desktop\InfoProWeb\Data\bin\Debug\Data.dll.config
+C:\Users\trebhi\Desktop\InfoProWeb\Data\bin\Debug\Data.dll
+C:\Users\trebhi\Desktop\InfoProWeb\Data\bin\Debug\Data.pdb
+C:\Users\trebhi\Desktop\InfoProWeb\Data\bin\Debug\Domain.dll
+C:\Users\trebhi\Desktop\InfoProWeb\Data\bin\Debug\EntityFramework.dll
+C:\Users\trebhi\Desktop\InfoProWeb\Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\trebhi\Desktop\InfoProWeb\Data\bin\Debug\Domain.pdb
+C:\Users\trebhi\Desktop\InfoProWeb\Data\bin\Debug\EntityFramework.xml
+C:\Users\trebhi\Desktop\InfoProWeb\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.Migrations.first.resources
+C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.Migrations.second.resources
+C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.Migrations.third.resources
+C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.csproj.GenerateResource.Cache
+C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.dll
+C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.pdb
+C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.Migrations.fusion.resources
+C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.Migrations.fixingerror.resources

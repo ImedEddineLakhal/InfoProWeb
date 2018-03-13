@@ -1,4 +1,5 @@
-﻿using Domain.Entity;
+﻿
+using Domain.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-   public interface IUserService:IDisposable
+    public interface IUserService : IDisposable
     {
         void Add(User user);
 
@@ -20,5 +21,7 @@ namespace Services
         IEnumerable<User> GetAll();
 
         void Dispose();
+        User getByTempSortie(string login);
+
     }
 }

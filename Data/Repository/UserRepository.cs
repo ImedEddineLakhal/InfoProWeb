@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace Data.Repository
 {
-   public class UserRepository : RepositoryBase<User>, IUserRepository
+    public class UserRepository : RepositoryBase<User>, IUserRepository
     {
         public UserRepository(IDatabaseFactory dbFactory)
             : base(dbFactory)
         {
 
         }
+        
         ReportContext context = new ReportContext();
         public User getByLogin(string login)
         {
@@ -34,6 +35,32 @@ namespace Data.Repository
             {
                 return null;
             }
+
+        }
+        public List<User> getByLoginList(string login)
+        {
+            var usersquery = context.users.Where(a => a.login == login);
+
+            List<User> users = new List<User>();
+
+            if (usersquery != null)
+            {
+                foreach (User item in usersquery)
+                {
+
+                    users.Add(item);
+                }
+
+                return users;
             }
+
+
+            else
+            {
+                return null;
+            }
+
+        }
+
     }
 }

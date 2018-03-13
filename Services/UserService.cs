@@ -22,8 +22,8 @@ namespace Services
         public void Add(User user)
         {
 
-            uow.UserRepository.Add(user); 
-                }
+            uow.UserRepository.Add(user);
+        }
 
         public void Delete(User user)
         {
@@ -60,6 +60,15 @@ namespace Services
         public void SaveChange()
         {
             uow.Commit();
+        }
+
+        public User getByTempSortie(string login)
+        {
+            List<User> users = uow.UserRepository.getByLoginList(login);
+            var user = dbfactory.DataContext.users.FirstOrDefault(a => a.logSortie == null);
+            return user;
+
+
         }
     }
 }

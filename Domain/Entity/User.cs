@@ -19,8 +19,8 @@ namespace Domain.Entity
 
         public string role { get; set; }
 
-        public DateTime logEntree { get; set; }
-        public DateTime logSortie { get; set; }
+        public DateTime? logEntree { get; set; }
+        public DateTime? logSortie { get; set; }
 
         //public String responsable { get; set; }
 

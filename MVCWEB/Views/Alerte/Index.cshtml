@@ -11,121 +11,98 @@
         @Html.ActionLink("Create New", "Create")
     </p>
     <div class="table-responsive">
-        <div id="dataTable_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-            @using (Html.BeginForm())
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titre Alerte</th>
+                <th>Description</th>
+                <th>Date Creation</th>
+                <th>Etat Alerte</th>
+                <th>Reponse Alerte</th>
+                <th>Date Reponse</th>
+                <th>Action</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>ID</th>
+                <th>Titre Alerte</th>
+                <th>Description</th>
+                <th>Date Creation</th>
+                <th>Etat Alerte</th>
+                <th>Reponse Alerte</th>
+                <th>Date Reponse</th>
+                <th>Action</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+        <tbody>
+            @foreach (var item in Model)
             {
-                <div class="row">
-                    <div class="col-sm-12 col-md-6">
-                        <div class="dataTables_length" id="dataTable_length">
-                            <label>
-                                Show
-                                <select name="dataTable_length" aria-controls="dataTable" class="form-control form-control-sm">
-                                    <option name="test" id="test" value="10">10</option>
-                                    <option value="25">25</option>
-                                    <option value="50">50</option>
-                                    <option value="100">100</option>
-                                </select> entries
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-6">
-                        <div id="dataTable_filter" class="dataTables_filter">
-                            <label>
-                                Search:
-                                @Html.TextBox("search", null, new { id = "search", @class = "form-control form-control-sm" })
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            }
-            <div class="row">
-                <div class="col-sm-12">
-                    </br>
-
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                      <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.titreAlerte)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.description)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.dateCreation)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.etatAlerte)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.reponseAlerte)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.dateReponse)
-                        </th>
-                        <th></th>
-                        </tr>
-
-                        @foreach (var item in Model)
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.titreAlerte)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dateCreation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.etatAlerte)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.reponseAlerte)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dateReponse)
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("Edit", "Alerte", new { id = item.Id }, FormMethod.Get, new { enctype = "multipart/form-data" }))
                         {
-                            <tr>
-                               
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.titreAlerte)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.description)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.dateCreation)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.etatAlerte)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.reponseAlerte)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.dateReponse)
-                                </td>
-                                <td>
-                                    @using (Html.BeginForm("Edit", "Alerte", new { id = item.Id }, FormMethod.Get, new { enctype = "multipart/form-data" }))
-                                    {
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" value="Editer" class="btn btn-primary" />
-                                            </div>
-                                        </div>
-                                    }
-                                </td>
-                                <td>
-                                    @using (Html.BeginForm("Details", "Alerte", new { id = item.Id }, FormMethod.Get, new { enctype = "multipart/form-data" }))
-                                    {
-                                        <div class="form-group">
-                                            <div class="col-md-offset-2 col-md-10">
-                                                <input type="submit" value="Details" class="btn btn-warning" />
-                                            </div>
-                                        </div>
-                                    }
-                                </td>
-                               
-                                <td>
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <p data-placement="top" title="Delete">
-                                                <button id="imed" data-id="@item.Id" data-title="Supprimer Employé" data-toggle="modal" class="btn btn-danger">Delete</button>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <input type="submit" value="Editer" class="btn btn-primary" />
+                                </div>
+                            </div>
                         }
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("Details", "Alerte", new { id = item.Id }, FormMethod.Get, new { enctype = "multipart/form-data" }))
+                        {
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <input type="submit" value="Details" class="btn btn-warning" />
+                                </div>
+                            </div>
+                        }
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <p data-placement="top" title="Delete">
+                                    <button id="imed" data-id="@item.Id" data-title="Supprimer Employé" data-toggle="modal" class="btn btn-danger">Delete</button>
+                                </p>
+                            </div>
+                        </div>
 
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    </br>
+                    </td>
+
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 <div id="explorer1">
 
 
