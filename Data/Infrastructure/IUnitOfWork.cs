@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Data.Repository;
 
+
 namespace MyReports.Data.Infrastructure
 {
     public interface IUnitOfWork : IDisposable
@@ -23,6 +24,10 @@ namespace MyReports.Data.Infrastructure
         IEmployeeRepository EmployeeRepository { get; }
 
         IGroupeRepository GroupeRepository { get; }
+
+        IAppointmentDiaryRepository AppointmentDiaryRepository { get; }
+        //IDiaryEventsRepository DiaryEventsRepository { get; }
+        //IUtilsRepository UtilsRepository { get; }
 
         void CommitAsync();
         void Commit();

@@ -40,3 +40,22 @@ C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.dll
 C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.pdb
 C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.Migrations.fusion.resources
 C:\Users\trebhi\Desktop\InfoProWeb\Data\obj\Debug\Data.Migrations.fixingerror.resources
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\bin\Debug\Data.dll.config
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\bin\Debug\Data.dll
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\bin\Debug\Data.pdb
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\bin\Debug\Domain.dll
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\bin\Debug\EntityFramework.dll
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\bin\Debug\Domain.pdb
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\bin\Debug\EntityFramework.xml
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\obj\Debug\Data.Migrations.first.resources
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\obj\Debug\Data.Migrations.second.resources
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\obj\Debug\Data.Migrations.third.resources
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\obj\Debug\Data.Migrations.fusion.resources
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\obj\Debug\Data.csproj.GenerateResource.Cache
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\obj\Debug\Data.dll
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\obj\Debug\Data.pdb
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\obj\Debug\Data.Migrations.fixing.resources
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Data\obj\Debug\Data.Migrations.ajouttablecalendrier.resources

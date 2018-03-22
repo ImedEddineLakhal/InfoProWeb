@@ -7,13 +7,13 @@ namespace Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class fixingerror : IMigrationMetadata
+    public sealed partial class ajouttablecalendrier : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(fixingerror));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ajouttablecalendrier));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803091553100_fixing error"; }
+            get { return "201803211401457_ajout table calendrier"; }
         }
         
         string IMigrationMetadata.Source

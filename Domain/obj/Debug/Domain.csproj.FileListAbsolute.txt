@@ -8,3 +8,8 @@ C:\Users\trebhi\Desktop\InfoProWeb\Domain\bin\Debug\Domain.pdb
 C:\Users\trebhi\Desktop\InfoProWeb\Domain\obj\Debug\Domain.dll
 C:\Users\trebhi\Desktop\InfoProWeb\Domain\obj\Debug\Domain.pdb
 C:\Users\trebhi\Desktop\InfoProWeb\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Domain\bin\Debug\Domain.dll
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Domain\bin\Debug\Domain.pdb
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Domain\obj\Debug\Domain.dll
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\Domain\obj\Debug\Domain.pdb

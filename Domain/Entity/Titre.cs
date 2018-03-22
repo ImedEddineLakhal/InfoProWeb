@@ -14,8 +14,8 @@ namespace Domain.Entity
         public String activite { get; set; }
         public String type { get; set; }
         public string libelle { get; set; }
-        public int codeOperation { get; set; }
-        public int codeProvRelance { get; set; }
+        public string codeOperation { get; set; }
+        public string codeProvRelance { get; set; }
         [DataType(DataType.Date)]
         public DateTime dateInjection { get; set; }
         public int nombreFichesInjectees { get; set; }

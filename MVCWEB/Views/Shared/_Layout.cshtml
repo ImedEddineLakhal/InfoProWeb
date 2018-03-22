@@ -31,6 +31,12 @@
                         <span class="nav-link-text">Dashboard</span>
                     </a>
                 </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <a class="nav-link" href="@Url.Action("Index", "Calendar")">
+                        <i class="fa fa-fw fa-calendar"></i>
+                        <span class="nav-link-text">Calendrier</span>
+                    </a>
+                </li>
 
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                     <a class="nav-link" href="@Url.Action("Index", "Employee")">
@@ -348,6 +354,7 @@
         <!-- Custom scripts for this page-->
         <script src="/Content/Template1/js/sb-admin-datatables.min.js"></script>
         <script src="/Content/Template1/js/sb-admin-charts.min.js"></script>
+        @RenderSection("Scripts",false)
         @*<script type="text/javascript">
                 $(document).ready ( function () {
                     $(document).on("click", "#test", function () {

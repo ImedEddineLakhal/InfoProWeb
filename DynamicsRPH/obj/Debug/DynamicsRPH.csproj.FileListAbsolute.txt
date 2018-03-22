@@ -30,3 +30,6 @@ C:\Users\trebhi\Desktop\InfoProWeb\DynamicsRPH\bin\Debug\EntityFramework.SqlServ
 C:\Users\trebhi\Desktop\InfoProWeb\DynamicsRPH\bin\Debug\nunit.framework.xml
 C:\Users\trebhi\Desktop\InfoProWeb\DynamicsRPH\obj\Debug\DynamicsRPH.exe
 C:\Users\trebhi\Desktop\InfoProWeb\DynamicsRPH\obj\Debug\DynamicsRPH.pdb
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\DynamicsRPH\bin\Debug\DynamicsRPH.exe.config
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\DynamicsRPH\obj\Debug\DynamicsRPH.exe
+C:\Users\trebhi\Documents\Visual Studio 2015\Projects\InfoProWeb\DynamicsRPH\obj\Debug\DynamicsRPH.pdb

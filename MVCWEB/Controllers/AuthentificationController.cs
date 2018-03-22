@@ -23,7 +23,6 @@ namespace MVCWEB.Controllers
         }
         public ActionResult Index()
         {
-            Session.Clear();
             return View();
         }
 
@@ -152,6 +151,7 @@ namespace MVCWEB.Controllers
         {
             User user = service.getByTempSortie((string)Session["loginIndex"]);
             user.logSortie = DateTime.Now;
+            Session.Clear();
             if (TryUpdateModel(user))
             {
                 try

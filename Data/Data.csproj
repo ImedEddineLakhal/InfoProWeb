@@ -75,18 +75,26 @@
     <Compile Include="Migrations\201803080733113_fusion.Designer.cs">
       <DependentUpon>201803080733113_fusion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803091553100_fixing error.cs" />
-    <Compile Include="Migrations\201803091553100_fixing error.Designer.cs">
-      <DependentUpon>201803091553100_fixing error.cs</DependentUpon>
+    <Compile Include="Migrations\201803151600583_fixing.cs" />
+    <Compile Include="Migrations\201803151600583_fixing.Designer.cs">
+      <DependentUpon>201803151600583_fixing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803211401457_ajout table calendrier.cs" />
+    <Compile Include="Migrations\201803211401457_ajout table calendrier.Designer.cs">
+      <DependentUpon>201803211401457_ajout table calendrier.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportContext.cs" />
     <Compile Include="ReportContextInitializor.cs" />
     <Compile Include="Repository\AlerteRepository.cs" />
+    <Compile Include="Repository\AppointmentDiaryRepository.cs" />
+    <Compile Include="Repository\DiaryEventsRepository.cs" />
     <Compile Include="Repository\EmployeeRepository.cs" />
     <Compile Include="Repository\GroupeRepository.cs" />
     <Compile Include="Repository\IAlerteRepository.cs" />
+    <Compile Include="Repository\IAppointmentDiaryRepository.cs" />
+    <Compile Include="Repository\IDiaryEventsRepository.cs" />
     <Compile Include="Repository\IEmployeeRepository.cs" />
     <Compile Include="Repository\IGroupeRepository.cs" />
     <Compile Include="Repository\IIndicateurRepository.cs" />
@@ -94,19 +102,15 @@
     <Compile Include="Repository\IPlaningRepository.cs" />
     <Compile Include="Repository\ITitreRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Repository\IUtilsRepository.cs" />
     <Compile Include="Repository\PlaningRepository.cs" />
     <Compile Include="Repository\TitreRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Repository\UtilsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{524f4d45-8ffb-4ee0-90a4-79aad9f59aee}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802280926069_first.resx">
@@ -121,9 +125,18 @@
     <EmbeddedResource Include="Migrations\201803080733113_fusion.resx">
       <DependentUpon>201803080733113_fusion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803091553100_fixing error.resx">
-      <DependentUpon>201803091553100_fixing error.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803151600583_fixing.resx">
+      <DependentUpon>201803151600583_fixing.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803211401457_ajout table calendrier.resx">
+      <DependentUpon>201803211401457_ajout table calendrier.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{524f4d45-8ffb-4ee0-90a4-79aad9f59aee}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

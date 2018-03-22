@@ -16,7 +16,7 @@ namespace Data
             //Database.SetInitializer<MyAlfrescoContext>(new MyAlfrescoContextInitialiazor());
 
         }
-          public DbSet<Alerte> alertes { get; set; }
+        public DbSet<Alerte> alertes { get; set; }
 
         public DbSet<Employee> employees { get; set; }
 
@@ -27,6 +27,10 @@ namespace Data
         public DbSet<Indicateur> indicateurs { get; set; }
 
         public DbSet<Groupe> groupes { get; set; }
+
+        public DbSet<AppointmentDiary> appointmentDiarys { get; set; }
+        //public DbSet<Utils> utils { get; set; }
+        //public DbSet<DiaryEvents> diaryEvents { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

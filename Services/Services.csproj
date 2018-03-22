@@ -50,10 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlerteService.cs" />
+    <Compile Include="AppointmentDiaryService.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="DiaryEventService.cs" />
     <Compile Include="EmployeeService.cs" />
     <Compile Include="GroupeService.cs" />
     <Compile Include="IAlerteService.cs" />
+    <Compile Include="IAppointmentDiaryService.cs" />
+    <Compile Include="IDiaryEventService.cs" />
     <Compile Include="IEmployeeService.cs" />
     <Compile Include="IGroupeService.cs" />
     <Compile Include="IIndicateurService.cs" />
@@ -61,10 +65,12 @@
     <Compile Include="IPlaningService.cs" />
     <Compile Include="ITitreService.cs" />
     <Compile Include="IUserService.cs" />
+    <Compile Include="IUtilsService.cs" />
     <Compile Include="PlaningService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TitreService.cs" />
     <Compile Include="UserService.cs" />
+    <Compile Include="UtilsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
