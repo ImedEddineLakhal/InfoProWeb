@@ -16,5 +16,36 @@ namespace Data.Repository
         {
 
         }
+        ReportContext context = new ReportContext();
+
+        public List<Groupe> getListByCorrespondance(String nomCorrespondance)
+        {
+
+            //var groupe=context.groupes
+            //var blogs = from b in context.groupes
+            //            where b.employees.("B")
+            //            select b;
+            //context.groupes.Where
+           
+            return null;
+        }
+        public Employee getByLoginUser(string login)
+        {
+
+            var employee = context.employees.FirstOrDefault(a => a.userLogin == login);
+
+
+            if (employee != null)
+            {
+
+                return employee;
+            }
+
+
+            else
+            {
+                return null;
+            }
+        }
     }
 }

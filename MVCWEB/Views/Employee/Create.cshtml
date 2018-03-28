@@ -7,9 +7,9 @@
 }
 
 <h2>Create</h2>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">*@
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -92,7 +92,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.role, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <span class="input-group-addon">Role</span>
+                @*<span class="input-group-addon">Role</span>*@
                 @Html.EditorFor(model => model.role, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
             </div>
@@ -114,23 +114,113 @@
         </div>*@
         <div class="form-group">
             @Html.LabelFor(model => model.utilisateurs, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-10" id="sbar">
                 <span class="input-group-addon"><i class="glyphicon glyphicon-barcode"></i></span>
-                @Html.DropDownList("utilisateur", Model.utilisateurs, htmlAttributes: new { @class = "form-control" , size = "1" })
+                @Html.DropDownList("utilisateur", Model.utilisateurs, "-----Select----", htmlAttributes: new { @class = "form-control" , size = "1", @id = "testID"  })
                 @Html.ValidationMessageFor(model => model.utilisateurs, "", new { @class = "text-danger" })
             </div>
         </div>
+      
+
+            @*<div class="form-group">
+                @Html.LabelFor(model => model.groupes, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("groupes", Model.groupes, htmlAttributes: new { @class = "form-control", @multiple = "multiple" })
+                    @Html.ValidationMessageFor(model => model.groupes, "", new { @class = "text-danger" })
+
+                </div>
+            </div>*@
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-success" />
+            @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select class="form-control" id="typeGenerator" name="typeGenerator">
+                    <option>Select</option>
+                    <option>jpg</option>
+                    <option>png</option>
+                    <option>bmp</option>
+                </select>
+                <input type="file" name="file" />
+
+                @*@Html.DropDownList("SelectedItem", Model.listItems, "-----Select----")*@
+            </div>
+        </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button  data-id="@Model.Id" data-title="Enregistrer Employé" data-toggle="modal" class="btn btn-success">Create</button>
+                </div>
             </div>
         </div>
         
-    </div>
-}
+
+        <div id="explorer1">
+            @*@{ Html.RenderPartial("_AffectationUserError"); }*@
+            @*@Html.Partial("~/Views/Employee/_AffectationUserError.cshtml",Model)*@
+        </div>
+
+        <script src="/Content/Template1/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready ( function () {
+        $(document).on ("click", "#imed", function () {
+            var $buttonClicked = $(this);
+            var val = $("#testID").val();
+        if (val == '') {
+                @*$('#explorer1').load('@Url.Action("AffectationUserError", "Employee")');*@
+
+            LoadFirstPartialView();
+                }
+                else {
+                    @*return window.location.href = '@Url.Action("Create", "Employee")';*@
+            LoadFirstPartialView();
+
+                }
+            
+  });
+    });
+    function LoadFirstPartialView() {
+
+        $.ajax({
+
+            url: '/Employee/AffectationUserError',
+            type: 'GET',
+            contentType: 'application/html',
+            success: function (result) {
+
+                $('#explorer1').html(result);
+                $('#explorer1').show();
+            }
+        });
+    }
+        </script>
+        @*<script type="text/javascript">
+
+    $(document).ready ( function () {
+        $(document).on ("click", "#imed", function () {
+            var $buttonClicked = $(this);
+
+            if (document.getElementById("testID") == '') {
+                    $('#explorer1').replaceWith("_AffectationUserError");
+
+
+                }
+                else {
+                    return window.location.href = '@Url.Action("Employee", "Create")';
+
+                }
+            }
+
+        );
+
+
+    })
+
+
+        </script>*@
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-}
+
+    }
+    }

@@ -59,5 +59,13 @@ namespace Services
         {
             uow.Commit();
         }
+        public Groupe getByNom(string nom)
+        {
+
+            return uow.GroupeRepository.getByNom(nom);
+        }
+        public Groupe getConatinsByNom(string nom) {
+            return uow.GroupeRepository.getConatinsByNom(nom);
+        }
     }
 }

@@ -90,8 +90,26 @@ namespace MyFinance.Data.Infrastructure
         {
             get { return planingRepository = new PlaningRepository(dbFactory); }
         }
+        private IGroupesEmployeesRepository groupEmpRepository;
 
-
-       
+        public IGroupesEmployeesRepository GroupesEmployeesRepository
+        {
+            get { return groupEmpRepository = new GroupesEmployeesRepository(dbFactory); }
+        }
+        private IAttencanceHermesRepository attendanceHermesRepository;
+        public IAttencanceHermesRepository AttendanceHermesRepository
+        {
+            get { return attendanceHermesRepository = new AttendanceHermesRepository(dbFactory); }
+        }
+        private IAppelRepository appelRepository;
+        public IAppelRepository AppelRepository
+        {
+            get { return appelRepository = new AppelRepository(dbFactory); }
+        }
+        private IEventRepository eventRepository;
+        public IEventRepository EventRepository
+        {
+            get { return eventRepository = new EventRepository(dbFactory); }
+        }
     }
 }

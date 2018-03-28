@@ -9,7 +9,7 @@ namespace Domain.Entity
 {
   public class Employee
     {
-        public int Id { get; set; }
+        public int Id { get; set; } //this is a property not a variable
 
         public int IdHermes { get; set; }
 
@@ -21,8 +21,10 @@ namespace Domain.Entity
 
         public String role { get; set; }
         public String Activite { get; set; }
-        public virtual ICollection<Groupe> Group { get; set; }
+        public virtual ICollection<GroupesEmployees> employeesGroupes { get; set; }
         public virtual ICollection<Indicateur> Indicateurs { get; set; }
+        public String userLogin { get; set; }
+
         public int? userId { get; set; }
 
         [ForeignKey("userId")]
@@ -30,7 +32,14 @@ namespace Domain.Entity
 
         public virtual ICollection<User> Users { get; set; }
 
+        public byte[] Content { get; set; }
 
+        public String ContentType { get; set; }
+
+        public int getIdHermes()
+        {
+            return IdHermes;
+        }
     }
 
 

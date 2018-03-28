@@ -30,10 +30,20 @@ namespace MVCWEB.Models
         public virtual User user { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
+        public virtual List<Groupe> GroupeTests { get; set; }
+
 
         public List<SelectListItem> utilisateurs = new List<SelectListItem>();
 
+        public List<SelectListItem> groupes = new List<SelectListItem>();
+        public List<SelectListItem> groupesassocies = new List<SelectListItem>();
         public String userLogin { get; set; }
+
+        public List<String> tests = new List<String>();
+        public byte[] Content { get; set; }
+
+        public String ContentType { get; set; }
+        public String image { get; set; }
 
 
     }

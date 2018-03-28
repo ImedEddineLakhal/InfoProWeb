@@ -7,6 +7,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>InfoPro-Reports</title>
+    @*@Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/scripts")*@
+
+
     <!-- Bootstrap core CSS-->
     <link href="/Content/Template1/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
@@ -15,6 +20,10 @@
     <link href="/Content/Template1/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom styles for this template-->
     <link href="/Content/Template1/css/sb-admin.css" rel="stylesheet">
+    <script src="~/Content/Template1/vendor/jquery/jquery.min.js">
+    </script>
+    @*<link href="~/Content/fullcalendar.css" rel="stylesheet" />
+    <script src="~/Scripts/fullcalendar.js"></script>*@
 </head>
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <!-- Navigation-->
@@ -31,20 +40,30 @@
                         <span class="nav-link-text">Dashboard</span>
                     </a>
                 </li>
-            
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Calendrier">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-calendar"></i>
+                        <span class="nav-link-text">Calendrier</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseComponents">
+                        <li>
+                            <a href="@Url.Action("Index", "Calendar")">Planing</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index", "Autorisation")">Autorisations/Congés</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                     <a class="nav-link" href="@Url.Action("Index", "Employee")">
                         <i class="fa fa-fw fa-area-chart"></i>
                         <span class="nav-link-text" id="test" onclick="window.location.href('@Url.Action("Index", "Employee")')">Employées</span>
                     </a>
                 </li>
-            
-                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="@Url.Action("Index", "Planing")">
-                        <i class="fa fa-fw fa-table"></i>
-                        <span class="nav-link-text">Planing</span>
-                    </a>
-                </li>
+
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
                     <a class="nav-link" href="@Url.Action("Index", "Alerte")">
                         <i class="fa fa-fw fa-bullhorn"></i>
@@ -52,7 +71,7 @@
                     </a>
                 </li>
                 <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                    <a class="nav-link" href="@Url.Action("Index", "Indicateur")">
+                    <a class="nav-link" href="@Url.Action("Index", "Indicateurs")">
                         <i class="fa fa-fw fa-wrench"></i>
                         <span class="nav-link-text">Indicateur</span>
                     </a>
@@ -76,21 +95,21 @@
                     </a>
                 </li>
                 @*<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-                        <i class="fa fa-fw fa-wrench"></i>
-                        <span class="nav-link-text">Indicateur</span>
-                    </a>
-                    <ul class="sidenav-second-level collapse" id="collapseComponents">
-                        <li>
-                            <a href="@Url.Action("Index", "Alerte")">Examples</a>
-                        </li>
-                        <li>
-                            <a href="cards.html">Users</a>
-                        </li>
-                    </ul>
-                </li>*@
-                
-               
+                        <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                            <i class="fa fa-fw fa-wrench"></i>
+                            <span class="nav-link-text">Indicateur</span>
+                        </a>
+                        <ul class="sidenav-second-level collapse" id="collapseComponents">
+                            <li>
+                                <a href="@Url.Action("Index", "Alerte")">Examples</a>
+                            </li>
+                            <li>
+                                <a href="cards.html">Users</a>
+                            </li>
+                        </ul>
+                    </li>*@
+
+
             </ul>
             <ul class="navbar-nav sidenav-toggler">
                 <li class="nav-item">
@@ -280,14 +299,14 @@
             </div>
             <!-- Area Chart Example-->
             @*<div class="card mb-3">
-                <div class="card-header">
-                    <i class="fa fa-area-chart"></i> Area Chart Example
-                </div>
-                <div class="card-body">
-                    <canvas id="myAreaChart" width="100%" height="30"></canvas>
-                </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-            </div>*@
+                    <div class="card-header">
+                        <i class="fa fa-area-chart"></i> Area Chart Example
+                    </div>
+                    <div class="card-body">
+                        <canvas id="myAreaChart" width="100%" height="30"></canvas>
+                    </div>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>*@
             <div class="row">
             </div>
             <!-- Example DataTables Card-->
@@ -300,7 +319,7 @@
 
 
                 </div>
-                <div class="card-footer small text-muted"></div> 
+                <div class="card-footer small text-muted"></div>
             </div>
         </div>
         <!-- /.container-fluid-->
@@ -348,20 +367,21 @@
         <!-- Custom scripts for this page-->
         <script src="/Content/Template1/js/sb-admin-datatables.min.js"></script>
         <script src="/Content/Template1/js/sb-admin-charts.min.js"></script>
+        @RenderSection("Scripts",false)
         @*<script type="text/javascript">
-            $(document).ready ( function () {
-                $(document).on("click", "#test", function () {
-                    var $buttonClicked = $(this);
-                    $.ajax({
-                        url: '/Alerte/Index',
-                        type: "GET",
-                        contentType: "application/json; charset=utf-8"
-                    
-                    });
-                })
-            })
+                $(document).ready ( function () {
+                    $(document).on("click", "#test", function () {
+                        var $buttonClicked = $(this);
+                        $.ajax({
+                            url: '/Alerte/Index',
+                            type: "GET",
+                            contentType: "application/json; charset=utf-8"
 
-        </script>*@
+                        });
+                    })
+                })
+
+            </script>*@
         @RenderBody()
 
 

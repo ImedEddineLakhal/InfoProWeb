@@ -20,9 +20,35 @@ namespace MVCWEB.Controllers
             service = new TitreService();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string search, FormCollection form)
         {
-            return View();
+            string value = (string)Session["loginIndex"];
+            var titres = service.GetAll();
+            List<Titre> fVM = new List<Titre>();
+            //string type = form["test"].ToString();
+            //int numVal = Int32.Parse(type);
+
+            foreach (var item in titres)
+            {
+                fVM.Add(item);
+            }
+            if (!String.IsNullOrEmpty(search))
+            {
+
+                fVM = fVM.Where(p => p.libelle.ToLower().Contains(search.ToLower())).ToList<Titre>();
+
+
+            }
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                return View(fVM);   //fVM.Take(10)
+            }
         }
 
 
@@ -36,12 +62,13 @@ namespace MVCWEB.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            var titre = new Titre();
+            return View(titre);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Createe(Titre t, FormCollection form)
+        public ActionResult Create(Titre t, FormCollection form)
         {
             if (!ModelState.IsValid)
             {
@@ -61,7 +88,7 @@ namespace MVCWEB.Controllers
             };
             service.Add(titre);
             service.SaveChange();
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
 
 
@@ -89,7 +116,7 @@ namespace MVCWEB.Controllers
                 try
                 {
                     service.SaveChange();
-                    return RedirectToAction("List");
+                    return RedirectToAction("Index");
                 }
                 catch (DataException)
                 {
@@ -100,27 +127,6 @@ namespace MVCWEB.Controllers
 
         }
 
-        public ActionResult list(String search, FormCollection form)
-        {
-            var titres = service.GetAll();
-            List<Titre> fVM = new List<Titre>();
-            //string type = form["test"].ToString();
-            //int numVal = Int32.Parse(type);
-
-            foreach (var item in titres)
-            {
-                fVM.Add(item);
-            }
-            if (!String.IsNullOrEmpty(search))
-            {
-
-                fVM = fVM.Where(t => t.libelle.ToLower().Contains(search.ToLower())).ToList<Titre>();
-
-
-            }
-            return View(fVM);   //fVM.Take(10)
-        }
-
 
         public ActionResult Delete(int? id)
         {
@@ -129,7 +135,7 @@ namespace MVCWEB.Controllers
 
             service.Delete(titre);
             service.SaveChange();
-            return RedirectToAction("List");
+            return RedirectToAction("Index");
         }
 
 
@@ -140,7 +146,7 @@ namespace MVCWEB.Controllers
             {
 
 
-                return RedirectToAction("List");
+                return RedirectToAction("Index");
             }
             catch
             {

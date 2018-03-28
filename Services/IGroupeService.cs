@@ -21,5 +21,7 @@ namespace Services
         IEnumerable<Groupe> GetAll();
 
         void Dispose();
+        Groupe getByNom(String nom);
+        Groupe getConatinsByNom(string nom);
     }
 }

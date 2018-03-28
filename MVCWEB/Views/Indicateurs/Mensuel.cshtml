@@ -1,0 +1,78 @@
+﻿@section test{
+@model Domain.Entity.Indicateur
+
+@{
+    ViewBag.Title = "Mensuel";
+}
+
+<h2>Stats Par Agent Mensuelle</h2>
+
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<select id="agentDropDown" onchange="getSelected()">
+    <option value="0">Choisir Agent</option>
+    @foreach (var ag in ViewBag.AgentItems as IEnumerable<SelectListItem>)
+    {
+        <option value="@ag.Value">@ag.Text</option>
+    }
+
+</select>
+
+<select id="moisDropDown" onchange="getSelected()">
+    <option value="0">Choisir un mois</option>
+    @foreach (var mois in ViewBag.MoisItems as IEnumerable<SelectListItem>)
+    {
+        <option value="@mois.Value">@mois.Text</option>
+    }
+
+</select>
+
+<table id="Grid">
+    <tbody></tbody>
+
+</table>
+
+<script>
+
+    function getSelected()
+    {
+        $.ajax({
+            url: '@Url.Action("GetMensuelValues")',
+            type: 'POST',
+            datatype: 'json',
+            data: {
+                agentSel: $("#agentDropDown").val(),
+                moisSel: $("#moisDropDown").val()
+            },
+
+            success: function (c) {
+
+                //alert("Mois" + $("#moisDropDown").val() + "Selected");
+
+                //$.each(c, function (index, cal) {
+                //   $("#table").append('<tr><td>' + cal.name + '</td><td>' + cal.value + '</td></tr>');
+
+                //});
+                var tblHtml = "";
+                $.each(c, function (index, cal) {
+
+                    tblHtml += "<tr><td>" + cal.name + "</td>";
+                    tblHtml += "<td>" + cal.value + "</td></tr>";
+
+
+                });
+                $("#Grid > tbody").html(tblHtml);
+
+            },
+            error: function () {
+                //alert("Something went wrong..")
+            },
+        });
+
+    }
+
+</script>
+}

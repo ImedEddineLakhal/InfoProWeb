@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,9 @@ namespace Domain.Entity
         public String activite { get; set; }
         public String type { get; set; }
         public string libelle { get; set; }
-        public int codeOperation { get; set; }
-        public int codeProvRelance { get; set; }
+        public String codeOperation { get; set; }
+        public String codeProvRelance { get; set; }
+        [Column(TypeName = "Date")]
         [DataType(DataType.Date)]
         public DateTime dateInjection { get; set; }
         public int nombreFichesInjectees { get; set; }

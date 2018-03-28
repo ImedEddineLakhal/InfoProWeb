@@ -50,11 +50,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlerteService.cs" />
+    <Compile Include="AppelService.cs" />
+    <Compile Include="AttendanceHermesService.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="EmployeeService.cs" />
+    <Compile Include="EventService.cs" />
+    <Compile Include="GroupesEmployeService.cs" />
     <Compile Include="GroupeService.cs" />
     <Compile Include="IAlerteService.cs" />
+    <Compile Include="IAppelService.cs" />
+    <Compile Include="IAttendanceHermesService.cs" />
     <Compile Include="IEmployeeService.cs" />
+    <Compile Include="IEventService.cs" />
+    <Compile Include="IGroupeEmployeeService.cs" />
     <Compile Include="IGroupeService.cs" />
     <Compile Include="IIndicateurService.cs" />
     <Compile Include="IndicateurService.cs" />

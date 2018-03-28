@@ -59,5 +59,10 @@ namespace Services
         {
             uow.Commit();
         }
+        public Employee getByLoginUser(string login)
+        {
+
+            return uow.EmployeeRepository.getByLoginUser(login);
+        }
     }
 }

@@ -10,20 +10,20 @@ namespace Domain.Entity
     public class Planing
     {
         public int Id { get; set; }
+
+
         [DataType(DataType.Date)]
+        public DateTime dateDebut { get; set; } // int dans la conception de départ
 
-        public DateTime date { get; set; }
         [DataType(DataType.Date)]
-        public DateTime heureArrivee { get; set; } // int dans la conception de départ
-        [DataType(DataType.Date)]
+        public DateTime dateFin { get; set; }
 
-        public DateTime dateDepart { get; set; }
+        public string heureDebut { get; set; }
+        public string heureFin { get; set; }
 
-        public int duree { get; set; }  // a revoir
 
- 
+        public virtual ICollection<Groupe> groupes { get; set; }
 
-        public virtual ICollection<Titre> titres { get; set; }
 
 
 

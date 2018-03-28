@@ -10,6 +10,9 @@ namespace Data.Repository
 {
    public interface IGroupeRepository : IRepositoryBase<Groupe>
     {
+        Groupe getByNom(string nom);
+        List<Groupe> getListByCorrespondance(String nomCorrespondance);
+        Groupe getConatinsByNom(string nom);
 
     }
 }

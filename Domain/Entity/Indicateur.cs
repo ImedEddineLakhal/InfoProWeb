@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity
 {
-   public class Indicateur
+    public class Indicateur
     {
         public int Id { get; set; }
         public int agent { get; set; }
@@ -40,40 +40,17 @@ namespace Domain.Entity
         public int semaine { get; set; } // a revoir
 
         public String mois { get; set; } // a revoir
-        public float tempsAcwHebdo { get; set; } // a revoir
-
-        public float tempsAcwmensuel{ get; set; } // a revoir
-
-        public float tempsAtthebdo { get; set; } // a revoir
-        public float tempsAttmensuel { get; set; } // a revoir
-
-        public float tempsPauseBriefHebdo { get; set; } // a revoir
-
-        public float tempsPauseBriefMensuel{ get; set; } // a revoir
-
-        public float tempsPausePersoHebdo { get; set; } // a revoir
-
-        public float tempsPausePersoMensuel { get; set; } // a revoir
-
-
-        public float tempsPrievewHebdo{ get; set; } // a revoir
-
-        public float tempsPrievewMensuel { get; set; } // a revoir
 
         public int appelEmis { get; set; }
 
         public float tvente { get; set; }
 
-        public float tventeHebdo { get; set; }
-        public float tventeMensuel { get; set; }
-
         public float tAbs { get; set; }
-        public float tAbsHebdo { get; set; }
-        public float tAbsMensuel { get; set; }
-
 
         public int? employeeId { get; set; }
 
+        public int? customerId { get; set; }
+        public string nomCampagne { get; set; }
         [ForeignKey("employeeId")]
         public virtual Employee employee { get; set; }
 
@@ -86,6 +63,5 @@ namespace Domain.Entity
 
         [ForeignKey("titreId")]
         public virtual Titre titre { get; set; }
-
     }
 }

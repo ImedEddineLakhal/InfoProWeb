@@ -1,0 +1,94 @@
+﻿@section test{
+@model Domain.Entity.Indicateur
+
+@{
+    ViewBag.Title = "Hebdo";
+}
+
+<h2>Stats Par Agent Hebdo</h2>
+<div>
+    @Html.ActionLink("Back", "Index")
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<select id="agentDropDown" onchange="getSelected()">
+    <option value="0">Choisir Agent</option>
+    @foreach (var ag in ViewBag.AgentItems as IEnumerable<SelectListItem>)
+    {
+        <option value="@ag.Value">@ag.Text</option>
+    }
+
+</select>
+
+<select id="semaineDropDown" onchange="getSelected()">
+    <option value="0">Choisir une semaine</option>
+        @foreach (var semaine in ViewBag.SemaineItems as IEnumerable<SelectListItem>)
+        {
+            <option value="@semaine.Value">@semaine.Text</option>
+        }
+    
+</select>
+
+<table id="Grid">
+ <tbody></tbody>
+   
+</table>
+
+
+<script>
+    var semaineSel = $("#semaineDropDown").val();
+
+    function getSelected()
+    {
+
+        // var semaineSel = $("#semaineDropDown").val();
+
+        $.ajax({
+            url: '@Url.Action("GetHebdoValues")',
+            type: 'POST',
+            datatype: 'json',
+            data: {
+                agentSel: $("#agentDropDown").val(),
+                semaineSel: $("#semaineDropDown").val()
+            },
+
+            success: function (c) {
+               // alert("Semaine" + $("#semaineDropDown").val() + "Selected");
+                
+                //$.each(c, function (index, cal) {
+                //   $("#table").append('<tr><td>' + cal.name + '</td><td>' + cal.value + '</td></tr>');
+                
+                //});
+             
+                var tblHtml = "";
+                $.each(c, function (index, cal) {
+
+                    tblHtml += "<tr><td>" + cal.name + "</td>";
+                    tblHtml += "<td>" + cal.value + "</td></tr>";
+                  
+
+                });
+                $("#Grid > tbody").html(tblHtml);
+            },
+            error: function () {
+                 //alert("Something went wrong..")
+                //var tblHtml = "";
+                //$.each(c, function (index, cal) {
+
+                //    tblHtml += "<tr><td>" + cal.name + "</td>";
+                //    tblHtml += "<td>" + 0 + "</td></tr>";
+
+
+                //});
+                //$("#Grid > tbody").html(tblHtml);
+            },
+        });
+       
+    }
+   
+</script>
+
+
+}
+
+

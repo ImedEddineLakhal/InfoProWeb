@@ -62,7 +62,20 @@
 
     </dl>
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <select class="form-control" id="typeGenerator" name="typeGenerator">
+                <option>Select</option>
+                <option>jpg</option>
+                <option>png</option>
+                <option>bmp</option>
+            </select>
+            <input type="file" name="file" />
 
+            @*@Html.DropDownList("SelectedItem", Model.listItems, "-----Select----")*@
+        </div>
+    </div>
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 

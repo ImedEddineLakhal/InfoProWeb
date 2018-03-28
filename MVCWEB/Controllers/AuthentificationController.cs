@@ -15,58 +15,107 @@ namespace MVCWEB.Controllers
     {
         // GET: Authentification
         IUserService service;
+        IEmployeeService serviceEmployee;
+        IGroupeEmployeeService serviceGroupeEmp;
         public static String loginIndex;
-        public AuthentificationController() {
+        public AuthentificationController()
+        {
 
             service = new UserService();
+            serviceEmployee = new EmployeeService();
+            serviceGroupeEmp = new GroupesEmployeService();
         }
         public ActionResult Index()
         {
+            Session.Clear();
             return View();
         }
 
         // GET: Authentification/Details/5
-       
+
         public ActionResult Connect(UserAuthentif userAuthe)
         {
             string login = userAuthe.login;
             string password = userAuthe.password;
-            loginIndex = login;
-            try
-            {
-                DirectoryEntry Ldap = new DirectoryEntry("LDAP://info.local", login, password);
-                DirectorySearcher searcher = new DirectorySearcher(Ldap);
-                searcher.Filter = "(&(objectClass=user)(sAMAccountName=" + login + "))";
-                SearchResult result = searcher.FindOne();
-                DirectoryEntry DirEntry = result.GetDirectoryEntry();
-                /*if (result != null)
-                {
-                    Session["nomPrenom"] = (string)result.Properties["cn"][0];
-                    int groupCount = result.Properties["memberOf"].Count;
-                   /* for (int counter = 0; counter < groupCount; counter++)
-                    {
-                        groupsList.Append(DirEntry.Properties["memberOf"][counter]);
-                        groupsList.Append("|");
-                        msg = groupsList.ToString().Split('|');
-                        msg2 = msg[counter].Split(',');
-                        tab[counter] = msg2[0];
-                        Session["groupes"] = tab[0];
-                    }*/
-               // }
-            }
-            catch (Exception Ex)
-            {
-                ViewBag.message = ("login ou mot de passe incorrect !!");
-                return View("~/Views/Home/Index.cshtml");
-            }
-            User user = new User();
-            user.login = login;
-            user.logEntree = DateTime.Now;
-            //user.logSortie =new DateTime();
-            service.Add(user);
-            service.SaveChange();
+            Session["loginIndex"] = login;
 
-            return View();
+            if (password == null)
+            {
+                ViewBag.message = ("(*)Champ mot de passe obligatoire!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                try
+                {
+                    DirectoryEntry Ldap = new DirectoryEntry("LDAP://info.local", login, password);
+                    DirectorySearcher searcher = new DirectorySearcher(Ldap);
+                    searcher.Filter = "(&(objectClass=user)(sAMAccountName=" + login + "))";
+                    SearchResult result = searcher.FindOne();
+                    DirectoryEntry DirEntry = result.GetDirectoryEntry();
+                    /*if (result != null)
+                    {
+                        Session["nomPrenom"] = (string)result.Properties["cn"][0];
+                        int groupCount = result.Properties["memberOf"].Count;
+                       /* for (int counter = 0; counter < groupCount; counter++)
+                        {
+                            groupsList.Append(DirEntry.Properties["memberOf"][counter]);
+                            groupsList.Append("|");
+                            msg = groupsList.ToString().Split('|');
+                            msg2 = msg[counter].Split(',');
+                            tab[counter] = msg2[0];
+                            Session["groupes"] = tab[0];
+                        }*/
+                    // }
+                }
+                catch (Exception)
+                {
+                    ViewBag.message = ("login ou mot de passe incorrect!");
+                    ViewBag.color = "red";
+                    return View("~/Views/Authentification/Index.cshtml");
+                }
+                Employee emp = serviceEmployee.getByLoginUser(login);
+                if (emp != null)
+                {
+                    if ((emp.role).Equals("Manager"))
+                    {
+
+                        User user = new User();
+                        user.login = login;
+                        user.logEntree = DateTime.Now;
+                        //user.logSortie =new DateTime();
+                        service.Add(user);
+                        service.SaveChange();
+                        return RedirectToAction("IndexManagerGroupes", "Home",new { @id = emp.Id } );
+                    }
+                    else if ((emp.role).Equals("Agent"))
+                    {
+
+                        User user = new User();
+                        user.login = login;
+                        user.logEntree = DateTime.Now;
+                        //user.logSortie =new DateTime();
+                        service.Add(user);
+                        service.SaveChange();
+
+                        return RedirectToAction("IndexManagerAgent", "Home", emp);
+                    }
+                    else if ((emp.role).Equals("Admin"))
+                    {
+                        User user = new User();
+                        user.login = login;
+                        user.logEntree = DateTime.Now;
+                        //user.logSortie =new DateTime();
+                        service.Add(user);
+                        service.SaveChange();
+
+                        return View("~/Views/Home/Index.cshtml");
+                    }
+                    else return View("~/Views/Authentification/Index.cshtml");
+                }
+            }
+            return View("~/Views/Authentification/Index.cshtml");
         }
 
         // GET: Authentification/Create
@@ -134,9 +183,9 @@ namespace MVCWEB.Controllers
                 return View();
             }
         }
-        public ActionResult logout(object sender, EventArgs e)
+        public ActionResult logout()
         {
-            User user = service.getByTempSortie(loginIndex);
+            User user = service.getByTempSortie((string)Session["loginIndex"]);
             user.logSortie = DateTime.Now;
             if (TryUpdateModel(user))
             {
@@ -150,8 +199,6 @@ namespace MVCWEB.Controllers
                     ModelState.AddModelError("", "Erreur!!!!!");
                 }
             }
-            Session.Abandon();
-            Session.Clear();
             return RedirectToAction("Index");
         }
     }

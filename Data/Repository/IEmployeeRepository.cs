@@ -10,5 +10,7 @@ namespace Data.Repository
 {
    public interface IEmployeeRepository: IRepositoryBase<Employee>
     {
+        Employee getByLoginUser(string login);
+
     }
 }

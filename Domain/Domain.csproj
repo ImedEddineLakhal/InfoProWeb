@@ -44,10 +44,15 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Entity\Alerte.cs" />
+    <Compile Include="Entity\Appel.cs" />
+    <Compile Include="Entity\AttendanceHermes.cs" />
     <Compile Include="Entity\Employee.cs" />
+    <Compile Include="Entity\Event.cs" />
     <Compile Include="Entity\Groupe.cs" />
+    <Compile Include="Entity\GroupesEmployees.cs" />
     <Compile Include="Entity\Indicateur.cs" />
     <Compile Include="Entity\Planing.cs" />
+    <Compile Include="Entity\Temps.cs" />
     <Compile Include="Entity\Titre.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -107,16 +107,84 @@
     <Compile Include="Migrations\201803080922593_userdateSortie.Designer.cs">
       <DependentUpon>201803080922593_userdateSortie.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803091110099_First-Many-ToManyImed.cs" />
+    <Compile Include="Migrations\201803091110099_First-Many-ToManyImed.Designer.cs">
+      <DependentUpon>201803091110099_First-Many-ToManyImed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803130837568_aaa.cs" />
+    <Compile Include="Migrations\201803130837568_aaa.Designer.cs">
+      <DependentUpon>201803130837568_aaa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803130937328_migrationgroupe.cs" />
+    <Compile Include="Migrations\201803130937328_migrationgroupe.Designer.cs">
+      <DependentUpon>201803130937328_migrationgroupe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803131057270_titre_date_injection_imed.cs" />
+    <Compile Include="Migrations\201803131057270_titre_date_injection_imed.Designer.cs">
+      <DependentUpon>201803131057270_titre_date_injection_imed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803191037185_userLogin Employee Class.cs" />
+    <Compile Include="Migrations\201803191037185_userLogin Employee Class.Designer.cs">
+      <DependentUpon>201803191037185_userLogin Employee Class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803210800461_correspondancePhotoImed.cs" />
+    <Compile Include="Migrations\201803210800461_correspondancePhotoImed.Designer.cs">
+      <DependentUpon>201803210800461_correspondancePhotoImed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221315557_attendance-Hermes-imed.cs" />
+    <Compile Include="Migrations\201803221315557_attendance-Hermes-imed.Designer.cs">
+      <DependentUpon>201803221315557_attendance-Hermes-imed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803221319005_attendance-Hermes-imed3.cs" />
+    <Compile Include="Migrations\201803221319005_attendance-Hermes-imed3.Designer.cs">
+      <DependentUpon>201803221319005_attendance-Hermes-imed3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803230751074_classe-appel-imed.cs" />
+    <Compile Include="Migrations\201803230751074_classe-appel-imed.Designer.cs">
+      <DependentUpon>201803230751074_classe-appel-imed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803230755056_classe-appel-imed2.cs" />
+    <Compile Include="Migrations\201803230755056_classe-appel-imed2.Designer.cs">
+      <DependentUpon>201803230755056_classe-appel-imed2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803230832310_classe-appel-v0.3.cs" />
+    <Compile Include="Migrations\201803230832310_classe-appel-v0.3.Designer.cs">
+      <DependentUpon>201803230832310_classe-appel-v0.3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803231056117_classe-temps-imed.cs" />
+    <Compile Include="Migrations\201803231056117_classe-temps-imed.Designer.cs">
+      <DependentUpon>201803231056117_classe-temps-imed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803231058021_classe-temps-imed-01.cs" />
+    <Compile Include="Migrations\201803231058021_classe-temps-imed-01.Designer.cs">
+      <DependentUpon>201803231058021_classe-temps-imed-01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803271044015_eventFusion.cs" />
+    <Compile Include="Migrations\201803271044015_eventFusion.Designer.cs">
+      <DependentUpon>201803271044015_eventFusion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803271056447_eventFusion2.cs" />
+    <Compile Include="Migrations\201803271056447_eventFusion2.Designer.cs">
+      <DependentUpon>201803271056447_eventFusion2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReportContext.cs" />
     <Compile Include="ReportContextInitializor.cs" />
     <Compile Include="Repository\AlerteRepository.cs" />
+    <Compile Include="Repository\AppelRepository.cs" />
+    <Compile Include="Repository\AttendanceHermesRepository.cs" />
     <Compile Include="Repository\EmployeeRepository.cs" />
+    <Compile Include="Repository\EventRepository.cs" />
     <Compile Include="Repository\GroupeRepository.cs" />
+    <Compile Include="Repository\GroupesEmployeesRepository.cs" />
     <Compile Include="Repository\IAlerteRepository.cs" />
+    <Compile Include="Repository\IAppelRepository.cs" />
+    <Compile Include="Repository\IAttencanceHermesRepository.cs" />
     <Compile Include="Repository\IEmployeeRepository.cs" />
+    <Compile Include="Repository\IEventRepository.cs" />
     <Compile Include="Repository\IGroupeRepository.cs" />
+    <Compile Include="Repository\IGroupesEmployeesRepository.cs" />
     <Compile Include="Repository\IIndicateurRepository.cs" />
     <Compile Include="Repository\IndicateurRepository.cs" />
     <Compile Include="Repository\IPlaningRepository.cs" />
@@ -172,6 +240,51 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803080922593_userdateSortie.resx">
       <DependentUpon>201803080922593_userdateSortie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803091110099_First-Many-ToManyImed.resx">
+      <DependentUpon>201803091110099_First-Many-ToManyImed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803130837568_aaa.resx">
+      <DependentUpon>201803130837568_aaa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803130937328_migrationgroupe.resx">
+      <DependentUpon>201803130937328_migrationgroupe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803131057270_titre_date_injection_imed.resx">
+      <DependentUpon>201803131057270_titre_date_injection_imed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803191037185_userLogin Employee Class.resx">
+      <DependentUpon>201803191037185_userLogin Employee Class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803210800461_correspondancePhotoImed.resx">
+      <DependentUpon>201803210800461_correspondancePhotoImed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221315557_attendance-Hermes-imed.resx">
+      <DependentUpon>201803221315557_attendance-Hermes-imed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803221319005_attendance-Hermes-imed3.resx">
+      <DependentUpon>201803221319005_attendance-Hermes-imed3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803230751074_classe-appel-imed.resx">
+      <DependentUpon>201803230751074_classe-appel-imed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803230755056_classe-appel-imed2.resx">
+      <DependentUpon>201803230755056_classe-appel-imed2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803230832310_classe-appel-v0.3.resx">
+      <DependentUpon>201803230832310_classe-appel-v0.3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803231056117_classe-temps-imed.resx">
+      <DependentUpon>201803231056117_classe-temps-imed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803231058021_classe-temps-imed-01.resx">
+      <DependentUpon>201803231058021_classe-temps-imed-01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803271044015_eventFusion.resx">
+      <DependentUpon>201803271044015_eventFusion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803271056447_eventFusion2.resx">
+      <DependentUpon>201803271056447_eventFusion2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

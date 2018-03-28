@@ -20,5 +20,7 @@ namespace Services
         IEnumerable<Employee> GetAll();
 
         void Dispose();
+        Employee getByLoginUser(string login);
+
     }
 }

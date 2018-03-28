@@ -1,0 +1,104 @@
+﻿@{
+    ViewBag.Title = "IndexManagerAgentTest";
+    Layout = "~/Views/Shared/_Layout_user.cshtml";
+}
+@section test{
+@model IEnumerable<MVCWEB.Models.EmployeeViewModel>
+
+
+    @using (Html.BeginForm("IndexManagerAgent", "Home", FormMethod.Get, new { enctype = "multipart/form-data" }))
+    {
+
+        foreach (var item in Model)
+        {
+
+            <div class="col-lg-3 col-sm-6">
+                <div class="thumbnail">
+
+
+                    <div class="thumb">
+                        <a id="statimg" data-toggle="modal" data-id="@item.Id">
+                            <img href="#" src=@item.image alt="">
+                        </a>
+                        @*<div class="caption-overflow">
+                            <span>
+                                <a href="@item.image" data-popup="lightbox" class="btn border-white text-white btn-flat btn-icon btn-rounded"><i class="icon-plus3"></i></a>
+                                <a href="#" class="btn border-white text-white btn-flat btn-icon btn-rounded ml-5"><i class="icon-link2"></i></a>
+                            </span>
+                        </div>*@
+
+                    </div>
+
+                    <div class="caption">
+                        <h6 class="no-margin-top text-semibold"><a href="#" class="text-default">@Html.DisplayFor(modelItem => item.userName)</a> <a href="#" class="text-muted"><i class="icon-download pull-right"></i></a></h6>
+                        
+                        <h10 class="no-margin-top text-semibold">PseudoName:</h10> @Html.DisplayFor(modelItem =>
+item.pseudoName)
+                            <br />
+                        <h10 class="no-margin-top text-semibold">Role:</h10>  @Html.DisplayFor(modelItem => item.role)
+
+                        <br />
+                        <h10 class="no-margin-top text-semibold">Activité:</h10>  @Html.DisplayFor(modelItem => item.Activite)
+                        @*<button id="statimg" data-id="@item.Id" data-title="Supprimer Employé" data-toggle="modal" class="btn btn-danger">Delete</button>*@
+                        
+</div>
+                </div>
+            </div>
+
+        }
+        <div id="explorer10">
+
+
+        </div>
+    }
+
+<!-- /global stylesheets -->
+<!-- Core JS files -->
+
+
+<script type="text/javascript">
+
+          $(document).ready ( function () {
+              $(document).on ("click", "#statimg", function () {
+                  var $buttonClicked = $(this);
+                  var id = $buttonClicked.attr('data-id');
+              $.ajax({
+                  url: '/Home/FindEmployee',
+                  type: "GET",
+                  contentType: "application/json; charset=utf-8",
+                  data: { "Id": id },
+                  datatype: "html",
+                  async:true,
+                  success: function(data) {
+                      $('#explorer10').html(data);
+                      $('#modifier2').modal('show');
+                    },
+
+
+
+              });
+
+
+              })
+          })
+
+</script>
+}
+@section testProfile{
+
+    <a class="dropdown-toggle" data-toggle="dropdown">
+        <img src=@ViewBag.empConnectedImage alt="">
+        <span>@ViewBag.nameEmpConnected</span>
+        <i class="caret"></i>
+    </a>
+}
+@section testProfileLeft{
+    <a href="#" class="media-left"><img src=@ViewBag.empConnectedImage class="img-circle img-sm" alt=""></a>
+    <div class="media-body">
+        <span class="media-heading text-semibold">@ViewBag.nameEmpConnected</span>
+        <div class="text-size-mini text-muted">
+            <i class="icon-user text-size-small"></i> &nbsp;@ViewBag.pseudoNameEmpConnected
+        </div>
+    </div>
+}
+    @*}*@

@@ -21,6 +21,7 @@ namespace MVCWEB.Controllers
         }
         public ActionResult Index(String search, FormCollection form)
         {
+            string value = (string)Session["loginIndex"];
             var planings = service.GetAll();
             List<Planing> fVM = new List<Planing>();
             //string type = form["test"].ToString();
@@ -37,7 +38,16 @@ namespace MVCWEB.Controllers
 
 
             //}
-            return View(fVM);   //fVM.Take(10)
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                return View(fVM);   //fVM.Take(10)
+            }
         }
 
         // GET: Employee/Details/5
@@ -49,37 +59,20 @@ namespace MVCWEB.Controllers
             return View(planing);
         }
 
-        // GET: Employee/Create
-        public ActionResult Create()
+        public ActionResult EnregistrerPlaning(DateTime NewPlanDate, DateTime NewPlanDate2, string NewPlanTime, string NewPlanTime2,string planGroups)
         {
-            var planing = new Planing();
-            return View(planing);
-        }
-
-        // POST: Medcin/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Planing c, FormCollection form)
-        {
-            if (!ModelState.IsValid)
-            {
-                RedirectToAction("Create");
-            }
             Planing planing = new Planing
             {
-                Id = c.Id,
-                date = c.date,
-                dateDepart = c.dateDepart,
-                heureArrivee = c.heureArrivee,
-                duree=c.duree
+                
+                dateDebut= NewPlanDate,
+                dateFin = NewPlanDate2,
+                heureDebut = NewPlanTime,
+                heureFin = NewPlanTime2
 
             };
             service.Add(planing);
             service.SaveChange();
-
-
-            return RedirectToAction("Index");
-
+            return View("~/Views/Calendar/index.cshtml");
         }
 
         // GET: Employee/Edit/5

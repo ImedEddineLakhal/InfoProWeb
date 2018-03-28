@@ -11,9 +11,10 @@ namespace Domain.Entity
         public int Id { get; set; }
         public String nom { get; set; }
 
+
         public String responsable { get; set; }
 
-        public virtual ICollection<Employee> employees { get; set; }
+        public virtual ICollection<GroupesEmployees> groupesEmployees { get; set; }
 
 
     }
