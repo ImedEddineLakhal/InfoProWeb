@@ -14,3 +14,19 @@ C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Tests\bin\Deb
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Tests\obj\Debug\Tests.dll
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Tests\obj\Debug\Tests.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\Tests.dll.config
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\Tests.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\Tests.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\Data.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\Domain.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\EntityFramework.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\nunit.framework.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\Data.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\Domain.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\EntityFramework.xml
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\bin\Debug\nunit.framework.xml
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\obj\Debug\Tests.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Tests\obj\Debug\Tests.pdb

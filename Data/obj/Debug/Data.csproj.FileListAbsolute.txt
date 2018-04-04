@@ -38,3 +38,18 @@ C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debu
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.classetempsimed01.resources
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.eventFusion.resources
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.eventFusion2.resources
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\bin\Debug\Data.dll.config
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\bin\Debug\Data.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\bin\Debug\Data.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\bin\Debug\Domain.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\bin\Debug\EntityFramework.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\bin\Debug\Domain.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\bin\Debug\EntityFramework.xml
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\obj\Debug\Data.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\obj\Debug\Data.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\obj\Debug\Data.Migrations.newmigration.resources
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\obj\Debug\Data.csproj.GenerateResource.Cache
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Data\obj\Debug\Data.Migrations.migration1.resources

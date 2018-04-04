@@ -8,7 +8,7 @@
 
     @using (Html.BeginForm("IndexManagerAgent", "Home", FormMethod.Get, new { enctype = "multipart/form-data" }))
     {
-
+ 
         foreach (var item in Model)
         {
 
@@ -16,8 +16,8 @@
                 <div class="thumbnail">
 
 
-                    <div class="thumb">
-                        <a id="statimg" data-toggle="modal" data-id="@item.Id">
+                    <div class="thumb thumb-rounded">
+                        <a @*id="statimg" data-toggle="modal" data-id="@item.Id"*@>
                             <img href="#" src=@item.image alt="">
                         </a>
                         @*<div class="caption-overflow">
@@ -29,17 +29,24 @@
 
                     </div>
 
-                    <div class="caption">
-                        <h6 class="no-margin-top text-semibold"><a href="#" class="text-default">@Html.DisplayFor(modelItem => item.userName)</a> <a href="#" class="text-muted"><i class="icon-download pull-right"></i></a></h6>
+                    <div class="caption text-center">
+                        <h6 class="no-margin-top text-semibold"><a href="#" class="text-default">@Html.DisplayFor(modelItem => item.userName)</a></h6>
                         
-                        <h10 class="no-margin-top text-semibold">PseudoName:</h10> @Html.DisplayFor(modelItem =>
-item.pseudoName)
+                        <h10 class="no-margin-top text-semibold">PseudoName:</h10> @Html.DisplayFor(modelItem =>item.pseudoName)
                             <br />
                         <h10 class="no-margin-top text-semibold">Role:</h10>  @Html.DisplayFor(modelItem => item.role)
 
                         <br />
                         <h10 class="no-margin-top text-semibold">Activité:</h10>  @Html.DisplayFor(modelItem => item.Activite)
-                        @*<button id="statimg" data-id="@item.Id" data-title="Supprimer Employé" data-toggle="modal" class="btn btn-danger">Delete</button>*@
+                        <br />
+                        <div>
+                            <a href="@Url.Action("JournalierSelectedAgent", "Home", new { id = item.Id })" class="label label-success">Journalier</a>
+                            <a href="@Url.Action("HebdoSelectedAgent", "Home", new { id = item.Id })" class="label label-danger">Hebdo</a>
+                            <a href="@Url.Action("MensuelSelectedAgent", "Home", new { id = item.Id })" class="label label-primary">Mensuel</a>
+                            <a href="@Url.Action("TrimestrielSelectedAgent", "Home", new { id = item.Id })" class="label label-warning">Trimestriel</a>
+                            <a href="@Url.Action("AnnuelleSelectedAgent", "Home", new { id = item.Id })" class="label label-default">Annuelle</a>
+
+                        </div>
                         
 </div>
                 </div>

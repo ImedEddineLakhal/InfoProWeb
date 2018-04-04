@@ -12,3 +12,17 @@ C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Services\bin\
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Services\obj\Debug\Services.dll
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Services\obj\Debug\Services.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\bin\Debug\Services.dll.config
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\bin\Debug\Services.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\bin\Debug\Services.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\bin\Debug\Data.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\bin\Debug\Domain.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\bin\Debug\EntityFramework.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\bin\Debug\Data.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\bin\Debug\Domain.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\bin\Debug\EntityFramework.xml
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\obj\Debug\Services.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Services\obj\Debug\Services.pdb

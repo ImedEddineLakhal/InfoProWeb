@@ -14,3 +14,19 @@ C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\b
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\Data.pdb
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\nunit.framework.dll
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\DynamicsRPH\bin\Debug\nunit.framework.xml
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\DynamicsRPH.exe.config
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\DynamicsRPH.exe
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\DynamicsRPH.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\Data.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\Domain.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\EntityFramework.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\nunit.framework.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\Data.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\Domain.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\EntityFramework.xml
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\bin\Debug\nunit.framework.xml
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\obj\Debug\DynamicsRPH.csprojResolveAssemblyReference.cache
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\obj\Debug\DynamicsRPH.exe
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\DynamicsRPH\obj\Debug\DynamicsRPH.pdb

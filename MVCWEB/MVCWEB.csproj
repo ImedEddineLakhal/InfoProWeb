@@ -10037,15 +10037,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -10147,6 +10138,25 @@
     <Content Include="Views\Calendar\Autorisation.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="web.config" />
+    <Content Include="Views\Indicateurs\TestStat.cshtml" />
+    <Content Include="Views\Shared\_Layout_agent.cshtml" />
+    <Content Include="Views\Indicateurs\JournalierAgent.cshtml" />
+    <Content Include="Views\Indicateurs\HebdoAgent.cshtml" />
+    <Content Include="Views\Indicateurs\MensuelAgent.cshtml" />
+    <Content Include="Views\Indicateurs\TrimestrielAgent.cshtml" />
+    <Content Include="Views\Indicateurs\AnnuelleAgent.cshtml" />
+    <Content Include="Views\Home\JournalierSelectedAgent.cshtml" />
+    <Content Include="Views\Home\HebdoSelectedAgent.cshtml" />
+    <Content Include="Views\Home\MensuelSelectedAgent.cshtml" />
+    <Content Include="Views\Home\TrimestrielSelectedAgent.cshtml" />
+    <Content Include="Views\Home\AnnuelleSelectedAgent.cshtml" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

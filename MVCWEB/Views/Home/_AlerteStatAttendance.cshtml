@@ -6,6 +6,7 @@
 @*<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>*@
 
 
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
 
 @Html.AntiForgeryToken()
     @*<div class="modal fade" id="modifier3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -39,6 +40,7 @@
         </div>
     </div>*@
 
+
     <div class="modal fade" id="modifier2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
         <div class="modal-dialog" id="testmed" style="width: 1200px; " >
             <div class="modal-content">
@@ -48,6 +50,14 @@
                 </div>
                
                     <div class="modal-body">
+                        <select id="a" onchange="getSelected()">
+                            <option value="1095">1095</option>
+                            <option value="1087">1087</option>
+                        </select>
+                        <select id="b">
+                            <option value="1">se1</option>
+                            <option value="2">se2</option>
+                        </select>
                         <div class="row">
                             <div class="col-md-6">
                                 <!-- Basic radar chart -->
@@ -362,3 +372,31 @@
             chart.render();
         });
     </script>*@
+
+<script>
+
+
+    function getSelected()
+    {
+
+        $.ajax({
+            url: '@Url.Action("GetHebdoValues", "Indicateurs")',
+            type: 'POST',
+            datatype: 'json',
+            data: {
+                agentSel: $("#a").val(),
+                semaineSel: $('#b').val()
+
+            },
+
+            success: function (c) {
+                alert("success");
+            },
+            error: function () {
+                alert("error");
+            },
+        });
+
+    }
+
+</script>

@@ -64,9 +64,9 @@
     <script type="text/javascript" src="assets/js/plugins/forms/styling/switchery.min.js"></script>
     <script type="text/javascript" src="assets/js/plugins/ui/moment/moment.min.js"></script>
     <script type="text/javascript" src="assets/js/plugins/ui/fullcalendar/fullcalendar.min.js"></script>
-    <script type="text/javascript" src="assets/js/plugins/ui/fullcalendar/lang/ar.js"></script>
+    @*<script type="text/javascript" src="assets/js/plugins/ui/fullcalendar/lang/ar.js"></script>
     <script type="text/javascript" src="assets/js/core/app.js"></script>
-    <script type="text/javascript" src="assets/js/pages/extra_fullcalendar_advanced.js"></script>
+    <script type="text/javascript" src="assets/js/pages/extra_fullcalendar_advanced.js"></script>*@
     <!-- /core JS files -->
     <!-- Theme JS files -->
 
@@ -309,48 +309,56 @@
                             <ul class="navigation navigation-main navigation-accordion">
                                 <!-- Main -->
                                 <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
-                                <li class="active"><a href="index.html"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+                                <li><a href="index.html"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
+                                <li><a href="@Url.Action("ManagerGroupes", "Home")"><i class="icon-people"></i> <span>Groupes</span></a></li>
+                                  <li>
+                                    <a href="#"><i class="icon-graph"></i> <span>Suivie Par Agent</span></a>
+                                    <ul>
+                                        <li>
+                                            <a  href="@Url.Action("ManagerJournalierAgent", "Home")">Journalier </a>
+                                        </li>
+                                        <li> 
+                                        <a  href="@Url.Action("ManagerHebdoAgent", "Home")"> Hebdomadaire </a></li>
+                                        <li> 
+                                        <a  href="@Url.Action("ManagerMensuelAgent", "Home")">Mensuel </a></li>
+                                        <li>
+                                            <a href="@Url.Action("ManagerTrimestrielleAgent", "Home")"> Trimestriel </a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("ManagerAnnuelleAgent", "Home")"> Annuelle</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li>
-                                    <a href="#"><i class="icon-stack2"></i> <span>Suivie Par Agent</span></a>
+                                    <a href="#"><i class="icon-statistics"></i> <span>Suivie Par Activité</span></a>
                                     <ul>
                                         <li><a href="layout_navbar_fixed.html">Journalier</a></li>
-                                        <li><a href="layout_navbar_sidebar_fixed.html">Hebdo</a></li>
+                                        <li><a href="layout_navbar_sidebar_fixed.html">Hebdomadaire</a></li>
                                         <li><a href="layout_sidebar_fixed_native.html">Mensuel</a></li>
                                         <li><a href="layout_navbar_hideable.html">Trimestriel</a></li>
-                                        <li><a href="layout_navbar_hideable_sidebar.html">Annuel</a></li>
+                                        <li><a href="layout_navbar_hideable_sidebar.html">Annuelle</a></li>
 
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="icon-stack2"></i> <span>Suivie Par Activité</span></a>
+                                    <a href="#"><i class="icon-stats-dots"></i> <span>Suivie Par Compagne</span></a>
                                     <ul>
                                         <li><a href="layout_navbar_fixed.html">Journalier</a></li>
-                                        <li><a href="layout_navbar_sidebar_fixed.html">Hebdo</a></li>
+                                        <li><a href="layout_navbar_sidebar_fixed.html">Hebdomadaire</a></li>
                                         <li><a href="layout_sidebar_fixed_native.html">Mensuel</a></li>
                                         <li><a href="layout_navbar_hideable.html">Trimestriel</a></li>
-                                        <li><a href="layout_navbar_hideable_sidebar.html">Annuel</a></li>
+                                        <li><a href="layout_navbar_hideable_sidebar.html">Annuelel</a></li>
 
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="icon-stack2"></i> <span>Suivie Par Compagne</span></a>
+                                    <a href="#"><i class="icon-stats-bars"></i> <span>Suivie Par Injection</span></a>
                                     <ul>
                                         <li><a href="layout_navbar_fixed.html">Journalier</a></li>
-                                        <li><a href="layout_navbar_sidebar_fixed.html">Hebdo</a></li>
+                                        <li><a href="layout_navbar_sidebar_fixed.html">Hebdomadaire</a></li>
                                         <li><a href="layout_sidebar_fixed_native.html">Mensuel</a></li>
                                         <li><a href="layout_navbar_hideable.html">Trimestriel</a></li>
-                                        <li><a href="layout_navbar_hideable_sidebar.html">Annuel</a></li>
-
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="icon-stack2"></i> <span>Suivie Par Injection</span></a>
-                                    <ul>
-                                        <li><a href="layout_navbar_fixed.html">Journalier</a></li>
-                                        <li><a href="layout_navbar_sidebar_fixed.html">Hebdo</a></li>
-                                        <li><a href="layout_sidebar_fixed_native.html">Mensuel</a></li>
-                                        <li><a href="layout_navbar_hideable.html">Trimestriel</a></li>
-                                        <li><a href="layout_navbar_hideable_sidebar.html">Annuel</a></li>
+                                        <li><a href="layout_navbar_hideable_sidebar.html">Annuelle</a></li>
 
                                     </ul>
                                 </li>

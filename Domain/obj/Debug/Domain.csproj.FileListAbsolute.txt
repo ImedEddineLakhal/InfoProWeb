@@ -3,3 +3,8 @@ C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Domain\bin\De
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Domain\obj\Debug\Domain.dll
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Domain\obj\Debug\Domain.pdb
 C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Domain\bin\Debug\Domain.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Domain\bin\Debug\Domain.pdb
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Domain\obj\Debug\Domain.dll
+C:\Users\sana.bensalah\Desktop\projet actuel\InfoProWeb-master\Domain\obj\Debug\Domain.pdb

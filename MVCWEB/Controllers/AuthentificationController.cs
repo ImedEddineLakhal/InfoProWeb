@@ -99,7 +99,7 @@ namespace MVCWEB.Controllers
                         service.Add(user);
                         service.SaveChange();
 
-                        return RedirectToAction("IndexManagerAgent", "Home", emp);
+                        return RedirectToAction("JournalierAgent", "Indicateurs", new { @id = emp.Id });
                     }
                     else if ((emp.role).Equals("Admin"))
                     {

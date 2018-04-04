@@ -23,12 +23,22 @@ namespace MVCWEB.Controllers
             serviceGroupeEmp = new GroupesEmployeService();
 
         }
+      
+      
         [HttpGet]
         public ActionResult IndexManagerAgentTest(int id)
         {
             string value = (string)Session["loginIndex"];
             Employee empConnected = service.getById(idEmpConnecte);
-            if (empConnected.Content != null)
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                if (empConnected.Content != null)
             {
                 String strbase64 = Convert.ToBase64String(empConnected.Content);
                 String empConnectedImage = "data:" + empConnected.ContentType + ";base64," + strbase64;
@@ -101,24 +111,19 @@ namespace MVCWEB.Controllers
             }
 
 
-
-
-            if (value == null)
-            {
-                ViewBag.message = ("session cleared!");
-                ViewBag.color = "red";
-                return View("~/Views/Authentification/Index.cshtml");
-            }
-            else
-            {
+          
                 return View(fVM);   //fVM.Take(10)
             }
 
         }
         [HttpGet]
-        public ActionResult IndexManagerAgent()
+        public ActionResult IndexManagerAgent(int? id)
         {
             string value = (string)Session["loginIndex"];
+            if (id == null)
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            idEmpConnecte = (int)id;
+          //  Employee item = service.getById(id);
             var employees = service.GetAll();
             User user = new User();
             List<EmployeeViewModel> fVM = new List<EmployeeViewModel>();
@@ -187,7 +192,8 @@ namespace MVCWEB.Controllers
             }
             else
             {
-                return View(fVM);   //fVM.Take(10)
+                //  return View(fVM);   //fVM.Take(10)
+                return RedirectToAction("JournalierAgent", "Home", new { @id = idEmpConnecte });
             }
 
         }
@@ -254,6 +260,24 @@ namespace MVCWEB.Controllers
                 return View(a);   //fVM.Take(10)
             }
         }
+        
+             public ActionResult ManagerGroupes()
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getById(idEmpConnecte);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                int IdEmpConnected = empConnected.Id;
+                return RedirectToAction("IndexManagerGroupes", "Home", new { @id = IdEmpConnected });
+            }
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -292,10 +316,361 @@ namespace MVCWEB.Controllers
 
             return View();
         }
-        public ActionResult TestChart()
+        public ActionResult TestChart(int? id)
         {
-
+         
             return View();
         }
+
+        //controllers for Manager Template 
+        public ActionResult ManagerJournalierAgent()
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getById(idEmpConnecte);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                int IdEmpConnected = empConnected.Id;
+                return RedirectToAction("Index", "Indicateurs", new { @id = IdEmpConnected });
+            }
+        }
+
+        public ActionResult ManagerHebdoAgent()
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getById(idEmpConnecte);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                int IdEmpConnected = empConnected.Id;
+                return RedirectToAction("Hebdo", "Indicateurs", new { @id = IdEmpConnected });
+            }
+        }
+
+        public ActionResult ManagerMensuelAgent()
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getById(idEmpConnecte);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                int IdEmpConnected = empConnected.Id;
+                return RedirectToAction("Mensuel", "Indicateurs", new { @id = IdEmpConnected });
+            }
+        }
+
+        public ActionResult ManagerTrimestrielleAgent()
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getById(idEmpConnecte);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                int IdEmpConnected = empConnected.Id;
+                return RedirectToAction("Trimestriel", "Indicateurs", new { @id = IdEmpConnected });
+            }
+        }
+
+        public ActionResult ManagerAnnuelleAgent()
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getById(idEmpConnecte);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                int IdEmpConnected = empConnected.Id;
+                return RedirectToAction("Annuelle", "Indicateurs", new { @id = IdEmpConnected });
+            }
+        }
+        // Fin Controllers in Manager Template
+
+        //Controllers in Agent Template   
+        public ActionResult JournalierAgent()
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getByLoginUser(value);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                int IdEmpConnected = empConnected.Id;
+                return RedirectToAction("JournalierAgent", "Indicateurs", new { @id = IdEmpConnected });
+            }
+        }
+        public ActionResult HebdoAgent()
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getByLoginUser(value);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                int IdEmpConnected = empConnected.Id;
+                return RedirectToAction("HebdoAgent", "Indicateurs", new { @id = IdEmpConnected });
+            }
+        }
+        public ActionResult MensuelAgent()
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getByLoginUser(value);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                int IdEmpConnected = empConnected.Id;
+                return RedirectToAction("MensuelAgent", "Indicateurs", new { @id = IdEmpConnected });
+            }
+        }
+        public ActionResult TrimestrielAgent()
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getByLoginUser(value);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                int IdEmpConnected = empConnected.Id;
+                return RedirectToAction("TrimestrielAgent", "Indicateurs", new { @id = IdEmpConnected });
+            }
+        }
+        public ActionResult AnnuelleAgent()
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getByLoginUser(value);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                int IdEmpConnected = empConnected.Id;
+                return RedirectToAction("AnnuelleAgent", "Indicateurs", new { @id = IdEmpConnected });
+            }
+        }
+        //Fin Controllers in Agent Template 
+
+        // Controllers in Manager Template for selected agent
+        public ActionResult JournalierSelectedAgent(int? id)
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getByLoginUser(value);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                if (empConnected.Content != null)
+                {
+                    String strbase64 = Convert.ToBase64String(empConnected.Content);
+                    String empConnectedImage = "data:" + empConnected.ContentType + ";base64," + strbase64;
+                    ViewBag.empConnectedImage = empConnectedImage;
+                }
+                ViewBag.nameEmpConnected = empConnected.userName;
+                ViewBag.pseudoNameEmpConnected = empConnected.pseudoName;
+
+                service = new EmployeeService();
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Employee emp = service.getById(id);
+                if (emp == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(emp);
+            }
+        }
+        public ActionResult HebdoSelectedAgent(int? id)
+        {
+            var semaines = new List<SelectListItem>();
+            for (int m = 1; m <= 52; m++)
+            {
+                var val = m.ToString();
+
+                semaines.Add(new SelectListItem { Text = "Semaine" + val, Value = val });
+            }
+            ViewBag.SemaineItems = semaines;
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getByLoginUser(value);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                if (empConnected.Content != null)
+                {
+                    String strbase64 = Convert.ToBase64String(empConnected.Content);
+                    String empConnectedImage = "data:" + empConnected.ContentType + ";base64," + strbase64;
+                    ViewBag.empConnectedImage = empConnectedImage;
+                }
+                ViewBag.nameEmpConnected = empConnected.userName;
+                ViewBag.pseudoNameEmpConnected = empConnected.pseudoName;
+
+                service = new EmployeeService();
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Employee emp = service.getById(id);
+                if (emp == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(emp);
+            }
+        }
+        public ActionResult MensuelSelectedAgent(int? id)
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getByLoginUser(value);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                if (empConnected.Content != null)
+                {
+                    String strbase64 = Convert.ToBase64String(empConnected.Content);
+                    String empConnectedImage = "data:" + empConnected.ContentType + ";base64," + strbase64;
+                    ViewBag.empConnectedImage = empConnectedImage;
+                }
+                ViewBag.nameEmpConnected = empConnected.userName;
+                ViewBag.pseudoNameEmpConnected = empConnected.pseudoName;
+
+                service = new EmployeeService();
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Employee emp = service.getById(id);
+                if (emp == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(emp);
+            }
+        }
+        public ActionResult TrimestrielSelectedAgent(int? id)
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getByLoginUser(value);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                if (empConnected.Content != null)
+                {
+                    String strbase64 = Convert.ToBase64String(empConnected.Content);
+                    String empConnectedImage = "data:" + empConnected.ContentType + ";base64," + strbase64;
+                    ViewBag.empConnectedImage = empConnectedImage;
+                }
+                ViewBag.nameEmpConnected = empConnected.userName;
+                ViewBag.pseudoNameEmpConnected = empConnected.pseudoName;
+
+                service = new EmployeeService();
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Employee emp = service.getById(id);
+                if (emp == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(emp);
+            }
+        }
+        public ActionResult AnnuelleSelectedAgent(int? id)
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getByLoginUser(value);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                if (empConnected.Content != null)
+                {
+                    String strbase64 = Convert.ToBase64String(empConnected.Content);
+                    String empConnectedImage = "data:" + empConnected.ContentType + ";base64," + strbase64;
+                    ViewBag.empConnectedImage = empConnectedImage;
+                }
+                ViewBag.nameEmpConnected = empConnected.userName;
+                ViewBag.pseudoNameEmpConnected = empConnected.pseudoName;
+
+                service = new EmployeeService();
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Employee emp = service.getById(id);
+                if (emp == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(emp);
+            }
+        }
+        // Fin Controllers in Manager Template for selected agent
     }
 }

@@ -23,6 +23,9 @@ namespace Domain.Entity
         public String Activite { get; set; }
         public virtual ICollection<GroupesEmployees> employeesGroupes { get; set; }
         public virtual ICollection<Indicateur> Indicateurs { get; set; }
+
+        public virtual ICollection<Event> events { get; set; }
+
         public String userLogin { get; set; }
 
         public int? userId { get; set; }

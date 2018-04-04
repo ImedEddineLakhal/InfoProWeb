@@ -15,6 +15,7 @@ namespace Domain.Entity
         public String responsable { get; set; }
 
         public virtual ICollection<GroupesEmployees> groupesEmployees { get; set; }
+        public virtual ICollection<Event> events { get; set; }
 
 
     }
