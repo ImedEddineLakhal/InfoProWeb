@@ -527,6 +527,41 @@ namespace MVCWEB.Controllers
                 return View(emp);
             }
         }
+
+        public ActionResult JournalierSelectedAgent1(int? id)
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getByLoginUser(value);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                if (empConnected.Content != null)
+                {
+                    String strbase64 = Convert.ToBase64String(empConnected.Content);
+                    String empConnectedImage = "data:" + empConnected.ContentType + ";base64," + strbase64;
+                    ViewBag.empConnectedImage = empConnectedImage;
+                }
+                ViewBag.nameEmpConnected = empConnected.userName;
+                ViewBag.pseudoNameEmpConnected = empConnected.pseudoName;
+
+                service = new EmployeeService();
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Employee emp = service.getById(id);
+                if (emp == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(emp);
+            }
+        }
         public ActionResult HebdoSelectedAgent(int? id)
         {
             var semaines = new List<SelectListItem>();

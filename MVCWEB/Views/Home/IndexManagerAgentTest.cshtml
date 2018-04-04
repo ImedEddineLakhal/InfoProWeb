@@ -40,7 +40,7 @@
                         <h10 class="no-margin-top text-semibold">Activité:</h10>  @Html.DisplayFor(modelItem => item.Activite)
                         <br />
                         <div>
-                            <a href="@Url.Action("JournalierSelectedAgent", "Home", new { id = item.Id })" class="label label-success">Journalier</a>
+                            <a href="@Url.Action("JournalierSelectedAgent1", "Home", new { id = item.Id })" class="label label-success">Journalier</a>
                             <a href="@Url.Action("HebdoSelectedAgent", "Home", new { id = item.Id })" class="label label-danger">Hebdo</a>
                             <a href="@Url.Action("MensuelSelectedAgent", "Home", new { id = item.Id })" class="label label-primary">Mensuel</a>
                             <a href="@Url.Action("TrimestrielSelectedAgent", "Home", new { id = item.Id })" class="label label-warning">Trimestriel</a>
