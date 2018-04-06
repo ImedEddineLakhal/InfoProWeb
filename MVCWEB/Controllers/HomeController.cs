@@ -1,4 +1,5 @@
-﻿using Domain.Entity;
+﻿using Data;
+using Domain.Entity;
 using MVCWEB.Models;
 using Services;
 using System;
@@ -12,22 +13,25 @@ namespace MVCWEB.Controllers
 {
     public class HomeController : Controller
     {
-        IEmployeeService service;
+        IEmployeeService serviceEmployees;
         IUserService serviceUser;
         IGroupeEmployeeService serviceGroupeEmp;
+        IGroupeService serviceGroupe;
+        IEventService serviceEvent;
         static int idEmpConnecte;
         public HomeController()
         {
-            service = new EmployeeService();
+            serviceEmployees = new EmployeeService();
             serviceUser = new UserService();
             serviceGroupeEmp = new GroupesEmployeService();
-
+            serviceGroupe = new GroupeService();
+            serviceEvent = new EventService();
         }
         [HttpGet]
         public ActionResult IndexManagerAgentTest(int id)
         {
             string value = (string)Session["loginIndex"];
-            Employee empConnected = service.getById(idEmpConnecte);
+            Employee empConnected = serviceEmployees.getById(idEmpConnecte);
             if (empConnected.Content != null)
             {
                 String strbase64 = Convert.ToBase64String(empConnected.Content);
@@ -36,19 +40,19 @@ namespace MVCWEB.Controllers
             }
             ViewBag.nameEmpConnected = empConnected.userName;
             ViewBag.pseudoNameEmpConnected = empConnected.pseudoName;
-            var employees = service.GetAll();
+            var employees = serviceEmployees.GetAll();
             List<Employee> emps = serviceGroupeEmp.getListEmployeeByGroupeId(id);
             User user = new User();
             List<EmployeeViewModel> fVM = new List<EmployeeViewModel>();
             List<SelectListItem> groupesassocies = new List<SelectListItem>();
-            String Url=null;
+            String Url = null;
             foreach (var item in emps)
             {
                 if (item.Content != null)
                 {
                     String strbase64 = Convert.ToBase64String(item.Content);
-                     Url = "data:" + item.ContentType + ";base64," + strbase64;
-                     ViewBag.url = Url;
+                    Url = "data:" + item.ContentType + ";base64," + strbase64;
+                    ViewBag.url = Url;
                 }
                 if (item.userId != null)
                 {
@@ -119,7 +123,7 @@ namespace MVCWEB.Controllers
         public ActionResult IndexManagerAgent()
         {
             string value = (string)Session["loginIndex"];
-            var employees = service.GetAll();
+            var employees = serviceEmployees.GetAll();
             User user = new User();
             List<EmployeeViewModel> fVM = new List<EmployeeViewModel>();
             List<SelectListItem> groupesassocies = new List<SelectListItem>();
@@ -155,7 +159,7 @@ namespace MVCWEB.Controllers
                 else
                 {
                     user = null;
-                   
+
                     fVM.Add(
                   new EmployeeViewModel
                   {
@@ -176,7 +180,7 @@ namespace MVCWEB.Controllers
 
             }
 
-        
+
 
 
             if (value == null)
@@ -196,15 +200,15 @@ namespace MVCWEB.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult IndexManagerGroupes(int ? id)
+        public ActionResult IndexManagerGroupes(int? id)
         {
 
             string value = (string)Session["loginIndex"];
             //var employees = service.GetAll();
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            idEmpConnecte =(int) id;
-            Employee item = service.getById(id);
+            idEmpConnecte = (int)id;
+            Employee item = serviceEmployees.getById(id);
             var a = new EmployeeViewModel();
             a.Id = item.Id;
             a.userName = item.userName;
@@ -220,7 +224,7 @@ namespace MVCWEB.Controllers
             {
                 a.utilisateurs.Add(new SelectListItem { Text = test, Value = test });
             }
-           
+
             var groupesassociees = serviceGroupeEmp.getGroupeByIDEmployee(item.Id);
             var groupesassociees_tests = groupesassociees.Select(o => o.nom).Distinct().ToList();
             a.Group = new List<Groupe>();
@@ -235,7 +239,7 @@ namespace MVCWEB.Controllers
                 ViewBag.url = Url;
                 a.image = Url;
             }
-            
+
             //  a.PhotoUrl = airflight.PhotoUrl;
             if (item == null)
                 return HttpNotFound();
@@ -263,7 +267,7 @@ namespace MVCWEB.Controllers
         [HttpGet]
         public ActionResult FindEmployee(int? Id)
         {
-            Employee item = service.getById(Id);
+            Employee item = serviceEmployees.getById(Id);
 
 
             var a = new EmployeeViewModel();
@@ -295,6 +299,250 @@ namespace MVCWEB.Controllers
         public ActionResult TestChart()
         {
 
+            return View();
+        }
+        public ActionResult Calendar()
+        {
+            String login = Session["loginIndex"].ToString();
+            Employee item = serviceEmployees.getByLoginUser(login);
+            if (item.Content != null)
+            {
+                String strbase64 = Convert.ToBase64String(item.Content);
+                String empConnectedImage = "data:" + item.ContentType + ";base64," + strbase64;
+                ViewBag.empConnectedImage = empConnectedImage;
+                ViewBag.nameEmpConnected = item.userName;
+                ViewBag.pseudoNameEmpConnected = item.pseudoName;
+                ViewBag.IdEmpConnected = item.Id;
+            }
+            var groupesassociees = serviceGroupeEmp.getGroupeByIDEmployee(item.Id);
+            var usersAssociees = serviceGroupeEmp.getListEmployeeByGroupe(item.Id);
+            EventViewModel a = new EventViewModel();
+            var logins = serviceUser.GetAll();
+            var tests = usersAssociees.Select(o => o.userLogin).Distinct().ToList();
+            foreach (String test in tests)
+            {
+                a.utilisateurs.Add(new SelectListItem { Text = test, Value = test });
+            }
+            var groupes = serviceGroupe.GetAll();
+            var groupeslogins = groupesassociees.Select(o => o.nom).Distinct().ToList();
+            foreach (var test in groupeslogins)
+            {
+                //foreach(var assoc in groupesassociees){
+                //    if (!(test.nom).Equals(assoc.nom)){
+                a.groupesass.Add(new SelectListItem { Text = test, Value = test });
+                //}
+            }
+            using (ReportContext dc = new ReportContext())
+            {
+                var events = dc.events.ToList();
+                List<Event> eventsTests = new List<Event>();
+                List<DateTime> dateTimes = new List<DateTime>();
+                List<String> titles = new List<String>();
+                string[] arr1 = new string[400];
+                foreach (var test in events)
+                {
+                    eventsTests.Add(test);
+                    dateTimes.Add(test.dateDebut);
+                    titles.Add(test.titre);
+                    //arr1[1]=(test.titre);
+                    //arr1[2] = (""+test.dateDebut);
+                }
+                ViewBag.events = eventsTests;
+                ViewBag.titres = titles;
+                ViewBag.dateTimes = dateTimes;
+                ViewBag.arr1 = arr1;
+            }
+            return View(a);
+            //using (ReportContext dc = new ReportContext())
+            //{
+            //    var events = dc.events.ToList();
+            //    List<Event> eventsTests = new List<Event>();
+            //    List<DateTime> dateTimes = new List<DateTime>();
+            //    List<String> titles = new List<String>();
+
+            //    foreach (var test in events)
+            //    {
+            //        eventsTests.Add(test);
+            //        dateTimes.Add(test.dateDebut);
+            //        titles.Add(test.titre);
+            //    }
+            //    ViewBag.titres = titles;
+            //    ViewBag.dateTimes = dateTimes;
+            //    return View(events);
+            //}
+        }
+        public ActionResult GetEventsByImed()
+        {
+            String login = Session["loginIndex"].ToString();
+            Employee item = serviceEmployees.getByLoginUser(login);
+            List<Event> eventsTestsAll = new List<Event>();
+            List<Employee> emps = serviceGroupeEmp.getListEmployeeByGroupe(item.Id);
+            var testsEmps = emps.Distinct().ToList();
+            List<Groupe> groupes = serviceGroupeEmp.getGroupeByIDEmployee(item.Id);
+            List<Event> groupesEvents = serviceEvent.getListEventsByListGroupes(groupes);
+            var groupesEventsDistinct = groupesEvents.Distinct().ToList();
+            foreach (var groupeEvent in groupesEventsDistinct)
+            {
+                //groupeEvent.start = groupes[0].nom;
+                eventsTestsAll.Add(groupeEvent);
+            }
+            foreach (var employee in testsEmps)
+            {
+                var eventss = serviceEvent.getListEventsByEmployeeId(employee.Id);
+                foreach (var eventt in eventss)
+                {
+                    eventsTestsAll.Add(eventt);
+                }
+            }
+            var eventsTests = serviceEvent.GetAll();
+            var eventsAll = new List<EventViewModel>();
+            foreach (var test in eventsTestsAll.Distinct())
+            {
+                Employee emp = serviceEmployees.getById(test.employeeId);
+                EventViewModel a = new EventViewModel();
+                a.Id = test.Id;
+                a.start = test.start;
+                a.end = test.end;
+                a.dateDebut = test.dateDebut;
+                a.dateFin = test.dateFin;
+                a.themeColor = test.themeColor;
+                if (emp != null)
+                {
+                    a.employeeName = emp.userName;
+                }
+                a.description = test.description;
+                if (test.titre.Equals("Congé") || (test.titre.Equals("Autorisation")))
+                {
+                    a.titre = test.titre + " " + emp.userName;
+                }
+                else
+                {
+                    a.titre = test.titre + " " + test.start;
+                }
+                eventsAll.Add(a);
+            }
+            var eventList = from e in eventsAll
+
+                            select new
+                            {
+
+                                id = e.Id,
+
+                                title = e.titre,
+
+                                start = e.dateDebut.ToString("s"),
+
+                                end = e.dateFin.ToString("s"),
+                                //end = e.dateFin.AddDays(1).ToString("s"),
+
+
+                                color = e.themeColor,
+
+                                allDay = false
+
+                            };
+            var events = eventList.ToArray();
+
+            return Json(events, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetEvents(double start, double end)
+
+        {
+            var events = serviceEvent.GetAll();
+            //List<Event> fVM = new List<Event>();
+            //foreach (var test in events)
+            //{
+            //    fVM.Add(test);
+            //}
+
+
+            var fromDate = ConvertFromUnixTimestamp(start);
+
+            var toDate = ConvertFromUnixTimestamp(end);
+
+
+
+
+            var eventList = from e in events
+
+                            select new
+                            {
+
+                                id = e.Id,
+
+                                title = e.titre,
+
+                                start = e.dateDebut.ToString("s") + " " + e.start + ":00",
+
+                                end = e.dateFin.ToString("s") + " " + e.end + ":00",
+
+                                color = e.themeColor,
+
+                                allDay = false
+
+                            };
+
+            var rows = eventList.ToArray();
+
+            return Json(rows, JsonRequestBehavior.AllowGet);
+
+        }
+        private static DateTime ConvertFromUnixTimestamp(double timestamp)
+
+        {
+
+            var origin = new DateTime(1970, 1, 1, 0, 0, 0, 0);
+
+            return origin.AddSeconds(timestamp);
+
+        }
+
+        public ActionResult FindEvent(int? Id)
+        {
+            Event eventt = serviceEvent.getById(Id);
+            Employee item = serviceEmployees.getById(eventt.employeeId);
+
+
+            var a = new EventViewModel();
+            a.Id = eventt.Id;
+            a.description = eventt.description;
+            a.dateDebut = eventt.dateDebut;
+            a.dateFin = eventt.dateFin;
+            if (item != null)
+            {
+                a.employeeName = item.userName;
+            }
+            if (eventt.titre.Equals("Congé") || (eventt.titre.Equals("Autorisation")))
+            {
+                a.titre = eventt.titre + " " + item.userName;
+            }
+            else
+            {
+                a.titre = eventt.titre;
+            }
+
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("_AlerteDetailsEvent", a);
+            }
+
+            else
+            {
+                return View(a);
+            }
+        }
+        public ActionResult DeleteEvent(int? id)
+        {
+
+            Event eventt = serviceEvent.getById(id);
+
+            serviceEvent.Delete(eventt);
+            serviceEvent.SaveChange();
+            return RedirectToAction("Calendar");
+        }
+        public ActionResult Messages(int? id)
+        {
             return View();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Domain.Entity;
+using MVCWEB.Models;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,14 @@ namespace MVCWEB.Controllers
     {
         // GET: Alerte
         IAlerteService service;
+        IEmployeeService serviceEmployee;
+        IGroupeEmployeeService serviceGroupeEmp;
         public AlerteController()
         {
 
             service = new AlerteService();
+            serviceEmployee = new EmployeeService();
+            serviceGroupeEmp = new GroupesEmployeService();
         }
         public ActionResult Index(String search, FormCollection form)
         {
@@ -181,5 +186,151 @@ namespace MVCWEB.Controllers
                 return View(item);
             }
         }
+        public ActionResult IndexAgentManager(String search, FormCollection form)
+        {
+            string value = (string)Session["loginIndex"];
+            Employee emp = serviceEmployee.getByLoginUser(value);
+            List<AlerteViewModel> a = new List<AlerteViewModel>();
+            var alertes = service.GetAll();
+            List<Alerte> fVM = new List<Alerte>();
+            //string type = form["test"].ToString();
+            //int numVal = Int32.Parse(type);
+
+            foreach (var item in alertes)
+            {
+                AlerteViewModel test = new AlerteViewModel();
+                test.titreAlerte = item.titreAlerte;
+                test.description = item.description;
+                if (item.senderId != null)
+                {
+                    test.senderId = item.senderId;
+                    Employee sender = serviceEmployee.getById(item.senderId);
+                    test.senderName = sender.userName;
+
+                }
+                if (item.reciverId != null)
+                {
+                    test.reciverId = item.reciverId;
+                    Employee reciver = serviceEmployee.getById(item.reciverId);
+                    test.reciverName = reciver.userName;
+                }
+                a.Add(test);
+            }
+           
+
+                a = a.Where(p => p.senderId==emp.Id).ToList<AlerteViewModel>();
+
+
+            
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                return View(a);   //fVM.Take(10)
+            }
+        }
+        public ActionResult IndexAgentManagerReciver(String search, FormCollection form)
+        {
+            string value = (string)Session["loginIndex"];
+            Employee emp = serviceEmployee.getByLoginUser(value);
+            List<AlerteViewModel> a = new List<AlerteViewModel>();
+            var alertes = service.GetAll();
+            List<Alerte> fVM = new List<Alerte>();
+            //string type = form["test"].ToString();
+            //int numVal = Int32.Parse(type);
+
+            foreach (var item in alertes)
+            {
+                AlerteViewModel test = new AlerteViewModel();
+                test.titreAlerte = item.titreAlerte;
+                test.description = item.description;
+                if (item.senderId != null)
+                {
+                    Employee sender = serviceEmployee.getById(item.senderId);
+                    test.senderId = item.senderId;
+                    test.senderName = sender.userName;
+
+                }
+                if (item.reciverId != null)
+                {
+                    Employee reciver = serviceEmployee.getById(item.reciverId);
+                    test.reciverName = reciver.userName;
+                    test.reciverId = item.reciverId;
+                }
+                a.Add(test);
+            }
+
+
+            a = a.Where(p => p.reciverId == emp.Id).ToList<AlerteViewModel>();
+
+
+
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                ViewBag.alertes = a;
+                return View(a);   //fVM.Take(10)
+            }
+        }
+        public ActionResult CreateAlerteManager()
+        {
+            String login = Session["loginIndex"].ToString();
+            Employee item = serviceEmployee.getByLoginUser(login);
+            var a = new AlerteViewModel();
+            var usersAssociees = serviceGroupeEmp.getListEmployeeByGroupe(item.Id);
+            var tests = usersAssociees.Select(o => o.userLogin).Distinct().ToList();
+            foreach (String test in tests)
+            {
+                a.utilisateurs.Add(new SelectListItem { Value =test,Text=test});
+            }
+            return View(a);
+        }
+
+        // POST: Medcin/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateAlerteManager(AlerteViewModel c ,FormCollection form)
+        {
+            if (!ModelState.IsValid)
+            {
+                RedirectToAction("CreateAlerteManager");
+            }
+            String login = Session["loginIndex"].ToString();
+            Employee item = serviceEmployee.getByLoginUser(login);
+
+            string username = form["typeGenerator"].ToString();
+            string message = form["message"].ToString();
+            string titre = form["titre"].ToString();
+            string description = form["description"].ToString();
+
+            Employee emp = serviceEmployee.getByLoginUser(username);
+            Alerte alerte = new Alerte
+            {
+
+                description = description,
+                reponseAlerte = message,
+                titreAlerte = titre,
+                reciverId = emp.Id,
+                senderId= item.Id
+
+
+            };
+            service.Add(alerte);
+            service.SaveChange();
+
+
+            return RedirectToAction("IndexAgentManager");
+
+        }
+
     }
 }

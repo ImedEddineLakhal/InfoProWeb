@@ -81,6 +81,22 @@
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Client, Version=2.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Client.2.2.3\lib\net45\Microsoft.AspNet.SignalR.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.3\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Owin, Version=1.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Owin.1.2.2\lib\net45\Microsoft.AspNet.SignalR.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.3\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Antiforgery, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Antiforgery.1.0.0\lib\net451\Microsoft.AspNetCore.Antiforgery.dll</HintPath>
       <Private>True</Private>
@@ -494,17 +510,26 @@
     <Compile Include="Controllers\JsonModelBinderController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PlaningController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Controllers\TestIndicateursController.cs" />
     <Compile Include="Controllers\TitreController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804050939103_e1.cs" />
+    <Compile Include="Migrations\201804050939103_e1.Designer.cs">
+      <DependentUpon>201804050939103_e1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AlerteViewModel.cs" />
     <Compile Include="Models\calcul.cs" />
     <Compile Include="Models\EmployeeViewModel.cs" />
+    <Compile Include="Models\EventViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NotificationHub.cs" />
     <Compile Include="Models\TestImed.cs" />
     <Compile Include="Models\UserAuthentif.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -913,8 +938,13 @@
     <Content Include="Content\template\Layout 1\LTR\assets\images\flags\za.png" />
     <Content Include="Content\template\Layout 1\LTR\assets\images\flags\zm.png" />
     <Content Include="Content\template\Layout 1\LTR\assets\images\flags\zw.png" />
+    <Content Include="Content\template\Layout 1\LTR\assets\images\grp.png" />
     <Content Include="Content\template\Layout 1\LTR\assets\images\info4.png" />
     <Content Include="Content\template\Layout 1\LTR\assets\images\login_cover.jpg" />
+    <Content Include="Content\template\Layout 1\LTR\assets\images\logo12.png" />
+    <Content Include="Content\template\Layout 1\LTR\assets\images\logo121.png" />
+    <Content Include="Content\template\Layout 1\LTR\assets\images\logoo.png" />
+    <Content Include="Content\template\Layout 1\LTR\assets\images\logoPng.png" />
     <Content Include="Content\template\Layout 1\LTR\assets\images\logo_dark.png" />
     <Content Include="Content\template\Layout 1\LTR\assets\images\logo_demo.png" />
     <Content Include="Content\template\Layout 1\LTR\assets\images\logo_light.png" />
@@ -10005,6 +10035,7 @@
     <Content Include="Content\template\Documentation\assets\css\icons\icomoon\fonts\icomoon.svg" />
     <Content Include="Content\template\Documentation\assets\css\icons\icomoon\fonts\icomoon.ttf" />
     <Content Include="Content\template\Documentation\assets\css\icons\icomoon\fonts\icomoon.woff" />
+    <Content Include="Content\template\Layout 1\LTR\assets\images\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\fullcalendar.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
@@ -10023,6 +10054,8 @@
     <Content Include="Scripts\jquery.dynamiclist.min.js" />
     <Content Include="Scripts\jquery.dynamiclist.templates.bootstrap.js" />
     <Content Include="Scripts\jquery.dynamiclist.templates.bootstrap.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.3.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.3.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -10147,6 +10180,16 @@
     <Content Include="Views\Calendar\Autorisation.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Calendar.cshtml" />
+    <Content Include="Views\Shared\_LayoutCalendarUser.cshtml" />
+    <Content Include="Views\Home\_AlerteDetailsEvent.cshtml" />
+    <Content Include="Views\Home\_AlerteSuccessAjoutEvent.cshtml" />
+    <Content Include="Views\Home\Messages.cshtml" />
+    <Content Include="Views\Alerte\CreateAlerteManager.cshtml" />
+    <Content Include="Views\Alerte\IndexAgentManagerReciver.cshtml" />
+    <Content Include="Views\Home\CreateManagerAgentAlerte.cshtml" />
+    <Content Include="Views\Alerte\IndexAgentManager.cshtml" />
+    <Content Include="Views\Shared\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -10179,6 +10222,11 @@
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201804050939103_e1.resx">
+      <DependentUpon>201804050939103_e1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

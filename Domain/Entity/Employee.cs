@@ -21,25 +21,28 @@ namespace Domain.Entity
 
         public String role { get; set; }
         public String Activite { get; set; }
-        public virtual ICollection<GroupesEmployees> employeesGroupes { get; set; }
-        public virtual ICollection<Indicateur> Indicateurs { get; set; }
+        
         public String userLogin { get; set; }
+        public byte[] Content { get; set; }
 
+        public String ContentType { get; set; }
         public int? userId { get; set; }
 
         [ForeignKey("userId")]
         public virtual User user { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<GroupesEmployees> employeesGroupes { get; set; }
+        public virtual ICollection<Indicateur> Indicateurs { get; set; }
 
-        public byte[] Content { get; set; }
+        public virtual ICollection<Event> events { get; set; }
 
-        public String ContentType { get; set; }
+   
 
-        public int getIdHermes()
-        {
-            return IdHermes;
-        }
+        //public int getIdHermes()
+        //{
+        //    return IdHermes;
+        //}
     }
 
 

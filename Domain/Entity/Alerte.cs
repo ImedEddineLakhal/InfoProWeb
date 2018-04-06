@@ -28,6 +28,10 @@ namespace Domain.Entity
 
         [ForeignKey("indicateurId")]
         public virtual Indicateur indicateur { get; set; }
+        public int? senderId { get; set; }
+        public int? reciverId { get; set; }
+
+
 
     }
 }

@@ -14,8 +14,58 @@ namespace Tests
     [TestFixture]
     public class Test
     {
-       
-      
+        //[Test]
+        //public void AffectEventToGroupe()
+        //{
+        //    using (ReportContext context = new ReportContext())
+        //    {
+
+        //        //Event eventt = new Event();
+        //        //eventt.titre = "Autorisation";
+        //        //eventt.description = "aaa";
+        //        //eventt.dateDebut = new DateTime(2018,05,03,08,00,00);
+        //        //eventt.dateFin = new DateTime(2018, 05, 04,17,00,00);
+        //        //eventt.start = "08:00";
+        //        //eventt.end = "17:00";
+
+        //        //context.events.Add(eventt);
+        //        //context.events.Attach(eventt);
+        //        //Groupe groupe = new Groupe();
+        //        //context.events.Add(eventt);
+        //        //groupe.nom = "salah";
+        //        //context.groupes.Add(groupe);
+        //        //context.groupes.Attach(groupe);
+        //        //eventt.groupes.Add(groupe);
+        //        //context.SaveChanges();
+        //        Groupe groupe = context.groupes.Find(8);
+        //        Event evento = context.events.Find(25);
+        //        evento.groupes.Add(groupe);
+        //        context.SaveChanges();
+
+        //    }
+        //}
+        //[Test]
+
+        //public void AffectNewEventToExistingGroupe()
+        //{
+        //    using (ReportContext context = new ReportContext())
+        //    {
+        //        Groupe groupe = context.groupes.Find(9);
+        //        Event eventt = new Event();
+        //        eventt.titre = "Congé";
+        //        eventt.description = "aaa";
+        //        eventt.dateDebut = new DateTime(2018, 05, 03, 08, 00, 00);
+        //        eventt.dateFin = new DateTime(2018, 05, 04, 17, 00, 00);
+        //        eventt.start = "08:00";
+        //        eventt.end = "17:00";
+
+        //        context.events.Add(eventt);
+        //        context.SaveChanges();
+        //        Event eventt2 = context.events.Find(eventt.Id);
+        //        eventt2.groupes.Add(groupe);
+        //        context.SaveChanges();
+        //    }
+        //}
         //[Test]
         //public void AddEmployee()
 
@@ -58,5 +108,32 @@ namespace Tests
         //    uow.Commit();
 
         //}
+        //[Test]
+        //public void AffectNewGroupeToNewEvent()
+        //{
+        //    using (ReportContext context = new ReportContext())
+        //    {
+        //        Event eventt = new Event();
+        //        eventt.titre = "AutorisationImedLakhel";
+        //        eventt.description = "aaa";
+        //        eventt.dateDebut = new DateTime(2018, 05, 03, 08, 00, 00);
+        //        eventt.dateFin = new DateTime(2018, 05, 04, 17, 00, 00);
+        //        eventt.start = "08:00";
+        //        eventt.end = "17:00";
+
+        //        //context.events.Add(eventt);
+        //        //context.SaveChanges();
+        //        Groupe groupe = new Groupe();
+        //        context.events.Add(eventt);
+        //        groupe.nom = "Tarek";
+        //        context.groupes.Add(groupe);
+        //        context.SaveChanges();
+        //        Groupe groupe1 = context.groupes.Find(groupe.Id);
+        //        Event evento = context.events.Find(eventt.Id);
+        //        evento.groupes.Add(groupe1);
+        //        context.SaveChanges();
+        //    }
+        //}
     }
+   
 }

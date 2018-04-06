@@ -20,5 +20,10 @@ namespace Services
         IEnumerable<Event> GetAll();
 
         void Dispose();
+        List<Event> getGroupesListByEvent(int id);
+        void AffectGroupeTOEvent(Groupe groupe, Event eventt);
+        List<Event> getListEventsByEmployeeId(int id);
+        List<Event> getListEventsByListGroupes(List<Groupe> groupes);
+
     }
 }

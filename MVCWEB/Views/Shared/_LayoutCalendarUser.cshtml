@@ -1,0 +1,188 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InfoProd - Responsive Web Application Kit by InfoProd-Team</title>
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="/Content/template/Layout 1/LTR/assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+    <link href="/Content/template/Layout 1/LTR/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/Content/template/Layout 1/LTR/assets/css/core.css" rel="stylesheet" type="text/css">
+    <link href="/Content/template/Layout 1/LTR/assets/css/components.css" rel="stylesheet" type="text/css">
+    <link href="/Content/template/Layout 1/LTR/assets/css/colors.css" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/plugins/loaders/pace.min.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/core/libraries/jquery.min.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/core/libraries/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/plugins/loaders/blockui.min.js"></script>
+    <!-- /core JS files -->
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/core/libraries/jquery_ui/interactions.min.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/plugins/forms/styling/switchery.min.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/plugins/ui/moment/moment.min.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/plugins/ui/fullcalendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="~/Content/template/Layout 1/LTR/assets/js/plugins/ui/fullcalendar/lang/fr.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/core/app.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/pages/extra_fullcalendar_advanced.js"></script>
+    <!-- /theme JS files -->
+
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/plugins/notifications/jgrowl.min.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/plugins/pickers/daterangepicker.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/plugins/pickers/anytime.min.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/plugins/pickers/pickadate/picker.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/plugins/pickers/pickadate/picker.date.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/plugins/pickers/pickadate/picker.time.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/plugins/pickers/pickadate/legacy.js"></script>
+    <script type="text/javascript" src="/Content/template/Layout 1/LTR/assets/js/pages/picker_date.js"></script>
+    <style>
+               .visiblebox {
+z-index: 100!important;
+}
+        .daterangepicker {
+            z-index: 999999999 !important;
+        }
+ 
+    </style>
+    <style>
+        .datepicker {
+            z-index: 1151 !important;
+        }
+    </style> 
+</head>
+<body>
+    <!-- Main navbar -->
+    <div class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <a class="navbar-brand" style="height:auto"><img src="/Content/template/Layout 1/LTR/assets/images/logoPng.png" style="height:40px"></a>
+            <div class="navbar-brand" style="position: absolute;left: 39%;font-size:20px;padding-top:19px"><span>Bienvenue dans L'application </span><span style="color:#ff0000"> INFO</span><span>-PROD</span></div>
+            <ul class="nav navbar-nav pull-right visible-xs-block">
+                <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+            </ul>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-mobile">
+           
+            <ul class="nav navbar-nav navbar-right">
+                
+                <li class="dropdown dropdown-user">
+                
+                    @RenderSection("testProfile", required: false)
+
+
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
+                       
+                        <li><a href="@Url.Action("logout", "Authentification")"><i class="icon-switch2"></i> Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- /main navbar -->
+    <!-- Page container -->
+    <div class="page-container">
+        <!-- Page content -->
+        <div class="page-content">
+            <!-- Main sidebar -->
+            <div class="sidebar sidebar-main">
+                <div class="sidebar-content">
+                    <!-- User menu -->
+                    <div class="sidebar-user">
+                        <div class="category-content">
+                            <div class="media">
+                               
+                                @RenderSection("testProfileLeft", required: false)
+                                <div class="media-right media-middle">
+                                    <ul class="icons-list">
+                                        <li>
+                                            <a href="#"><i class="icon-cog3"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /user menu -->
+                    <!-- Main navigation -->
+                    <div class="sidebar-category sidebar-category-visible">
+                        <div class="category-content no-padding">
+                            <ul class="navigation navigation-main navigation-accordion">
+                                <!-- Main -->
+                                <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
+                                @RenderSection("testMenuLeft", required: false)
+                              
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /main navigation -->
+                </div>
+            </div>
+            <!-- /main sidebar -->
+            <!-- Main content -->
+            <div class="content-wrapper">
+                <!-- Page header -->
+                <div class="page-header">
+                    <div class="page-header-content">
+                        <div class="page-title">
+                            <h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Planing</span> - Dashboard</h4>
+                        </div>
+                        <div class="heading-elements">
+                            @*<div class="heading-btn-group">
+                                <a href="#" class="btn btn-link btn-float has-text"><i class="icon-bars-alt text-primary"></i><span>Statistics</span></a>
+                                <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calculator text-primary"></i> <span>Invoices</span></a>
+                                <a href="#" class="btn btn-link btn-float has-text"><i class="icon-calendar5 text-primary"></i> <span>Schedule</span></a>
+                            </div>*@
+                        </div>
+                    </div>
+                    <div class="breadcrumb-line">
+                        <ul class="breadcrumb">
+                            <li><a href="index.html"><i class="icon-home2 position-left"></i> Planing </a></li>
+                            <li class="active">Home</li>
+                        </ul>
+                        @*<ul class="breadcrumb-elements">
+                            <li><a href="#"><i class="icon-comment-discussion position-left"></i> Support</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-gear position-left"></i>
+                                    Settings
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li><a href="#"><i class="icon-user-lock"></i> Account security</a></li>
+                                    <li><a href="#"><i class="icon-statistics"></i> Analytics</a></li>
+                                    <li><a href="#"><i class="icon-accessibility"></i> Accessibility</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#"><i class="icon-gear"></i> All settings</a></li>
+                                </ul>
+                            </li>
+                        </ul>*@
+                    </div>
+                </div>
+                <!-- /page header -->
+                <!-- Content area -->
+                <div class="content">
+                    <!-- External events -->
+                    @RenderSection("test", required: false)
+
+                    <!-- /RTL layout -->
+                    <!-- Footer -->
+                    <div class="footer text-muted">
+                        &copy; 2018. <a href="#">INFOPROD</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">DSI-Tunis</a>
+                    </div>
+                    <!-- /footer -->
+                </div>
+                <!-- /content area -->
+            </div>
+            <!-- /main content -->
+        </div>
+        <!-- /page content -->
+    </div>
+    <!-- /page container -->
+    @RenderBody()
+
+
+</body>
+</html>

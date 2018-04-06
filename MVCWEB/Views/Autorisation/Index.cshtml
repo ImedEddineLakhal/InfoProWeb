@@ -7,6 +7,7 @@
 
 
 @section scripts{
+@model MVCWEB.Models.EventViewModel
     <script>
         $(document).ready(function () {
 
@@ -45,7 +46,7 @@
                 eventResize: function (event, dayDelta, minuteDelta, revertFunc) {
 
                     if (confirm("Confirm change appointment length?")) {
-                        UpdateEvent(event.id, event.start, event.end);
+                        UpdateEvent(event.id,event.title, event.start, event.end);
                     }
                     else {
                         revertFunc();
@@ -97,11 +98,14 @@
 
             var dataRow = {
                 'NewPlanTitre': $('#planTitre').val(),
-                'NewPlanDecription': $('#planDescription').val(),
+                'NewPlanDescription': $('#planDescription').val(),
                 'NewPlanDate': $('#planDate').val(),
                 'NewPlanDate2': $('#planDate2').val(),
                 'NewPlanTime': $('#planTime').val(),
-                'NewPlanTime2': $('#planTime2').val()
+                'NewPlanTime2': $('#planTime2').val(),
+                'NewplanGroups': $('#planGroups').val(),
+                'NewplanUser': $('#planUsers').val()
+
                 
             }
 
@@ -134,6 +138,10 @@
             $('#planDescription').val("");
             $('#planDateTime').val("");
             $('#planDuration').val("");
+            $('#planGroups').val("");
+            $('#planUsers').val("")
+
+            
         }
 
 
@@ -161,7 +169,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">Autorisation/Congé</h4>
+                    <h4 class="modal-title">Evénement</h4>
                 </div>
                 <div class="modal-body">
                     <form id="PlanForm" class="col-md-12 form-horizontal">
@@ -172,6 +180,9 @@
                                 <option value="">- - - - - - - - - - - - - - -</option>
                                 <option value="Congé">Congé</option>
                                 <option value="Autorisation">Autorisation</option>
+                                <option value="Jours Fériés">Jours Fériés</option>
+                                <option value="Fermeture Annuel">Fermeture Annuel</option>
+
                             </select>
                         </div>
                         <div class="form-group">
@@ -194,6 +205,36 @@
                             <label>Heure Fin</label>
                             <input type="text" id="planTime2" class="form-control" style="min-width: 100%">
                         </div>
+                        @*<div class="form-group">
+                            <label>Utilisateurs</label>
+                      
+                            @Html.DropDownList("utilisateur", Model.utilisateurs, "-----Select----", htmlAttributes: new { @class = "form-control", @id = "utilisateurs", selected = "selected" })
+                        </div>*@
+                        <div class="form-group">
+                            <label>Utilisateurs</label>
+                            <select id="planUsers" class="form-control" style="min-width: 100%">
+                                <option value="">- - - - - - - - - - - - - - -</option>
+                                @foreach (var item in Model.utilisateurs)
+                                {
+                                    <option value=@item.Value>@item.Text</option>
+
+                                }
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Groupes</label>
+                            <select id="planGroups" class="form-control" style="min-width: 100%">
+                                <option value="">- - - - - - - - - - - - - - -</option>
+                                @foreach (var item in Model.groupesass)
+                              {
+                                <option value=@item.Value>@item.Text</option>
+                             
+                                }
+                            </select>
+                          
+                            </div>
                         <div class="form-group">
                             <button type="button" id="btnPopupCancel" data-dismiss="modal" class="btn">Annuler</button>
                             <button type="button" id="btnPopupSave" data-dismiss="modal" class="btn btn-primary">Enregistrer</button>

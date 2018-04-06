@@ -8,6 +8,10 @@ namespace Domain.Entity
 {
    public class Groupe
     {
+        //public Groupe()
+        //{
+        //    this.events = new HashSet<Event>();
+        //}
         public int Id { get; set; }
         public String nom { get; set; }
 
@@ -15,7 +19,8 @@ namespace Domain.Entity
         public String responsable { get; set; }
 
         public virtual ICollection<GroupesEmployees> groupesEmployees { get; set; }
-
+        public virtual ICollection<Event> events { get; set; }
+        
 
     }
 }

@@ -25,6 +25,11 @@ namespace Services
             uow.EventRepository.Add(even);
         }
 
+        public void AffectGroupeTOEvent(Groupe groupe, Event eventt)
+        {
+            uow.EventRepository.AffectGroupeTOEvent(groupe,eventt);
+        }
+
         public void Delete(Event even)
         {
             uow.EventRepository.Delete(even);
@@ -54,6 +59,21 @@ namespace Services
         public Event getById(int? id)
         {
             return uow.EventRepository.GetById(id);
+        }
+
+        public List<Event> getGroupesListByEvent(int id)
+        {
+            return uow.EventRepository.getGroupesListByEvent(id);
+        }
+
+        public List<Event> getListEventsByEmployeeId(int id)
+        {
+            return uow.EventRepository.getListEventsByEmployeeId(id);
+        }
+
+        public List<Event> getListEventsByListGroupes(List<Groupe> groupes)
+        {
+            return uow.EventRepository.getListEventsByListGroupes(groupes);
         }
 
         public void SaveChange()

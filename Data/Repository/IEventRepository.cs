@@ -10,6 +10,9 @@ namespace Data.Repository
 {
     public interface IEventRepository:IRepositoryBase<Event>
     {
-
+        List<Event> getGroupesListByEvent(int id);
+        void AffectGroupeTOEvent(Groupe groupe, Event eventt);
+        List<Event> getListEventsByEmployeeId(int id);
+        List<Event> getListEventsByListGroupes(List<Groupe> groupes);
     }
 }

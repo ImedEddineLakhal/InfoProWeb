@@ -64,5 +64,10 @@ namespace Services
 
             return uow.EmployeeRepository.getByLoginUser(login);
         }
+
+        public Employee getByLogin(string login)
+        {
+            return uow.EmployeeRepository.getByLogin(login);
+        }
     }
 }

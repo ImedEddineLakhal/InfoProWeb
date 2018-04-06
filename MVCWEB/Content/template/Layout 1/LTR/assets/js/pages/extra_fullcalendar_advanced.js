@@ -162,7 +162,7 @@ $(function() {
             right: 'month,agendaWeek,agendaDay'
         },
         editable: true,
-        defaultDate: '2014-11-12',
+        defaultDate: '2018-03-28',
         events: eventColors,
         lang: 'en',
         droppable: true, // this allows things to be dropped onto the calendar
@@ -170,7 +170,9 @@ $(function() {
             if ($('#drop-remove').is(':checked')) { // is the "remove after drop" checkbox checked?
                 $(this).remove(); // if so, remove the element from the "Draggable Events" list
             }
-        }
+            },
+           
+
     });
 
 
@@ -206,10 +208,10 @@ $(function() {
             center: 'title',
             right: 'month,agendaWeek,agendaDay'
         },
-        defaultDate: '2014-11-12',
+        defaultDate: '2018-03-28',
         editable: true,
         isRTL: true,
-        lang: 'ar',
+        lang: 'en',
         events: events
     });
     

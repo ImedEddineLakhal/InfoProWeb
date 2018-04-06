@@ -47,5 +47,22 @@ namespace Data.Repository
                 return null;
             }
         }
+        public Employee getByLogin(string login)
+        {
+            var employee = context.employees.FirstOrDefault(a => a.userName == login);
+
+
+            if (employee != null)
+            {
+
+                return employee;
+            }
+
+
+            else
+            {
+                return null;
+            }
+        }
     }
 }

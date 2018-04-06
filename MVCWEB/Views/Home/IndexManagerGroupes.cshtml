@@ -8,86 +8,65 @@
 
 
 
-<div class="panel panel-white">
-    <div class="panel-heading">
-        <h6 class="panel-title text-semibold">Liste de Groupes par Manager</h6>
-        <div class="heading-elements">
-            <ul class="icons-list">
-                <li><a data-action="collapse"></a></li>
-                <li><a data-action="reload"></a></li>
-                <li><a data-action="close"></a></li>
-            </ul>
+    @*<div class="panel panel-white">
+        <div class="panel-heading">
+            <h6 class="panel-title text-semibold">Liste de Groupes par Manager</h6>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>*@
+
+
+
+    @foreach (var item in Model.Group)
+    {
+
+        @*<a href="@Url.Action("IndexManagerAgentTest", "Home", new { id = item.Id })"><img src="~/Content/template/Layout 1/LTR/assets/images/grp.png" alt="..." class="img-thumbnail">
+                 @Html.DisplayFor(modelItem =>
+                                    item.nom)
+            </a>*@
+
+
+        <div class="col-xs-2">
+            <div class="thumbnail">
+                <a href="@Url.Action("IndexManagerAgentTest", "Home", new { id = item.Id })">
+                    <img src="~/Content/template/Layout 1/LTR/assets/images/grp.png" alt="...">
+                </a>
+                <div class="caption">
+                    <h3>
+                        @Html.DisplayFor(modelItem =>
+                           item.nom)
+                </h3>
+                <p>
+                    Responsable<br />
+                    <span style="color:red">@Html.DisplayFor(modelItem => item.responsable)</span>
+                </p>
+            </div>
         </div>
     </div>
-    <table class="table table-striped media-library table-lg">
-        <thead>
-            <tr>
-                <th><input type="checkbox" class="styled"></th>
-                <th></th>
-                <th>Name</th>
-                <th>Responsable</th>
-                <th class="text-center">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-@using (Html.BeginForm("IndexManagerGroupes", "Home", FormMethod.Get, new { enctype = "multipart/form-data" }))
-{
-
-    foreach (var item in Model.Group)
-    {
-            <tr>
-                <td><input type="checkbox" class="styled"></td>
-                <td>
-                    <a href="/Content/template/Layout 1/LTR/assets/images/groups.png" data-popup="lightbox">
-                        <img src="/Content/template/Layout 1/LTR/assets/images/groups.png" alt="" class="img-rounded img-preview">
-                    </a>
-                </td>
-                <td><a href="@Url.Action("IndexManagerAgentTest", "Home",new { id=item.Id})">@Html.DisplayFor(modelItem =>
-                            item.nom)</a></td>
-                <td>
-                    
-                        @Html.DisplayFor(modelItem =>
-                            item.responsable)
-            </td>
-                <td class="text-center">
-                    <ul class="icons-list">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-menu9"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#"><i class="icon-pencil7"></i> Edit file</a></li>
-                                <li><a href="#"><i class="icon-copy"></i> Copy file</a></li>
-                                <li><a href="#"><i class="icon-eye-blocked"></i> Unpublish</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#"><i class="icon-bin"></i> Move to trash</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
 
 
     }
-}
-        </tbody>
-    </table>
-</div>
+
 }
 @section testProfile{
-    
-  <a class="dropdown-toggle" data-toggle="dropdown">
+
+    <a class="dropdown-toggle" data-toggle="dropdown">
         <img src=@Model.image alt="">
         <span>@Model.userName</span>
         <i class="caret"></i>
     </a>
-    }
+}
 @section testProfileLeft{
-<a href="#" class="media-left"><img src=@Model.image class="img-circle img-sm" alt=""></a>
-<div class="media-body">
-    <span class="media-heading text-semibold">@Model.userName</span>
-    <div class="text-size-mini text-muted">
-        <i class="icon-user text-size-small"></i> &nbsp;@Model.pseudoName
+    <a href="#" class="media-left"><img src=@Model.image class="img-circle img-sm" alt=""></a>
+    <div class="media-body">
+        <span class="media-heading text-semibold">@Model.userName</span>
+        <div class="text-size-mini text-muted">
+            <i class="icon-user text-size-small"></i> &nbsp;@Model.pseudoName
+        </div>
     </div>
-</div>
 }

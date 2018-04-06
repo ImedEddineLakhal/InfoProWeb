@@ -8,6 +8,11 @@ using System.DirectoryServices;
 using Domain.Entity;
 using Services;
 using System.Data;
+using Microsoft.Owin.Security;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.AspNetCore.Http.Authentication;
+using System.Threading.Tasks;
 
 namespace MVCWEB.Controllers
 {
@@ -18,21 +23,26 @@ namespace MVCWEB.Controllers
         IEmployeeService serviceEmployee;
         IGroupeEmployeeService serviceGroupeEmp;
         public static String loginIndex;
+
         public AuthentificationController()
         {
 
             service = new UserService();
             serviceEmployee = new EmployeeService();
             serviceGroupeEmp = new GroupesEmployeService();
+
         }
-        public ActionResult Index()
+       
+        [HttpGet]
+        public ActionResult Index(string returnUrl)
         {
+
             Session.Clear();
             return View();
         }
 
         // GET: Authentification/Details/5
-
+  
         public ActionResult Connect(UserAuthentif userAuthe)
         {
             string login = userAuthe.login;
@@ -76,6 +86,14 @@ namespace MVCWEB.Controllers
                     return View("~/Views/Authentification/Index.cshtml");
                 }
                 Employee emp = serviceEmployee.getByLoginUser(login);
+                //var userOwin = new ApplicationUser() { UserName = emp.userName };
+                //var identity = await UserManager.CreateIdentityAsync(userOwin, DefaultAuthenticationTypes.ApplicationCookie);
+
+                //AuthenticationManager.SignIn(
+                //   new Microsoft.Owin.Security.AuthenticationProperties()
+                //   {
+                //       IsPersistent = false
+                //   }, identity);
                 if (emp != null)
                 {
                     if ((emp.role).Equals("Manager"))
@@ -87,6 +105,7 @@ namespace MVCWEB.Controllers
                         //user.logSortie =new DateTime();
                         service.Add(user);
                         service.SaveChange();
+
                         return RedirectToAction("IndexManagerGroupes", "Home",new { @id = emp.Id } );
                     }
                     else if ((emp.role).Equals("Agent"))

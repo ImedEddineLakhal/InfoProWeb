@@ -25,7 +25,7 @@ namespace MVCWEB
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                //commenté par moi imed LoginPath = new PathString("/Account/Login"),
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.
@@ -63,6 +63,8 @@ namespace MVCWEB
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+            app.MapSignalR();
+
         }
     }
 }

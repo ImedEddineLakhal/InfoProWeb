@@ -1,0 +1,69 @@
+﻿@model MVCWEB.Models.AlerteViewModel 
+
+@{
+    ViewBag.Title = "CreateAlerteManager";
+    Layout = "~/Views/Shared/_Layout_user.cshtml";
+}
+
+@section test{
+@using (Html.BeginForm("CreateAlerteManager", "Alerte", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+        <!-- Basic layout-->
+        <form action="#">
+            <div class="panel panel-flat">
+                <div class="panel-heading">
+                    <h5 class="panel-title">Ajouter Alerte</h5>
+                    <div class="heading-elements">
+                        <ul class="icons-list">
+                            <li><a data-action="collapse"></a></li>
+                            <li><a data-action="reload"></a></li>
+                            <li><a data-action="close"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Titre:</label>
+                        <input type="text" name="titre" class="form-control" placeholder="Ajouter Titre de l'alerte'">
+                    </div>                
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <input type="text"name="description" class="form-control" placeholder="Description">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Alerte pour Agent</label>
+
+                        <select class="bootstrap-select" data-width="30%" id="typeGenerator" name="typeGenerator">
+                          
+                     
+                            @foreach (var item in Model.utilisateurs)
+                            {
+                                <option value=@item.Value>@item.Text</option>
+
+                            }
+                        </select>
+                    </div>     
+                    @*<div class="form-group">
+                        <label>Date Fin</label>
+                        <input type="text" id="planDate2" class="form-control" style="min-width: 100%" />
+                    </div>*@  
+                    <div class="form-group">
+                        <label>Your message:</label>
+                        <textarea name="message" rows="5" cols="5" class="form-control" placeholder="Entrer votre message"></textarea>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Sauvegarder Alerte <i class="icon-arrow-right14 position-fixed"></i></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+      
+
+        <!-- /basic layout -->
+}
+
+
+}
