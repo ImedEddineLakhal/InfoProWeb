@@ -27,7 +27,7 @@
         <form id="eventForm">
             <div class="row">
                 <div class="col-1">
-                    <h6 class="col-xs-1 panel-title">Nom Agent</h6>
+                    <h6 class="col-xs-1 control-label">Nom Agent</h6>
                     <div class="col-xs-4">
                         <select class="form-control" id="agentDropDown"  style="height: 35px;">
                             @foreach (var ag in ViewBag.AgentItems as IEnumerable<SelectListItem>)
@@ -42,7 +42,6 @@
                     <h6 class="col-xs-1 control-label">Trimestre</h6>
                     <div class="col-xs-4">
                         <select class="form-control" id="trimestreDropDown" style="height: 35px;">
-                            <option value="0">Choisir une trimestre</option>
                             @foreach (var trimestre in ViewBag.TrimestreItems as IEnumerable<SelectListItem>)
                             {
                                 <option value="@trimestre.Value">@trimestre.Text</option>

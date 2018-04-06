@@ -17,10 +17,10 @@ namespace Domain.Entity
         [Column(TypeName = "Date")]
         public DateTime date { get; set; }
         [DataType(DataType.Date)]
-        public DateTime Arrive { get; set; } // int dans la conception de départ
+        public DateTime? Arrive { get; set; } // int dans la conception de départ
         [DataType(DataType.Date)]
 
-        public DateTime Depart { get; set; }
+        public DateTime? Depart { get; set; }
         public int semaine { get; set; }
 
         public String mois { get; set; }

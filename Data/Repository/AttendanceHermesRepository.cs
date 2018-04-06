@@ -90,7 +90,8 @@ namespace Data.Repository
         public float DiffDateTimes(AttendanceHermes attendance)
         {
 
-            return (attendance.Depart - attendance.Arrive).Hours;
+            // return (attendance.Depart - attendance.Arrive).Hours;
+            return 0;
         }
     }
 

@@ -29,7 +29,6 @@
                 <h6 class="col-xs-1 control-label">Semaine</h6>
                 <div class="col-xs-4">
                     <select class="form-control" id="semaineDropDown" style="height: 35px;">
-                        <option value="0">Sélectionner une semaine</option>
                         @foreach (var semaine in ViewBag.SemaineItems as IEnumerable<SelectListItem>)
                         {
                             <option value="@semaine.Value">@semaine.Text</option>

@@ -407,6 +407,23 @@ namespace MVCWEB.Controllers
                 return RedirectToAction("Annuelle", "Indicateurs", new { @id = IdEmpConnected });
             }
         }
+
+        public ActionResult ManagerJournalierActivity()
+        {
+            string value = (string)Session["loginIndex"];
+            Employee empConnected = service.getById(idEmpConnecte);
+            if (value == null)
+            {
+                ViewBag.message = ("session cleared!");
+                ViewBag.color = "red";
+                return View("~/Views/Authentification/Index.cshtml");
+            }
+            else
+            {
+                int IdEmpConnected = empConnected.Id;
+                return RedirectToAction("JournalierActivity", "IndicateursActivity", new { @id = IdEmpConnected });
+            }
+        }
         // Fin Controllers in Manager Template
 
         //Controllers in Agent Template   

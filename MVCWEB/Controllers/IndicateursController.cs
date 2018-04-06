@@ -22,11 +22,12 @@ namespace MVCWEB.Controllers
         IGroupeEmployeeService serviceGroupeEmp;
         IEmployeeService service;
         static int idEmpConnecte;
+
         private ReportContext db = new ReportContext();
         public IndicateursController()
         {           
             service = new EmployeeService();
-            serviceGroupeEmp = new GroupesEmployeService();          
+            serviceGroupeEmp = new GroupesEmployeService();
             //SelectList Semaine
             var semaines = new List<SelectListItem>();         
             for (int m = 1; m <= 52; m++)
@@ -67,7 +68,7 @@ namespace MVCWEB.Controllers
 
             List<Groupe> groupes = serviceGroupeEmp.getGroupeByIDEmployee(id);
             List<SelectListItem> groupesassocies = new List<SelectListItem>();
-            groupesassocies.Insert(0, new SelectListItem { Text = "Sélectionner l'Agent", Value = "0" });
+           // groupesassocies.Insert(0, new SelectListItem { Text = "Sélectionner l'Agent", Value = "0" });
             foreach (var item in groupes)
             {
                 List<Employee> emp = serviceGroupeEmp.getListEmployeeByGroupeId(item.Id);
@@ -108,7 +109,7 @@ namespace MVCWEB.Controllers
 
             List<Groupe> groupes = serviceGroupeEmp.getGroupeByIDEmployee(id);
             List<SelectListItem> groupesassocies = new List<SelectListItem>();        
-            groupesassocies.Insert(0, new SelectListItem {Text = "Sélectionner l'Agent", Value = "0" });
+           // groupesassocies.Insert(0, new SelectListItem {Text = "Sélectionner l'Agent", Value = "0" });
             foreach (var item in groupes)
             {
                 List<Employee> emp = serviceGroupeEmp.getListEmployeeByGroupeId(item.Id);
@@ -130,16 +131,16 @@ namespace MVCWEB.Controllers
         // Json data et calcul Journalier Par Agent
         public JsonResult GetJournalierValues(string agentSel, string daySel)
         {
-            List<Calcul> calculs = new List<Calcul>();
-            var indicateurs = db.indicateurs.ToList();
-            //var indicateurs = service.findIndicateurBy(agentSel);
+            List<Calcul> calculs = new List<Calcul>();    
+            var appels = db.appels.ToList();
+            var temps = db.temps.ToList();
+          
             double TotAccord = 0;
             double TotCA = 0;
             double TotCNA = 0;
             double TotAcw = 0;
             double TotLog = 0;
-            double TotPreview = 0;
-            double TotPauseBrief = 0;
+            double TotPreview = 0;        
             double TotPausePerso = 0;
             double TotOccupation = 0;
             double TotCommunication = 0;
@@ -148,7 +149,8 @@ namespace MVCWEB.Controllers
             double TotProdReel = 0;
             double tempsPresence = 0;
             double TotJourTravaillés = 0;
-            foreach (var item in indicateurs)
+            var dates = new List<DateTime>();
+            foreach (var item in appels)
             {
                 var d=new DateTime();                             
                 if ((daySel).Equals(""))
@@ -160,26 +162,51 @@ namespace MVCWEB.Controllers
                     d = DateTime.Parse(daySel);
                 }
                 int ag = int.Parse(agentSel);
-                if (item.date == d && item.agent == ag)
+                if (item.date == d && item.Id_Hermes == ag)
                 {
                     TotCA += item.CA;
                     TotCNA += item.CNA;
-                    TotAccord += item.accord;
+                    TotAccord += item.Accords;
+                    TotAppelEmis += item.TotalAppelEmis;
+                    TotAppelAboutis += item.TotalAppelAboutis;                   
+                    if (!(dates.Exists(x => x == item.date)))
+                    {
+                        dates.Add(item.date);
+                    }
+                    TotJourTravaillés = dates.LongCount();
+                }
+               
+            }
+
+            foreach (var item in temps)
+            {
+                var d = new DateTime();
+                if ((daySel).Equals(""))
+                {
+                    d = DateTime.Now;
+                }
+                else
+                {
+                    d = DateTime.Parse(daySel);
+                }
+                int ag = int.Parse(agentSel);
+
+                if (item.date == d && item.Id_Hermes == ag)
+                {
                     TotAcw += item.tempsACW;
                     TotLog += item.tempsLog;
                     TotPreview += item.tempsPreview;
-                    TotPauseBrief += item.tempsPauseBrief;
+                  
                     TotPausePerso += item.tempsPausePerso;
-                    TotOccupation += item.tempsComm + item.tempsAtt + item.tempsPreview;
-                    TotCommunication += item.tempsComm + item.tempsAtt;
-                    TotAppelEmis += item.appelEmis;
-                    TotAppelAboutis += item.totAboutis;
-                    TotProdReel += Math.Round((item.tempsComm / 360000) + (item.tempsAtt / 360000), 2);
-                    tempsPresence += Math.Round((item.tempsLog / 360000), 2);
-                    TotJourTravaillés += 1;
+                    TotOccupation += item.tempscom + item.tempsAtt + item.tempsPreview;
+                    TotCommunication += item.tempscom + item.tempsAtt;
+
+                    TotProdReel += (item.tempscom + item.tempsAtt )/ 360000;
+                    tempsPresence += (item.tempsLog / 360000);
+
                 }
             }
-            //téléphonie
+            //traitement fiches
             calculs.Add(new Calcul { value = TotAppelEmis, name = "Appels Emis" });
             calculs.Add(new Calcul { value = TotAppelAboutis, name = "Appels Aboutis" });
             calculs.Add(new Calcul { value = TotCA, name = "Contact Argumenté" });
@@ -255,14 +282,14 @@ namespace MVCWEB.Controllers
                 calculs.Add(new Calcul { value = ETPplanifie, name = "ETP planifié" });
             }
 
-            //taux traitement fiches
+            //téléphonie
             if (TotLog != 0)
             {
                 double TauxACWHebdo = Math.Round(((TotAcw / TotLog) * 100), 2);
 
                 double TauxPreviewHebdo = Math.Round(((TotPreview / TotLog) * 100), 2);
 
-                double TauxPauseBriefHebdo = Math.Round(((TotPauseBrief / TotLog) * 100), 2);
+                double TauxPauseBriefHebdo = 0;
 
                 double TauxPausePersoHebdo = Math.Round(((TotPausePerso / TotLog) * 100), 2);
 
@@ -301,29 +328,14 @@ namespace MVCWEB.Controllers
         public JsonResult GetHebdoValues(string agentSel, string semaineSel)
         {
             List<Calcul> calculs = new List<Calcul>();
-            var indicateurs = db.indicateurs.ToList();
-            //var indicateurs = service.findIndicateurBy(agentSel);
-
-            //var d = (semaineSel);
-            //CultureInfo cul = CultureInfo.CurrentCulture;
-
-            //var firstDayWeek = cul.Calendar.GetWeekOfYear(
-            //    d,
-            //    CalendarWeekRule.FirstDay,
-            //    DayOfWeek.Monday);
-
-            //int weekNum = cul.Calendar.GetWeekOfYear(
-            //    d,
-            //    CalendarWeekRule.FirstDay,
-            //    DayOfWeek.Monday);
-
+            var appels = db.appels.ToList();
+            var temps = db.temps.ToList();          
             double TotAccord = 0;
             double TotCA = 0;
             double TotCNA = 0;
             double TotAcw = 0;
             double TotLog = 0;
             double TotPreview = 0;
-            double TotPauseBrief = 0;
             double TotPausePerso = 0;
             double TotOccupation = 0;
             double TotCommunication = 0;
@@ -332,7 +344,8 @@ namespace MVCWEB.Controllers
             double TotProdReel = 0;
             double tempsPresence = 0;
             double TotJourTravaillés = 0;
-            foreach (var item in indicateurs)
+            var dates = new List<DateTime>();
+            foreach (var item in appels)
             {
                 var test = 0;
                 if (semaineSel == null)
@@ -345,26 +358,49 @@ namespace MVCWEB.Controllers
                 }
                 //int test = int.Parse(semaineSel);
                 int ag = int.Parse(agentSel);
-                if (item.semaine == test && item.agent == ag)
+                if (item.semaine == test && item.Id_Hermes == ag)
                 {
                     TotCA += item.CA;
                     TotCNA += item.CNA;
-                    TotAccord += item.accord;
+                    TotAccord += item.Accords;
+                    TotAppelEmis += item.TotalAppelEmis;
+                    TotAppelAboutis += item.TotalAppelAboutis;
+                    if (!(dates.Exists(x => x == item.date)))
+                    {
+                        dates.Add(item.date);
+                    }
+                    TotJourTravaillés = dates.LongCount();
+                }
+            }
+            foreach (var item in temps)
+            {
+                var test = 0;
+                if (semaineSel == null)
+                {
+                    test = 0;
+                }
+                else
+                {
+                    test = int.Parse(semaineSel);
+                }
+                int ag = int.Parse(agentSel);
+
+                if (item.semaine == test && item.Id_Hermes == ag)
+                {
                     TotAcw += item.tempsACW;
                     TotLog += item.tempsLog;
                     TotPreview += item.tempsPreview;
-                    TotPauseBrief += item.tempsPauseBrief;
+
                     TotPausePerso += item.tempsPausePerso;
-                    TotOccupation += item.tempsComm + item.tempsAtt + item.tempsPreview;
-                    TotCommunication += item.tempsComm + item.tempsAtt;
-                    TotAppelEmis += item.appelEmis;
-                    TotAppelAboutis += item.totAboutis;
-                    TotProdReel += Math.Round((item.tempsComm / 360000) + (item.tempsAtt / 360000), 0);
-                    tempsPresence += Math.Round((item.tempsLog / 360000), 0);
-                    TotJourTravaillés += 1;
+                    TotOccupation += item.tempscom + item.tempsAtt + item.tempsPreview;
+                    TotCommunication += item.tempscom + item.tempsAtt;
+
+                    TotProdReel += (item.tempscom + item.tempsAtt) / 360000;
+                    tempsPresence += (item.tempsLog / 360000);
+
                 }
             }
-            //téléphonie
+            //tratement fiches
             calculs.Add(new Calcul { value = TotAppelEmis, name = "Appels Emis" });
             calculs.Add(new Calcul { value = TotAppelAboutis, name = "Appels Aboutis" });
             calculs.Add(new Calcul { value = TotCA, name = "Contact Argumenté" });
@@ -440,14 +476,14 @@ namespace MVCWEB.Controllers
                 calculs.Add(new Calcul { value = ETPplanifie, name = "ETP planifié" });
             }
 
-            //taux traitement fiches
+            //téléphonie
             if (TotLog != 0)
             {
                 double TauxACWHebdo = Math.Round(((TotAcw / TotLog) * 100), 2);
 
                 double TauxPreviewHebdo = Math.Round(((TotPreview / TotLog) * 100), 2);
 
-                double TauxPauseBriefHebdo = Math.Round(((TotPauseBrief / TotLog) * 100), 2);
+                double TauxPauseBriefHebdo = 0;
 
                 double TauxPausePersoHebdo = Math.Round(((TotPausePerso / TotLog) * 100), 2);
 
@@ -526,14 +562,14 @@ namespace MVCWEB.Controllers
         public JsonResult GetMensuelValues(string moisSel, string agentSel)
         {
             List<Calcul> calculs = new List<Calcul>();
-            var indicateurs = db.indicateurs.ToList();
+            var appels = db.appels.ToList();
+            var temps = db.temps.ToList();
             double TotAccord = 0;
             double TotCA = 0;
             double TotCNA = 0;
             double TotAcw = 0;
             double TotLog = 0;
             double TotPreview = 0;
-            double TotPauseBrief = 0;
             double TotPausePerso = 0;
             double TotOccupation = 0;
             double TotCommunication = 0;
@@ -541,8 +577,9 @@ namespace MVCWEB.Controllers
             double TotAppelAboutis = 0;
             double TotProdReel = 0;
             double tempsPresence = 0;
-            int TotJourTravaillés = 0;
-            foreach (var item in indicateurs)
+            double TotJourTravaillés = 0;
+            var dates = new List<DateTime>();
+            foreach (var item in appels)
             {
                 var test = 0;
                
@@ -555,27 +592,47 @@ namespace MVCWEB.Controllers
                     test = int.Parse(moisSel);
                 }
                 int ag = int.Parse(agentSel);
-                if (item.date.Month == test && item.agent == ag)
+                if (item.date.Month == test && item.Id_Hermes == ag)
                 {
                     TotCA += item.CA;
                     TotCNA += item.CNA;
-                    TotAccord += item.accord;
+                    TotAccord += item.Accords;
+                    TotAppelEmis += item.TotalAppelEmis;
+                    TotAppelAboutis += item.TotalAppelAboutis;
+                    if (!(dates.Exists(x => x == item.date)))
+                    {
+                        dates.Add(item.date);
+                    }
+                    TotJourTravaillés = dates.LongCount();
+                }
+            }
+            foreach (var item in temps)
+            {
+                var test = 0;
+
+                if (moisSel == null || moisSel.Equals(""))
+                {
+                    test = 0;
+                }
+                else
+                {
+                    test = int.Parse(moisSel);
+                }
+                int ag = int.Parse(agentSel);
+                if (item.date.Month == test && item.Id_Hermes == ag)
+                {
                     TotAcw += item.tempsACW;
                     TotLog += item.tempsLog;
                     TotPreview += item.tempsPreview;
-                    TotPauseBrief += item.tempsPauseBrief;
                     TotPausePerso += item.tempsPausePerso;
-                    TotOccupation += item.tempsComm + item.tempsAtt + item.tempsPreview;
-                    TotCommunication += item.tempsComm + item.tempsAtt;
-                    TotAppelEmis += item.appelEmis;
-                    TotAppelAboutis += item.totAboutis;
-                    TotProdReel += Math.Round((item.tempsComm / 360000) + (item.tempsAtt / 360000), 0);
-                    tempsPresence += Math.Round((item.tempsLog / 360000), 0);
-                    TotJourTravaillés += 1;
+                    TotOccupation += item.tempscom + item.tempsAtt + item.tempsPreview;
+                    TotCommunication += item.tempscom + item.tempsAtt;
+                    TotProdReel += (item.tempscom + item.tempsAtt) / 360000;
+                    tempsPresence += (item.tempsLog / 360000);
                 }
             }
 
-            //téléphonie
+            //traitement
             calculs.Add(new Calcul { value = TotAppelEmis, name = "Appels Emis" });
             calculs.Add(new Calcul { value = TotAppelAboutis, name = "Appels Aboutis" });
             calculs.Add(new Calcul { value = TotCA, name = "Contact Argumenté" });
@@ -650,14 +707,14 @@ namespace MVCWEB.Controllers
                 calculs.Add(new Calcul { value = ETPplanifie, name = "ETP planifié" });
             }
 
-            //taux traitement fiches
+            //téléphonie
             if (TotLog != 0)
             {
                 double TauxACWHebdo = Math.Round(((TotAcw / TotLog) * 100), 2);
 
                 double TauxPreviewHebdo = Math.Round(((TotPreview / TotLog) * 100), 2);
 
-                double TauxPauseBriefHebdo = Math.Round(((TotPauseBrief / TotLog) * 100), 2);
+                double TauxPauseBriefHebdo = 0;
 
                 double TauxPausePersoHebdo = Math.Round(((TotPausePerso / TotLog) * 100), 2);
 
@@ -738,14 +795,14 @@ namespace MVCWEB.Controllers
         public JsonResult GetAnnuelValues(string anneeSel, string agentSel)
         {
             List<Calcul> calculs = new List<Calcul>();
-            var indicateurs = db.indicateurs.ToList();
+            var appels = db.appels.ToList();
+            var temps = db.temps.ToList();
             double TotAccord = 0;
             double TotCA = 0;
             double TotCNA = 0;
             double TotAcw = 0;
             double TotLog = 0;
             double TotPreview = 0;
-            double TotPauseBrief = 0;
             double TotPausePerso = 0;
             double TotOccupation = 0;
             double TotCommunication = 0;
@@ -754,7 +811,8 @@ namespace MVCWEB.Controllers
             double TotProdReel = 0;
             double tempsPresence = 0;
             double TotJourTravaillés = 0;
-            foreach (var item in indicateurs)
+            var dates = new List<DateTime>();
+            foreach (var item in appels)
             {
                 var test = 0;
 
@@ -768,26 +826,49 @@ namespace MVCWEB.Controllers
                 }
                 
                 int ag = int.Parse(agentSel);
-                if (item.date.Year == test && item.agent == ag)
+                if (item.date.Year == test && item.Id_Hermes == ag)
                 {
                     TotCA += item.CA;
                     TotCNA += item.CNA;
-                    TotAccord += item.accord;
+                    TotAccord += item.Accords;
+                    TotAppelEmis += item.TotalAppelEmis;
+                    TotAppelAboutis += item.TotalAppelAboutis;
+                    if (!(dates.Exists(x => x == item.date)))
+                    {
+                        dates.Add(item.date);
+                    }
+                    TotJourTravaillés = dates.LongCount();
+                }
+            }
+            foreach (var item in temps)
+            {
+                var test = 0;
+
+                if (anneeSel == null || anneeSel.Equals(""))
+                {
+                    test = 0;
+                }
+                else
+                {
+                    test = int.Parse(anneeSel);
+                }
+
+                int ag = int.Parse(agentSel);
+                if (item.date.Year == test && item.Id_Hermes == ag)
+                {
                     TotAcw += item.tempsACW;
                     TotLog += item.tempsLog;
                     TotPreview += item.tempsPreview;
-                    TotPauseBrief += item.tempsPauseBrief;
+
                     TotPausePerso += item.tempsPausePerso;
-                    TotOccupation += item.tempsComm + item.tempsAtt + item.tempsPreview;
-                    TotCommunication += item.tempsComm + item.tempsAtt;
-                    TotAppelEmis += item.appelEmis;
-                    TotAppelAboutis += item.totAboutis;
-                    TotProdReel += Math.Round((item.tempsComm / 360000) + (item.tempsAtt / 360000), 0);
-                    tempsPresence += Math.Round((item.tempsLog / 360000), 0);
-                    TotJourTravaillés += 1;
+                    TotOccupation += item.tempscom + item.tempsAtt + item.tempsPreview;
+                    TotCommunication += item.tempscom + item.tempsAtt;
+
+                    TotProdReel += (item.tempscom + item.tempsAtt) / 360000;
+                    tempsPresence += (item.tempsLog / 360000);
                 }
             }
-            //téléphonie
+            //traitement fiches
             calculs.Add(new Calcul { value = TotAppelEmis, name = "Appels Emis" });
             calculs.Add(new Calcul { value = TotAppelAboutis, name = "Appels Aboutis" });
             calculs.Add(new Calcul { value = TotCA, name = "Contact Argumenté" });
@@ -863,14 +944,14 @@ namespace MVCWEB.Controllers
                 calculs.Add(new Calcul { value = ETPplanifie, name = "ETP planifié" });
             }
 
-            //taux traitement fiches
+            //téléphonie
             if (TotLog != 0)
             {
                 double TauxACWHebdo = Math.Round(((TotAcw / TotLog) * 100), 2);
 
                 double TauxPreviewHebdo = Math.Round(((TotPreview / TotLog) * 100), 2);
 
-                double TauxPauseBriefHebdo = Math.Round(((TotPauseBrief / TotLog) * 100), 2);
+                double TauxPauseBriefHebdo = 0;
 
                 double TauxPausePersoHebdo = Math.Round(((TotPausePerso / TotLog) * 100), 2);
 
@@ -903,8 +984,6 @@ namespace MVCWEB.Controllers
             }
             return Json(calculs, JsonRequestBehavior.AllowGet);
         }
-
-
 
         // View Trimestrielle
         [HttpGet]
@@ -950,16 +1029,15 @@ namespace MVCWEB.Controllers
         //Json data et calcul spécifiques Trimestriel Par Agent
         public JsonResult GetTrimestrielValues(string trimestreSel, string agentSel)
         {
-
             List<Calcul> calculs = new List<Calcul>();
-            var indicateurs = db.indicateurs.ToList();
+            var appels = db.appels.ToList();
+            var temps = db.temps.ToList();
             double TotAccord = 0;
             double TotCA = 0;
             double TotCNA = 0;
             double TotAcw = 0;
             double TotLog = 0;
             double TotPreview = 0;
-            double TotPauseBrief = 0;
             double TotPausePerso = 0;
             double TotOccupation = 0;
             double TotCommunication = 0;
@@ -968,7 +1046,8 @@ namespace MVCWEB.Controllers
             double TotProdReel = 0;
             double tempsPresence = 0;
             double TotJourTravaillés = 0;
-            // int test = int.Parse(trimestreSel);
+            var dates = new List<DateTime>();
+        
             var test = 0;
 
             if (trimestreSel == null || trimestreSel.Equals(""))
@@ -983,113 +1062,169 @@ namespace MVCWEB.Controllers
             switch (test)
             {
                 case 1:
-                    foreach (var item in indicateurs)
+                    foreach (var item in appels)
                     {
-                        if (item.agent == ag)
+                        if (item.Id_Hermes == ag)
                         {
                             if (item.date.Month == 1 || item.date.Month == 2 || item.date.Month == 3)
                             {
                                 TotCA += item.CA;
                                 TotCNA += item.CNA;
-                                TotAccord += item.accord;
+                                TotAccord += item.Accords;
+                                TotAppelEmis += item.TotalAppelEmis;
+                                TotAppelAboutis += item.TotalAppelAboutis;
+                                if (!(dates.Exists(x => x == item.date)))
+                                {
+                                    dates.Add(item.date);
+                                }
+                                TotJourTravaillés = dates.LongCount();
+                            }
+                        }
+                    }
+                    foreach (var item in temps)
+                    {
+                        if (item.Id_Hermes == ag)
+                        {
+                            if (item.date.Month == 1 || item.date.Month == 2 || item.date.Month == 3)
+                            {
                                 TotAcw += item.tempsACW;
                                 TotLog += item.tempsLog;
                                 TotPreview += item.tempsPreview;
-                                TotPauseBrief += item.tempsPauseBrief;
+
                                 TotPausePerso += item.tempsPausePerso;
-                                TotOccupation += item.tempsComm + item.tempsAtt + item.tempsPreview;
-                                TotCommunication += item.tempsComm + item.tempsAtt;
-                                TotAppelEmis += item.appelEmis;
-                                TotAppelAboutis += item.totAboutis;
-                                TotProdReel += Math.Round((item.tempsComm / 360000) + (item.tempsAtt / 360000), 0);
-                                tempsPresence += Math.Round((item.tempsLog / 360000), 0);
-                                TotJourTravaillés += 1;
+                                TotOccupation += item.tempscom + item.tempsAtt + item.tempsPreview;
+                                TotCommunication += item.tempscom + item.tempsAtt;
+
+                                TotProdReel += (item.tempscom + item.tempsAtt) / 360000;
+                                tempsPresence += (item.tempsLog / 360000);
                             }
                         }
                     }
 
                     break;
                 case 2:
-                    foreach (var item in indicateurs)
+                    foreach (var item in appels)
                     {
-                        if (item.agent == ag)
+                        if (item.Id_Hermes == ag)
                         {
                             if (item.date.Month == 4 || item.date.Month == 5 || item.date.Month == 6)
                             {
                                 TotCA += item.CA;
                                 TotCNA += item.CNA;
-                                TotAccord += item.accord;
+                                TotAccord += item.Accords;
+                                TotAppelEmis += item.TotalAppelEmis;
+                                TotAppelAboutis += item.TotalAppelAboutis;
+                                if (!(dates.Exists(x => x == item.date)))
+                                {
+                                    dates.Add(item.date);
+                                }
+                                TotJourTravaillés = dates.LongCount();
+                            }
+                        }
+                    }
+                    foreach (var item in temps)
+                    {
+                        if (item.Id_Hermes == ag)
+                        {
+                            if (item.date.Month == 4 || item.date.Month == 5 || item.date.Month == 6)
+                            {
                                 TotAcw += item.tempsACW;
                                 TotLog += item.tempsLog;
                                 TotPreview += item.tempsPreview;
-                                TotPauseBrief += item.tempsPauseBrief;
+
                                 TotPausePerso += item.tempsPausePerso;
-                                TotOccupation += item.tempsComm + item.tempsAtt + item.tempsPreview;
-                                TotCommunication += item.tempsComm + item.tempsAtt;
-                                TotAppelEmis += item.appelEmis;
-                                TotAppelAboutis += item.totAboutis;
-                                TotProdReel += Math.Round((item.tempsComm / 360000) + (item.tempsAtt / 360000), 0);
-                                tempsPresence += Math.Round((item.tempsLog / 360000), 0);
-                                TotJourTravaillés += 1;
+                                TotOccupation += item.tempscom + item.tempsAtt + item.tempsPreview;
+                                TotCommunication += item.tempscom + item.tempsAtt;
+
+                                TotProdReel += (item.tempscom + item.tempsAtt) / 360000;
+                                tempsPresence += (item.tempsLog / 360000);
                             }
                         }
                     }
                     break;
                 case 3:
-                    foreach (var item in indicateurs)
+                    foreach (var item in appels)
                     {
-                        if (item.agent == ag)
+                        if (item.Id_Hermes == ag)
                         {
-                            if (item.date.Month == 7 || item.date.Month == 8 || item.date.Month == 9)
+                            if (item.date.Month == 7 || item.date.Month == 8|| item.date.Month == 9)
                             {
                                 TotCA += item.CA;
                                 TotCNA += item.CNA;
-                                TotAccord += item.accord;
+                                TotAccord += item.Accords;
+                                TotAppelEmis += item.TotalAppelEmis;
+                                TotAppelAboutis += item.TotalAppelAboutis;
+                                if (!(dates.Exists(x => x == item.date)))
+                                {
+                                    dates.Add(item.date);
+                                }
+                                TotJourTravaillés = dates.LongCount();
+                            }
+                        }
+                    }
+                    foreach (var item in temps)
+                    {
+                        if (item.Id_Hermes == ag)
+                        {
+                            if (item.date.Month == 7 || item.date.Month == 8 || item.date.Month == 9)
+                            {
                                 TotAcw += item.tempsACW;
                                 TotLog += item.tempsLog;
                                 TotPreview += item.tempsPreview;
-                                TotPauseBrief += item.tempsPauseBrief;
+
                                 TotPausePerso += item.tempsPausePerso;
-                                TotOccupation += item.tempsComm + item.tempsAtt + item.tempsPreview;
-                                TotCommunication += item.tempsComm + item.tempsAtt;
-                                TotAppelEmis += item.appelEmis;
-                                TotAppelAboutis += item.totAboutis;
-                                TotProdReel += Math.Round((item.tempsComm / 360000) + (item.tempsAtt / 360000), 0);
-                                tempsPresence += Math.Round((item.tempsLog / 360000), 0);
-                                TotJourTravaillés += 1;
+                                TotOccupation += item.tempscom + item.tempsAtt + item.tempsPreview;
+                                TotCommunication += item.tempscom + item.tempsAtt;
+
+                                TotProdReel += (item.tempscom + item.tempsAtt) / 360000;
+                                tempsPresence += (item.tempsLog / 360000);
                             }
                         }
                     }
                     break;
                 case 4:
-                    foreach (var item in indicateurs)
+                    foreach (var item in appels)
                     {
-                        if (item.agent == ag)
+                        if (item.Id_Hermes == ag)
                         {
                             if (item.date.Month == 10 || item.date.Month == 11 || item.date.Month == 12)
                             {
                                 TotCA += item.CA;
                                 TotCNA += item.CNA;
-                                TotAccord += item.accord;
+                                TotAccord += item.Accords;
+                                TotAppelEmis += item.TotalAppelEmis;
+                                TotAppelAboutis += item.TotalAppelAboutis;
+                                if (!(dates.Exists(x => x == item.date)))
+                                {
+                                    dates.Add(item.date);
+                                }
+                                TotJourTravaillés = dates.LongCount();
+                            }
+                        }
+                    }
+                    foreach (var item in temps)
+                    {
+                        if (item.Id_Hermes == ag)
+                        {
+                            if (item.date.Month == 10 || item.date.Month == 11 || item.date.Month == 12)
+                            {
                                 TotAcw += item.tempsACW;
                                 TotLog += item.tempsLog;
                                 TotPreview += item.tempsPreview;
-                                TotPauseBrief += item.tempsPauseBrief;
+
                                 TotPausePerso += item.tempsPausePerso;
-                                TotOccupation += item.tempsComm + item.tempsAtt + item.tempsPreview;
-                                TotCommunication += item.tempsComm + item.tempsAtt;
-                                TotAppelEmis += item.appelEmis;
-                                TotAppelAboutis += item.totAboutis;
-                                TotProdReel += Math.Round((item.tempsComm / 360000) + (item.tempsAtt / 360000), 0);
-                                tempsPresence += Math.Round((item.tempsLog / 360000), 0);
-                                TotJourTravaillés += 1;
+                                TotOccupation += item.tempscom + item.tempsAtt + item.tempsPreview;
+                                TotCommunication += item.tempscom + item.tempsAtt;
+
+                                TotProdReel += (item.tempscom + item.tempsAtt) / 360000;
+                                tempsPresence += (item.tempsLog / 360000);
                             }
                         }
                     }
                     break;
             }
 
-            //téléphonie
+            //traitement
             calculs.Add(new Calcul { value = TotAppelEmis, name = "Appels Emis" });
             calculs.Add(new Calcul { value = TotAppelAboutis, name = "Appels Aboutis" });
             calculs.Add(new Calcul { value = TotCA, name = "Contact Argumenté" });
@@ -1165,14 +1300,14 @@ namespace MVCWEB.Controllers
                 calculs.Add(new Calcul { value = ETPplanifie, name = "ETP planifié" });
             }
 
-            //taux traitement fiches
+            //téléphonie
             if (TotLog != 0)
             {
                 double TauxACWHebdo = Math.Round(((TotAcw / TotLog) * 100), 2);
 
                 double TauxPreviewHebdo = Math.Round(((TotPreview / TotLog) * 100), 2);
 
-                double TauxPauseBriefHebdo = Math.Round(((TotPauseBrief / TotLog) * 100), 2);
+                double TauxPauseBriefHebdo = 0;
 
                 double TauxPausePersoHebdo = Math.Round(((TotPausePerso / TotLog) * 100), 2);
 

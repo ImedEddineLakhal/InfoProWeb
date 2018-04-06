@@ -490,6 +490,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GroupeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IndicateursActivityController.cs" />
     <Compile Include="Controllers\IndicateursController.cs" />
     <Compile Include="Controllers\JsonModelBinderController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -10152,6 +10153,7 @@
     <Content Include="Views\Home\TrimestrielSelectedAgent.cshtml" />
     <Content Include="Views\Home\AnnuelleSelectedAgent.cshtml" />
     <Content Include="Views\Home\JournalierSelectedAgent1.cshtml" />
+    <Content Include="Views\IndicateursActivity\JournalierActivity.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
