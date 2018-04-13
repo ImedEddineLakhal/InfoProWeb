@@ -506,6 +506,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\GroupeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IndicateursActivityController.cs" />
     <Compile Include="Controllers\IndicateursController.cs" />
     <Compile Include="Controllers\JsonModelBinderController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -525,6 +526,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AlerteViewModel.cs" />
     <Compile Include="Models\calcul.cs" />
+    <Compile Include="Models\CustomUserIdProvider.cs" />
     <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\EventViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -658,6 +660,7 @@
     <Content Include="Content\template\Documentation\plugins_uploaders.html" />
     <Content Include="Content\template\Documentation\plugins_vis.html" />
     <Content Include="Content\template\Documentation\plugins_wizards.html" />
+    <Content Include="Content\template\Layout 1\back11.jpg" />
     <Content Include="Content\template\Layout 1\LTR\animations_css3.html" />
     <Content Include="Content\template\Layout 1\LTR\animations_velocity_basic.html" />
     <Content Include="Content\template\Layout 1\LTR\animations_velocity_examples.html" />
@@ -10190,6 +10193,35 @@
     <Content Include="Views\Home\CreateManagerAgentAlerte.cshtml" />
     <Content Include="Views\Alerte\IndexAgentManager.cshtml" />
     <Content Include="Views\Shared\Index.cshtml" />
+    <Content Include="Views\Home\AnnuelleSelectedAgent.cshtml" />
+    <Content Include="Views\Home\HebdoSelectedAgent.cshtml" />
+    <Content Include="Views\Home\JournalierSelectedAgent.cshtml" />
+    <Content Include="Views\Home\JournalierSelectedAgent1.cshtml" />
+    <Content Include="Views\Home\MensuelSelectedAgent.cshtml" />
+    <Content Include="Views\Home\TrimestrielSelectedAgent.cshtml" />
+    <Content Include="Views\Indicateurs\AnnuelleAgent.cshtml" />
+    <Content Include="Views\Indicateurs\HebdoAgent.cshtml" />
+    <Content Include="Views\Indicateurs\JournalierAgent.cshtml" />
+    <Content Include="Views\Indicateurs\MensuelAgent.cshtml" />
+    <Content Include="Views\Indicateurs\TestStat.cshtml" />
+    <Content Include="Views\Indicateurs\TrimestrielAgent.cshtml" />
+    <Content Include="Views\IndicateursActivity\JournalierActivity.cshtml" />
+    <Content Include="Views\Shared\_Layout_agent.cshtml" />
+    <Content Include="Views\Alerte\IndexAgentRecived.cshtml" />
+    <Content Include="Views\Alerte\AlerteSeenByAgent.cshtml" />
+    <Content Include="Views\Alerte\_AlerteDajoutAlerte.cshtml" />
+    <Content Include="Views\Alerte\ReponseAlerte.cshtml" />
+    <Content Include="Views\IndicateursActivity\AgentAnnuelleActivity.cshtml" />
+    <Content Include="Views\IndicateursActivity\AgentHebdoActivity.cshtml" />
+    <Content Include="Views\IndicateursActivity\AgentJournalierActivity.cshtml" />
+    <Content Include="Views\IndicateursActivity\AgentMensuelActivity.cshtml" />
+    <Content Include="Views\IndicateursActivity\AgentTrimestrielActivity.cshtml" />
+    <Content Include="Views\IndicateursActivity\AnnuelleActivity.cshtml" />
+    <Content Include="Views\IndicateursActivity\HebdoActivity.cshtml" />
+    <Content Include="Views\IndicateursActivity\IndexAgentGroupes.cshtml" />
+    <Content Include="Views\IndicateursActivity\MensuelActivity.cshtml" />
+    <Content Include="Views\IndicateursActivity\TrimestrielActivity.cshtml" />
+    <Content Include="Views\Indicateurs\IndexAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

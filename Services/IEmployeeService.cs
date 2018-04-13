@@ -22,5 +22,8 @@ namespace Services
         void Dispose();
         Employee getByLoginUser(string login);
         Employee getByLogin(string login);
+
+        Employee getByIdHermes(int idHermes);
+
     }
 }

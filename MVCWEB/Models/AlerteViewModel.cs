@@ -36,5 +36,7 @@ namespace MVCWEB.Models
         public string reciverName { get; set; }
         public string senderName { get; set; }
 
+        public string status { get; set; }
+
     }
 }

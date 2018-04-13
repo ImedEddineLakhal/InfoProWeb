@@ -59,6 +59,7 @@ namespace MVCWEB.Controllers
             else if (NewPlanTitre == "Congé") { ThemeColor = "#26A69A"; }
             else if (NewPlanTitre == "Jours Fériés") { ThemeColor = "#0099ff"; }
             else if (NewPlanTitre == "Fermeture Annuel") { ThemeColor = "#5C6BC0"; }
+            else if (NewPlanTitre == "Planning") { ThemeColor = "#ff66ff"; }
             using (ReportContext context = new ReportContext())
             {
                 Event eventt = new Event();

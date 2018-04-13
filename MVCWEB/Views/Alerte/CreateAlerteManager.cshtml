@@ -1,69 +1,119 @@
-﻿@model MVCWEB.Models.AlerteViewModel 
-
-@{
+﻿@{
     ViewBag.Title = "CreateAlerteManager";
     Layout = "~/Views/Shared/_Layout_user.cshtml";
 }
-
 @section test{
-@using (Html.BeginForm("CreateAlerteManager", "Alerte", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@model MVCWEB.Models.AlerteViewModel
+        <!-- Basic layout-->
+
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-        <!-- Basic layout-->
-        <form action="#">
-            <div class="panel panel-flat">
-                <div class="panel-heading">
-                    <h5 class="panel-title">Ajouter Alerte</h5>
-                    <div class="heading-elements">
-                        <ul class="icons-list">
-                            <li><a data-action="collapse"></a></li>
-                            <li><a data-action="reload"></a></li>
-                            <li><a data-action="close"></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="panel-body">
-                    <div class="form-group">
-                        <label>Titre:</label>
-                        <input type="text" name="titre" class="form-control" placeholder="Ajouter Titre de l'alerte'">
-                    </div>                
-                    <div class="form-group">
-                        <label>Description:</label>
-                        <input type="text"name="description" class="form-control" placeholder="Description">
-                    </div>
+<div class="form-horizontal">
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <h5 class="panel-title">Ajouter Alerte</h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label>Titre:</label>
+                <input type="text" name="titre" class="form-control" placeholder="Ajouter Titre de l'alerte'">
+            </div>
+            @*<div class="form-group">
+                <label>Description:</label>
+                <input type="text" name="description" class="form-control" placeholder="Description">
+            </div>*@
+            <div class="form-group">
+                <label>Date: </label>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="icon-calendar22"></i></span>
+                    @*<input type="text" name="dateCreation" class="form-control daterange-single" value="11/04/2018">*@
+                    <input type="text" class="form-control" name="dateCreation" id="datePicker" />
 
-                    <div class="form-group">
-                        <label>Alerte pour Agent</label>
-
-                        <select class="bootstrap-select" data-width="30%" id="typeGenerator" name="typeGenerator">
-                          
-                     
-                            @foreach (var item in Model.utilisateurs)
-                            {
-                                <option value=@item.Value>@item.Text</option>
-
-                            }
-                        </select>
-                    </div>     
-                    @*<div class="form-group">
-                        <label>Date Fin</label>
-                        <input type="text" id="planDate2" class="form-control" style="min-width: 100%" />
-                    </div>*@  
-                    <div class="form-group">
-                        <label>Your message:</label>
-                        <textarea name="message" rows="5" cols="5" class="form-control" placeholder="Entrer votre message"></textarea>
-                    </div>
-                    <div class="text-right">
-                        <button type="submit" class="btn btn-primary">Sauvegarder Alerte <i class="icon-arrow-right14 position-fixed"></i></button>
-                    </div>
                 </div>
             </div>
-        </form>
-      
+            <label>Alerte pour Agent</label>
+            <br />
+            <div class="form-group">
 
-        <!-- /basic layout -->
+                <select class="bootstrap-select" data-width="30%" id="typeGenerator" name="typeGenerator">
+
+
+                    @foreach (var item in Model.utilisateurs)
+                    {
+                        <option value=@item.Value>@item.Text</option>
+
+                    }
+                </select>
+            </div>
+
+
+
+            <div class="form-group">
+                <label>Your message:</label>
+                <textarea name="description" rows="5" cols="5" class="form-control" placeholder="Entrer votre message"></textarea>
+            </div>
+
+            <div class="text-right">
+                <button id="imedLak" type="submit" class="btn btn-primary" data-title="Sauvegarder Alerte" value="Enregistrer" data-toggle="modal">Sauvegarder Alerte <i class="icon-arrow-right14 position-fixed"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
 }
+    @*<div id="explorer1"></div>*@
+
+    <!-- /basic layout -->
+
+    @*<script type="text/javascript">
+
+        $(document).ready(function () {
+            $(document).on("click", "#imedLak", function () {
+                var id = $('#typeGenerator option:selected').val();
+                var dateCreation = $('#datePicker').val();
+                $.ajax({
+                    url: '/Alerte/CreateAlerteManager',
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data: { "Id": id, "dateCreation": dateCreation },
+                    datatype: "html",
+                    async: true,
+                    success: function (data) {
+                        $('#explorer1').html(data);
+                        $('#modifiertest').modal('show');
+                    },
 
 
+
+                });
+
+
+            })
+        })
+
+    </script>*@
+    <script>
+        $('#datePicker')
+               .daterangepicker({
+                   singleDatePicker: true,
+                   locale: {
+                       setDate: new Date(),
+                       format: 'YYYY/MM/DD'
+                   },
+                   autoclose: true,
+               })
+               .on('changeDate', function (e) {
+                   $('#datepicker').hide();
+               });
+
+    </script>
 }

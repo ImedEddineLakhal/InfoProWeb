@@ -25,10 +25,12 @@
                     <th><input type="checkbox" class="styled"></th>
                     <th></th>
                     <th>titre</th>
-                    <th>Description</th>
-                    <th>Sender</th>
-                    <th>Reciver</th>
-                    <th class="text-center">Actions</th>
+                    <th>Message</th>
+                    <th>Date de Création</th>
+                    <th>Agent</th>
+                    <th>Réponse</th>
+
+                    @*<th class="text-center">Actions</th>*@
 
                 </tr>
             </thead>
@@ -52,29 +54,34 @@
                         <td>
 
                             @Html.DisplayFor(modelItem =>
-                            item.senderName)
+                            item.dateCreation)
                         </td>
                         <td>
 
                             @Html.DisplayFor(modelItem =>
                             item.reciverName)
                         </td>
-                        <td class="text-center">
+                        <td>
+
+                            @Html.DisplayFor(modelItem =>
+                            item.reponseAlerte)
+                        </td>
+                        @*<td class="text-center">
                             <ul class="icons-list">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="icon-menu9"></i>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-right">
-                                        <li>@Html.ActionLink("Edit", "Edit", new { id = item.Id }) </li>
+                                        <li>@Html.ActionLink("Repondre", "ReponseAlerte", new { id = item.Id }) </li>
                                         <li class="divider"></li>
                                         <li>@Html.ActionLink("Delete", "Delete", new { id = item.Id }) </li>
 
-                                        @*<li><a href="@Html.Action("DeleteAgentAlerte", "Alerte", new { id=item.Id })"><i class="icon-bin"></i> Move to trash</a></li>*@
+
                                     </ul>
                                 </li>
                             </ul>
-                        </td>
+                        </td>*@
                     </tr>
 
 
@@ -109,7 +116,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="icon-git-compare"></i>
             <span class="visible-xs-inline-block position-right">Notifications</span>
-            <span class="badge bg-warning-400">9</span>
+            <span class="badge bg-warning-400">@ViewBag.nb</span>
         </a>
 
         <div class="dropdown-menu dropdown-content">

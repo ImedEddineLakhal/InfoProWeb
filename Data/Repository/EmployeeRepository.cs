@@ -64,5 +64,23 @@ namespace Data.Repository
                 return null;
             }
         }
+
+        public Employee getByIdHermes(int idHermes)
+        {
+            var employee = context.employees.FirstOrDefault(a => a.IdHermes == idHermes);
+
+
+            if (employee != null)
+            {
+
+                return employee;
+            }
+
+
+            else
+            {
+                return null;
+            }
+        }
     }
 }

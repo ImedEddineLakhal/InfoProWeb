@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout_user.cshtml";
 }
 @section test{
-@model IEnumerable<MVCWEB.Models.EmployeeViewModel>
+    @model IEnumerable<MVCWEB.Models.EmployeeViewModel>
 
 
     @using (Html.BeginForm("IndexManagerAgent", "Home", FormMethod.Get, new { enctype = "multipart/form-data" }))
@@ -16,32 +16,39 @@
                 <div class="thumbnail">
 
 
-                    <div class="thumb">
-                        <a id="statimg" data-toggle="modal" data-id="@item.Id">
+                    <div class="thumb thumb-rounded">
+                        <a @*id="statimg" data-toggle="modal" data-id="@item.Id"*@>
                             <img href="#" src=@item.image alt="">
                         </a>
                         @*<div class="caption-overflow">
-                            <span>
-                                <a href="@item.image" data-popup="lightbox" class="btn border-white text-white btn-flat btn-icon btn-rounded"><i class="icon-plus3"></i></a>
-                                <a href="#" class="btn border-white text-white btn-flat btn-icon btn-rounded ml-5"><i class="icon-link2"></i></a>
-                            </span>
-                        </div>*@
+                                <span>
+                                    <a href="@item.image" data-popup="lightbox" class="btn border-white text-white btn-flat btn-icon btn-rounded"><i class="icon-plus3"></i></a>
+                                    <a href="#" class="btn border-white text-white btn-flat btn-icon btn-rounded ml-5"><i class="icon-link2"></i></a>
+                                </span>
+                            </div>*@
 
                     </div>
 
-                    <div class="caption">
-                        <h6 class="no-margin-top text-semibold"><a href="#" class="text-default">@Html.DisplayFor(modelItem => item.userName)</a> <a href="#" class="text-muted"><i class="icon-download pull-right"></i></a></h6>
-                        
-                        <h10 class="no-margin-top text-semibold">PseudoName:</h10> @Html.DisplayFor(modelItem =>
-item.pseudoName)
-                            <br />
+                    <div class="caption text-center">
+                        <h6 class="no-margin-top text-semibold"><a href="#" class="text-default">@Html.DisplayFor(modelItem => item.userName)</a></h6>
+
+                        <h10 class="no-margin-top text-semibold">PseudoName:</h10> @Html.DisplayFor(modelItem => item.pseudoName)
+                        <br />
                         <h10 class="no-margin-top text-semibold">Role:</h10>  @Html.DisplayFor(modelItem => item.role)
 
                         <br />
                         <h10 class="no-margin-top text-semibold">Activité:</h10>  @Html.DisplayFor(modelItem => item.Activite)
-                        @*<button id="statimg" data-id="@item.Id" data-title="Supprimer Employé" data-toggle="modal" class="btn btn-danger">Delete</button>*@
-                        
-</div>
+                        <br />
+                        <div>
+                            <a href="@Url.Action("JournalierSelectedAgent1", "Home", new { id = item.Id })" class="label label-success">Journalier</a>
+                            <a href="@Url.Action("HebdoSelectedAgent", "Home", new { id = item.Id })" class="label label-danger">Hebdo</a>
+                            <a href="@Url.Action("MensuelSelectedAgent", "Home", new { id = item.Id })" class="label label-primary">Mensuel</a>
+                            <a href="@Url.Action("TrimestrielSelectedAgent", "Home", new { id = item.Id })" class="label label-warning">Trimestriel</a>
+                            <a href="@Url.Action("AnnuelleSelectedAgent", "Home", new { id = item.Id })" class="label label-default">Annuelle</a>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
@@ -52,11 +59,11 @@ item.pseudoName)
         </div>
     }
 
-<!-- /global stylesheets -->
-<!-- Core JS files -->
+    <!-- /global stylesheets -->
+    <!-- Core JS files -->
 
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
           $(document).ready ( function () {
               $(document).on ("click", "#statimg", function () {
@@ -82,7 +89,7 @@ item.pseudoName)
               })
           })
 
-</script>
+    </script>
 }
 @section testProfile{
 
@@ -101,4 +108,3 @@ item.pseudoName)
         </div>
     </div>
 }
-    @*}*@

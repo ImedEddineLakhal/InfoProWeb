@@ -15,3 +15,4 @@ C:\Users\ilakhel\Documents\Visual Studio 2015\Projects\DynamicsRPH\Data\bin\Debu
 C:\Users\ilakhel\Documents\Visual Studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.dll
 C:\Users\ilakhel\Documents\Visual Studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.pdb
 C:\Users\ilakhel\Documents\Visual Studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.DATETIMEAttendanceHermes.resources
+C:\Users\ilakhel\documents\visual studio 2015\Projects\DynamicsRPH\Data\obj\Debug\Data.Migrations.statusAlerteImed.resources

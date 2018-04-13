@@ -69,5 +69,11 @@ namespace Services
         {
             return uow.EmployeeRepository.getByLogin(login);
         }
+
+        public Employee getByIdHermes(int idHermes)
+        {
+
+            return uow.EmployeeRepository.getByIdHermes(idHermes);
+        }
     }
 }

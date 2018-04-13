@@ -60,5 +60,10 @@ namespace Services
         {
             uow.Commit();
          }
+       public List<Alerte> getByDate(DateTime date, int reciverId)
+        {
+            return uow.AlerteRepository.getByDate(date,reciverId);
+        }
+
     }
 }

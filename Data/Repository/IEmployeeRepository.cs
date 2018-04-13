@@ -12,5 +12,7 @@ namespace Data.Repository
     {
         Employee getByLoginUser(string login);
         Employee getByLogin(string login);
+
+        Employee getByIdHermes(int idHermes);
     }
 }

@@ -24,7 +24,7 @@
 <div id="explorer10"></div>
 <div class="panel panel-flat">
     <div class="panel-heading">
-        <h5 class="panel-title">Autorisations/Congés</h5>
+        <h5 class="panel-title">Gestion de planification 'Production/Ressources</h5>
         <div class="heading-elements">
             <ul class="icons-list">
                 <li><a data-action="collapse"></a></li>
@@ -35,7 +35,7 @@
     </div>
 
     <div class="panel-body">
-        <p class="content-group">Dans ce menu le Manager a la possibilité   @*<code>droppable</code>*@ .......</p>
+        <p class="content-group">Le calcul des indicateurs de présence (Absentéisme, Présence, Congés, ...) se base sur la planification effectué par votre part.<br />Sur cette rubrique, vous avez la possibilité de planifier les congés et les Autorisations de vos collaborateurs, ainsi que la programmation des jours fériés et les fermetures annuelles. @*<code>droppable</code>*@</p>
         <div class="row">
             <div class="col-md-3">
                 <div class="content-group" id="external-events">
@@ -48,7 +48,8 @@
                         @*<div class="fc-event" data-color="#FF7043">Shopping</div>*@
                         <div class="fc-event" data-color="#5C6BC0">Fermeture Annuel</div>
                         <div class="fc-event" data-color="#0099ff">Jour Fériés</div>
-                    
+                        <div class="fc-event" data-color="#ff66ff">Planning</div>
+
                     </div>
                     <div class="checkbox checkbox-right checkbox-switchery switchery-xs text-center">
                         <label>
@@ -106,6 +107,8 @@
                                     <option value="Autorisation">Autorisation</option>
                                     <option value="Jours Fériés">Jours Fériés</option>
                                     <option value="Fermeture Annuel">Fermeture Annuel</option>
+                                    <option value="Planning">Planning</option>
+
                                 </select>
                             </div>
                             <div class="form-group">
@@ -420,6 +423,8 @@ $(function() {
 
                 },
                 dayClick: function (date, allDay, jsEvent, view) {
+
+                    //$('#planDate').val(date.date);
                     //$('#planTitle').val("");
                     //$('#planDate').val($.fullCalendar.formatDate(date, 'dd/MM/yyyy'));
                     //$('#planTime').val($.fullCalendar.formatDate(date, 'HH:mm'));
@@ -487,7 +492,7 @@ $(function() {
                 $("#users").show();
                 $("#groups").hide();
             }
-            if (($("#planTitre option:selected").text() === "Fermeture Annuel") || ($("#planTitre option:selected").text() === "Jours Fériés")) {
+            if (($("#planTitre option:selected").text() === "Fermeture Annuel") || ($("#planTitre option:selected").text() === "Jours Fériés")||($("#planTitre option:selected").text() === "Planning")) {
                 $("#groups").show();
                 $("#users").hide();
             }
@@ -539,64 +544,75 @@ $(function() {
         </div>
     </div>
 }
+@*@section testMenuLeft{
+    
+    <li class="active"><a href="@Url.Action("IndexManagerGroupes", "Home")"><i class="icon-home4"></i> <span>Acceuil</span></a></li>
+    }*@
 @section testMenuLeft{
-    <li class="active"><a href="@Url.Action("IndexManagerGroupes", "Home",new { id=@ViewBag.IdEmpConnected })"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-<li>
-    <a href="#"><i class="icon-stack2"></i> <span>Suivie Par Agent</span></a>
-    <ul>
-        <li><a href="layout_navbar_fixed.html">Journalier</a></li>
-        <li><a href="layout_navbar_sidebar_fixed.html">Hebdo</a></li>
-        <li><a href="layout_sidebar_fixed_native.html">Mensuel</a></li>
-        <li><a href="layout_navbar_hideable.html">Trimestriel</a></li>
-        <li><a href="layout_navbar_hideable_sidebar.html">Annuel</a></li>
-
-    </ul>
+    <li class="active"><a href="@Url.Action("ManagerGroupes", "Home")"><i class="icon-home4"></i> <span>Acceuil</span></a>
+    
 </li>
-<li>
-    <a href="#"><i class="icon-stack2"></i> <span>Suivie Par Activité</span></a>
-    <ul>
-        <li><a href="layout_navbar_fixed.html">Journalier</a></li>
-        <li><a href="layout_navbar_sidebar_fixed.html">Hebdo</a></li>
-        <li><a href="layout_sidebar_fixed_native.html">Mensuel</a></li>
-        <li><a href="layout_navbar_hideable.html">Trimestriel</a></li>
-        <li><a href="layout_navbar_hideable_sidebar.html">Annuel</a></li>
+    <li>
+        <a href="#"><i class="glyphicon glyphicon-user"></i> <span>Suivie Par Agent</span></a>
+        <ul>
+            <li>
+                <a href="@Url.Action("ManagerJournalierAgent", "Home")">Journalier </a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManagerHebdoAgent", "Home")"> Hebdomadaire </a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManagerMensuelAgent", "Home")">Mensuel </a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManagerTrimestrielleAgent", "Home")"> Trimestriel </a>
+            </li>
+            <li>
+                <a href="@Url.Action("ManagerAnnuelleAgent", "Home")"> Annuelle</a>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <a href="#"><i class="glyphicon glyphicon-stats"></i> <span>Suivie Par Activité</span></a>
+        <ul>
+            <li><a href="@Url.Action("ManagerJournalierActivity", "Home")">Journalier </a></li>
+            <li><a href="layout_navbar_sidebar_fixed.html">Hebdomadaire</a></li>
+            <li><a href="layout_sidebar_fixed_native.html">Mensuel</a></li>
+            <li><a href="layout_navbar_hideable.html">Trimestriel</a></li>
+            <li><a href="layout_navbar_hideable_sidebar.html">Annuelle</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#"><i class="glyphicon glyphicon-th-list"></i> <span>Suivie Par Compagne</span></a>
+        <ul>
+            <li><a href="layout_navbar_fixed.html">Journalier</a></li>
+            <li><a href="layout_navbar_sidebar_fixed.html">Hebdomadaire</a></li>
+            <li><a href="layout_sidebar_fixed_native.html">Mensuel</a></li>
+            <li><a href="layout_navbar_hideable.html">Trimestriel</a></li>
+            <li><a href="layout_navbar_hideable_sidebar.html">Annuelel</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="#"><i class="glyphicon glyphicon-import"></i> <span>Suivie Par Injection</span></a>
+        <ul>
+            <li><a href="layout_navbar_fixed.html">Journalier</a></li>
+            <li><a href="layout_navbar_sidebar_fixed.html">Hebdomadaire</a></li>
+            <li><a href="layout_sidebar_fixed_native.html">Mensuel</a></li>
+            <li><a href="layout_navbar_hideable.html">Trimestriel</a></li>
+            <li><a href="layout_navbar_hideable_sidebar.html">Annuelle</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="@Url.Action("Index", "Alerte")"><i class="glyphicon glyphicon-alert"></i> <span>Alertes</span></a>
+        <ul>
+            <li><a href="@Url.Action("IndexAgentManager", "Alerte")">Eléments Envoyées</a></li>
+            <li><a href="@Url.Action("CreateAlerteManager", "Alerte")">Nouvelle Alerte</a></li>
 
-    </ul>
-</li>
-<li>
-    <a href="#"><i class="icon-stack2"></i> <span>Suivie Par Compagne</span></a>
-    <ul>
-        <li><a href="layout_navbar_fixed.html">Journalier</a></li>
-        <li><a href="layout_navbar_sidebar_fixed.html">Hebdo</a></li>
-        <li><a href="layout_sidebar_fixed_native.html">Mensuel</a></li>
-        <li><a href="layout_navbar_hideable.html">Trimestriel</a></li>
-        <li><a href="layout_navbar_hideable_sidebar.html">Annuel</a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="@Url.Action("Calendar", "Home")"><i class="icon-calendar3"></i> <span>Planning</span></a>
 
-    </ul>
-</li>
-<li>
-    <a href="#"><i class="icon-stack2"></i> <span>Suivie Par Injection</span></a>
-    <ul>
-        <li><a href="layout_navbar_fixed.html">Journalier</a></li>
-        <li><a href="layout_navbar_sidebar_fixed.html">Hebdo</a></li>
-        <li><a href="layout_sidebar_fixed_native.html">Mensuel</a></li>
-        <li><a href="layout_navbar_hideable.html">Trimestriel</a></li>
-        <li><a href="layout_navbar_hideable_sidebar.html">Annuel</a></li>
+    </li>
 
-    </ul>
-</li>
-<li>
-    <a href="@Url.Action("Calendar", "Home")"><i class="icon-calendar3"></i> <span>Planing</span></a>
-
-</li>
-<li>
-    <a href="@Url.Action("Index", "Alerte")"><i class="icon-gift"></i> <span>Alertes</span></a>
-    <ul>
-        <li><a href="@Url.Action("IndexAgentManagerReciver", "Alerte")">Boite de réception</a></li>
-        <li><a href="@Url.Action("IndexAgentManager", "Alerte")">Eléments Envoyées</a></li>
-        <li><a href="@Url.Action("CreateAlerteManager", "Alerte")">Nouvelle Alerte</a></li>
-        <li><a href="@Url.Action("Create", "Alerte")">Suppression</a></li>
-
-    </ul>
-</li>
-    }
+}

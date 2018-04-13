@@ -17,5 +17,28 @@ namespace Data.Repository
         {
 
         }
+        ReportContext context = new ReportContext();
+        public List<Alerte> getByDate(DateTime date,int reciverId)
+        {
+
+            var alertes = context.alertes.Where(a => a.dateCreation == date && a.reciverId== reciverId);
+            List<Alerte> alertesTests = new List<Alerte>();
+            foreach(var alerte in alertes)
+            {
+                alertesTests.Add(alerte);
+            }
+
+            if (alertes != null)
+            {
+
+                return alertesTests;
+            }
+
+
+            else
+            {
+                return null;
+            }
+        }
     }
 }

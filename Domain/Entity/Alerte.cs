@@ -31,6 +31,7 @@ namespace Domain.Entity
         public int? senderId { get; set; }
         public int? reciverId { get; set; }
 
+        public string status { get; set; }
 
 
     }

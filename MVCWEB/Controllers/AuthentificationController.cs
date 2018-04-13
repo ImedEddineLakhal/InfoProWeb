@@ -13,6 +13,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNetCore.Http.Authentication;
 using System.Threading.Tasks;
+using Microsoft.AspNet.SignalR.Client;
 
 namespace MVCWEB.Controllers
 {
@@ -86,6 +87,7 @@ namespace MVCWEB.Controllers
                     return View("~/Views/Authentification/Index.cshtml");
                 }
                 Employee emp = serviceEmployee.getByLoginUser(login);
+                Session["IdEmpConnected"] = emp.Id;
                 //var userOwin = new ApplicationUser() { UserName = emp.userName };
                 //var identity = await UserManager.CreateIdentityAsync(userOwin, DefaultAuthenticationTypes.ApplicationCookie);
 
@@ -98,7 +100,6 @@ namespace MVCWEB.Controllers
                 {
                     if ((emp.role).Equals("Manager"))
                     {
-
                         User user = new User();
                         user.login = login;
                         user.logEntree = DateTime.Now;
@@ -118,7 +119,9 @@ namespace MVCWEB.Controllers
                         service.Add(user);
                         service.SaveChange();
 
-                        return RedirectToAction("IndexManagerAgent", "Home", emp);
+                        //return RedirectToAction("IndexManagerAgent", "Home", emp);
+                        return RedirectToAction("JournalierAgent", "Indicateurs", new { @id = emp.Id });
+
                     }
                     else if ((emp.role).Equals("Admin"))
                     {

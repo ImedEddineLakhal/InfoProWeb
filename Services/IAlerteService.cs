@@ -21,6 +21,8 @@ namespace Services
         void Dispose();
 
         IEnumerable<Alerte> GetAll();
+        List<Alerte> getByDate(DateTime date, int reciverId);
+
         //void btnGetListItem_Click2(String id);  c'est il y'a traitement en deuxiéme rideau
 
         //List<String> btnGetListItem_Click();

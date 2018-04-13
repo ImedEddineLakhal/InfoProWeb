@@ -7,7 +7,7 @@
 @section test{
 
 
-
+    <p style="padding-left:20px;font-size:18px">Veuillez Choisir votre groupe de collaborateur</p>
     @*<div class="panel panel-white">
         <div class="panel-heading">
             <h6 class="panel-title text-semibold">Liste de Groupes par Manager</h6>
@@ -21,36 +21,33 @@
         </div>*@
 
 
-
-    @foreach (var item in Model.Group)
+    <div class="row"style="padding-left:150px">
+        @foreach (var item in Model.Group)
     {
 
-        @*<a href="@Url.Action("IndexManagerAgentTest", "Home", new { id = item.Id })"><img src="~/Content/template/Layout 1/LTR/assets/images/grp.png" alt="..." class="img-thumbnail">
-                 @Html.DisplayFor(modelItem =>
-                                    item.nom)
-            </a>*@
+            @*<a href="@Url.Action("IndexManagerAgentTest", "Home", new { id = item.Id })"><img src="~/Content/template/Layout 1/LTR/assets/images/grp.png" alt="..." class="img-thumbnail">
+                     @Html.DisplayFor(modelItem =>
+                                        item.nom)
+                </a>*@
 
 
-        <div class="col-xs-2">
-            <div class="thumbnail">
-                <a href="@Url.Action("IndexManagerAgentTest", "Home", new { id = item.Id })">
-                    <img src="~/Content/template/Layout 1/LTR/assets/images/grp.png" alt="...">
-                </a>
-                <div class="caption">
-                    <h3>
-                        @Html.DisplayFor(modelItem =>
-                           item.nom)
-                </h3>
-                <p>
-                    Responsable<br />
-                    <span style="color:red">@Html.DisplayFor(modelItem => item.responsable)</span>
-                </p>
+            <div class="col-lg-3" style="padding-top:20px;height:200px">
+                <div class="thumbnail" style="-moz-border-radius: 5px;border-radius: 20px;-webkit-box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.97);-moz-box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.97);box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.97);">
+                    <a href="@Url.Action("IndexManagerAgentTest", "Home", new { id = item.Id })">
+                        <h1 style="padding-left:35px;color:black;padding-top:30px;font-family:Arial;font-weight:bold">@Html.DisplayFor(modelItem => item.nom)</h1>
+                    </a>
+                    <div class="caption">
+                        <p>
+                            Responsable<br />
+                            <span style="color:darkblue">@Html.DisplayFor(modelItem => item.responsable)</span>
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div>
+
+        }
     </div>
 
-
-    }
 
 }
 @section testProfile{

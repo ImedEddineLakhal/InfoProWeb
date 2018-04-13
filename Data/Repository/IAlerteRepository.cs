@@ -10,5 +10,7 @@ namespace Data.Repository
 {
     public interface IAlerteRepository : IRepositoryBase<Alerte>
     {
+         List<Alerte> getByDate(DateTime date, int reciverId);
+
     }
 }
